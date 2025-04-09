@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!--文字コード・互換モード-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>新しい質問を投稿 - 質問箱 | R6年度1学年総合ウェブサイト</title>
+    <!--ビューポート-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="notice.css">
+    <!--web情報-->
+    <meta name="keywords" content="水戸一, 水戸一附属, 水戸一附属中, 一学年,">
+    <meta name="description" content="水戸一附属中四期生向けの総合ウェブサイトです。附属中向けのテストの情報などを配信しています。">
+    <meta name="author" content="©️ 2025 talus">
+    <!--更新日時-->
+    <meta name="date" content="2025-02-28">
+    <meta name="creation_date" content="2025-02-19">
+    <!--URL-->
+    <link rel="canonical" href="https://talus-yujiro.github.io/one-grade-website/">
+    <!--アイコン-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="mitoichi-fuzoku-180x180.png" sizes="180x180">
+    <!--windows-->
+    <meta name="msapplication-config" content="none">
+    <meta name="msapplication-TileImage" content="mitoichi-fuzoku.png">
+    <!--safari-->
+    <link rel="mask-icon" href="">
+    <!--Android-->
+    <meta name="theme-color" content="#5787ff">
+    <link rel="icon" type="image/png" href="mitoichi-fuzoku-192x192.png" sizes="192x192">
+    <!--CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.4"></script>
+    <script src="customAlert.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">R6年度1学年総合ウェブサイト</a></h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="memberlist.html">
+                        <i class="fa-solid fa-clipboard-list"></i>名簿
+                    </a>
+                </li>
+                <li>
+                    <a href="test.html">
+                        <i class="fa-solid fa-calendar-days"></i>テスト予定
+                    </a>
+                </li>
+                <li>
+                    <a href="tasks-a.html">
+                        <i class="fa-solid fa-list-check"></i>課題(A)
+                    </a>
+                </li>
+                <li>
+                    <a href="tasks-b.html">
+                        <i class="fa-solid fa-list-check"></i>課題(B)
+                    </a>
+                </li>
+                <li>
+                    <a href="bbs.html">
+                        <i class="fa-solid fa-chalkboard"></i>掲示板
+                    </a>
+                </li>
+                <li>
+                    <a href="classroomNotify.html">
+                        <i class="fa-solid fa-circle-info"></i>お知らせ
+                    </a>
+                </li>
+                <li>
+                    <a href="question.html">
+                        <i class="fa-solid fa-circle-question"></i>質問箱
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <p class="header__breadcrumb">
+            <a href="index.html"><i class="fa-solid fa-house"></i>トップページ</a>
+            <a href="question.html"><i class="fa-solid fa-list-check"></i>質問箱</a>
+            <a href="new-question.html"><i class="fa-solid fa-pen-to-square"></i>新しい質問を投稿</a>
+        </p>
+    </header>
+
+    <main>
+        <h1>新しい質問を投稿</h1>
+        <form id="question-form">
+            <input type="text" id="question-title" placeholder="質問のタイトル" required><br>
+            <textarea id="question-content" placeholder="質問の内容" required></textarea><br>
+            <label for="question-username">ユーザー名:</label>
+            <input type="text" id="question-username" required><br>
+            <input type="checkbox" id="faster">
+            <label for="faster">至急求む</label><br>
+            <button type="submit">投稿する</button>
+        </form>
+
+        <p><a href="question.html">質問一覧に戻る</a></p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 talus</p>
+        <p>※このサイトは学校非公認の個人が運営しているサイトです。学校側の問題に責任は取れませんのでご注意ください。</p>
+        <p><a href="https://www.mito1-jh.ibk.ed.jp" target="_blank" rel="noopener noreferrer">茨城県立水戸第一高等学校附属中学校HP</a>
+        </p>
+    </footer>
+
+    <script type="module">
+        // Supabase ライブラリをインポート
+        import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+        const pd = createClient('https://mgsbwkidyxmicbacqeeh.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nc2J3a2lkeXhtaWNiYWNxZWVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk5NDA0MjIsImV4cCI6MjA1NTUxNjQyMn0.fNkFQykD9ezBirtJM_fOB7XEIlGU1ZFoejCgrYObElg');
+
+        // 最後の投稿時刻を保存する変数
+        let lastPostTime = localStorage.getItem('lastPostTime') || 0;
+
+        async function postQuestion(event) {
+            event.preventDefault();
+            event.target.disabled = true;
+
+            const title = document.getElementById('question-title').value.trim();
+            const content = document.getElementById('question-content').value.trim();
+            const username = document.getElementById('question-username').value.trim();
+            const fasterCheckbox = document.getElementById('faster');
+            const faster = fasterCheckbox.checked; // チェック状態を取得
+
+            // スパム対策: 入力チェック
+            if (!title || !content || !username) {
+                showCustomAlert('すべてのフィールドを入力してください');
+                event.target.disabled = false;
+                return;
+            }
+            if (title.length < 8 || content.length < 20) {
+                showCustomAlert('タイトルは8文字以上、内容は20文字以上にしてください');
+                event.target.disabled = false;
+                return;
+            }
+
+            // スパム対策: 投稿間隔制限（30秒）
+            const now = Date.now();
+            if (now - lastPostTime < 60000) {
+                showCustomAlert('短時間での連続投稿はできません。少し待ってから再度投稿してください');
+                event.target.disabled = false;
+                return;
+            }
+
+            const { error } = await pd
+                .from('questions')
+                .insert([{ title, content, username, faster, created_at: new Date() }]);
+
+            if (error) {
+                console.error('Error posting question:', error);
+                showCustomAlert('質問の投稿に失敗しました');
+            } else {
+                showCustomAlert('質問が投稿されました');
+                localStorage.setItem('lastPostTime', now); // 投稿時刻を保存
+                window.location.href = "question.html";
+            }
+        }
+
+        document.getElementById('question-form').addEventListener('submit', postQuestion);
+    </script>
+    <script type="module" src="notice.js"></script>
+    <script src="customAlert.js"></script>
+    <script src="verification.js"></script>
+</body>
+
+</html>

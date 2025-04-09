@@ -1,0 +1,77 @@
+/* サイドメニューのスタイル */
+#asideMenu {
+    position: fixed;
+    right: -250px;
+    /* 初期位置は画面外 */
+    top: 0;
+    width: 250px;
+    height: calc(100% - 2rem);
+    background-color: #abc3ff;
+    color: #00134c;
+    transition: right 0.3s ease;
+    /* メニューのスライド */
+    padding: 20px;
+    margin: 1rem;
+    z-index: 999;
+    /* サイドメニューが他の要素の上に表示されるように */
+    /* drop-shadow */
+    filter: drop-shadow(0px 0px 16px rgba(0, 0, 0, 0.6));
+    overflow: scroll;
+    border-radius: 10px;
+}
+
+/* サイドメニュー内のコンテンツ */
+#asideMenu h2,
+#asideMenu h3 {
+    color: #00134c;
+}
+
+#asideMenu #noticeContainer {
+    margin-top: 20px;
+}
+
+/* メニューボタン */
+#menuButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #00134c;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    z-index: 1000;
+    /* メニューボタンが他の要素の上に表示されるように */
+    transition: right 0.3s ease;
+    /* メニューボタンのスライド */
+    /* drop-shadow */
+    filter: drop-shadow(0px 0px 16px rgba(0, 0, 0, 0.6));
+}
+
+/* サイドメニューが表示されている時の位置 */
+#asideMenu.open {
+    right: 0;
+}
+
+/* メニューボタンが開いたときに移動 */
+#menuButton.open {
+    right: calc(250px + 1rem);
+    /* メニューが開いた時、ボタンも左に動く */
+}
+
+.notice-item {
+    margin: 0;
+    margin-block-start: 0;
+}
+
+@media (max-width: 428px) {
+    #menuButton {
+        top: 0;
+        right: 0;
+    }
+    
+    #asideMenu {
+        right: calc(-250px + -2rem);
+    }
+}

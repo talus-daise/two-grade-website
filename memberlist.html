@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!--文字コード・互換モード-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>名簿 | R6年度1学年総合ウェブサイト</title>
+    <!--ビューポート-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="notice.css">
+    <!--web情報-->
+    <meta name="keywords" content="水戸一, 水戸一附属, 水戸一附属中, 一学年,">
+    <meta name="description" content="水戸一附属中四期生向けの総合ウェブサイトです。附属中向けのテストの情報などを配信しています。">
+    <meta name="author" content="©️ 2025 talus">
+    <!--更新日時-->
+    <meta name="date" content="2025-02-28">
+    <meta name="creation_date" content="2025-02-19">
+    <!--URL-->
+    <link rel="canonical" href="https://talus-yujiro.github.io/one-grade-website/">
+    <!--アイコン-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="mitoichi-fuzoku-180x180.png" sizes="180x180">
+    <!--windows-->
+    <meta name="msapplication-config" content="none">
+    <meta name="msapplication-TileImage" content="mitoichi-fuzoku.png">
+    <!--safari-->
+    <link rel="mask-icon" href="">
+    <!--Android-->
+    <meta name="theme-color" content="#5787ff">
+    <link rel="icon" type="image/png" href="mitoichi-fuzoku-192x192.png" sizes="192x192">
+    <!--CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.4"></script>
+    <script src="customAlert.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="index.html">R6年度1学年総合ウェブサイト</a>
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="memberlist.html">
+                        <i class="fa-solid fa-clipboard-list"></i>名簿
+                    </a>
+                </li>
+                <li>
+                    <a href="test.html">
+                        <i class="fa-solid fa-calendar-days"></i>テスト予定
+                    </a>
+                </li>
+                <li>
+                    <a href="tasks-a.html">
+                        <i class="fa-solid fa-list-check"></i>課題(A)
+                    </a>
+                </li>
+                <li>
+                    <a href="tasks-b.html">
+                        <i class="fa-solid fa-list-check"></i>課題(B)
+                    </a>
+                </li>
+                <li>
+                    <a href="bbs.html">
+                        <i class="fa-solid fa-chalkboard"></i>掲示板
+                    </a>
+                </li>
+                <li>
+                    <a href="classroomNotify.html">
+                        <i class="fa-solid fa-circle-info"></i>お知らせ
+                    </a>
+                </li>
+                <li>
+                    <a href="question.html">
+                        <i class="fa-solid fa-circle-question"></i>質問箱
+                    </a>
+                </li>
+                <li>
+                    <a href="request_music.html">
+                        <i class="fa-solid fa-music"></i>リクエスト曲
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <p class="header__breadcrumb">
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>トップページ</a>
+            <a href="memberlist.html">
+                <i class="fa-solid fa-clipboard-list"></i>名簿</a>
+        </p>
+    </header>
+    <main>
+        <h1>1学年名簿</h1>
+        <article>
+            <h2>先生方</h2>
+            <section>
+                <h3>チーム担任</h3>
+                <p>山崎智美</p>
+                <p>阿内文弘</p>
+                <p>羽成文江</p>
+                <p>渡邊大介</p>
+            </section>
+            <section>
+                <h3>英語</h3>
+                <p>A 浅野玲子</p>
+                <p>講1 三宅正隆</p>
+                <p>B 白石拓史</p>
+                <p>ALT Reinschmidt Nicole</p>
+                <p>E2 Andy Gonzales</p>
+            </section>
+            <section>
+                <h3>数学</h3>
+                <p>A 羽成文江</p>
+                <p>B 綿引利弘</p>
+                <p>演習 平塚祐二</p>
+            </section>
+            <section>
+                <h3>国語</h3>
+                <p>阿内文弘</p>
+            </section>
+            <section>
+                <h3>理科</h3>
+                <p>R1 山崎智美（生物・化学）</p>
+                <p>R2 岩田真暢（物理・地学）</p>
+            </section>
+            <section>
+                <h3>社会</h3>
+                <p>地理 丸山聡一郎</p>
+                <p>歴史 鈴木達也</p>
+            </section>
+            <section>
+                <h3>体育</h3>
+                <p>渡邊大介</p>
+                <p>平山昌徳</p>
+            </section>
+            <section>
+                <h3>技術</h3>
+                <p>清浦昌之</p>
+            </section>
+            <section>
+                <h3>家庭</h3>
+                <p>柴田京子</p>
+            </section>
+            <section>
+                <h3>美術</h3>
+                <p>武本夏子</p>
+            </section>
+            <section>
+                <h3>音楽</h3>
+                <p>小沼みのり</p>
+            </section>
+            <p>(以上敬称略)</p>
+        </article>
+        <article class="main__student">
+            <h2>生徒</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>クラス</th>
+                        <th>番号</th>
+                        <th>名前</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1A</td>
+                        <td>01</td>
+                        <td>相田悠乃介</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>02</td>
+                        <td>石川眞帆</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>03</td>
+                        <td>石田晴大</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>04</td>
+                        <td>石原遼門</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>05</td>
+                        <td>市川聡真</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>06</td>
+                        <td>稲田光孝</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>07</td>
+                        <td>井村百花</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>08</td>
+                        <td>岩田樹弥</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>09</td>
+                        <td>岩淵由真</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>10</td>
+                        <td>岩本祥一郎</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>11</td>
+                        <td>薄井圭護</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>12</td>
+                        <td>小曽納璃佳</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>13</td>
+                        <td>河野蒼士</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>14</td>
+                        <td>久保田淳斗</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>15</td>
+                        <td>小泉裕貴</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>16</td>
+                        <td>小林蒼依</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>17</td>
+                        <td>小林史佳</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>18</td>
+                        <td>小林拓海</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>19</td>
+                        <td>坂井敬伍</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>20</td>
+                        <td>佐々木和義</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>21</td>
+                        <td>篠崎咲良</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>22</td>
+                        <td>清水玲菜</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>23</td>
+                        <td>白土咲恵</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>24</td>
+                        <td>杉本桔花</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>25</td>
+                        <td>菅田悠暉</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>26</td>
+                        <td>堂田有紗</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>27</td>
+                        <td>飛田愼也</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>28</td>
+                        <td>戸間替咲希</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>29</td>
+                        <td>野尻裕貴</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>30</td>
+                        <td>野中美遥</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>31</td>
+                        <td>芳賀かえで</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>32</td>
+                        <td>廣瀬太一</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>33</td>
+                        <td>二川ひなた</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>34</td>
+                        <td>古川陽菜</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>35</td>
+                        <td>星音羽</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>36</td>
+                        <td>松嶋隼士</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>37</td>
+                        <td>松本遥菜</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>38</td>
+                        <td>八木優歌</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>39</td>
+                        <td>安川愛菜</td>
+                    </tr>
+                    <tr>
+                        <td>1A</td>
+                        <td>40</td>
+                        <td>山本朱璃</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>01</td>
+                        <td>相田和</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>02</td>
+                        <td>青山ひかり</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>03</td>
+                        <td>有馬暁都</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>04</td>
+                        <td>安藤陸</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>05</td>
+                        <td>飯塚悠仁</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>06</td>
+                        <td>飯村和香</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>07</td>
+                        <td>石川陽菜</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>08</td>
+                        <td>伊藤希</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>09</td>
+                        <td>岩島綾子</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>10</td>
+                        <td>江幡遥人</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>11</td>
+                        <td>小國丈太朗</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>12</td>
+                        <td>菊池顕広</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>13</td>
+                        <td>木津碧咲</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>14</td>
+                        <td>木許咲希</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>15</td>
+                        <td>黒澤遼</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>16</td>
+                        <td>西城奈那</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>17</td>
+                        <td>佐川慶一郎</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>18</td>
+                        <td>清水和奏</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>19</td>
+                        <td>志村拓真</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>20</td>
+                        <td>鈴木将弘</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>21</td>
+                        <td>田口翔清</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>22</td>
+                        <td>武田証</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>23</td>
+                        <td>田村孝太</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>24</td>
+                        <td>塚田旭</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>25</td>
+                        <td>ドカン</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>26</td>
+                        <td>直井大和</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>27</td>
+                        <td>中里ゆり奈</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>28</td>
+                        <td>坂東すずな</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>29</td>
+                        <td>人見桜子</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>30</td>
+                        <td>福田翼</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>31</td>
+                        <td>船尾帆夏</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>32</td>
+                        <td>古川陽菜</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>33</td>
+                        <td>松井由愛</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>34</td>
+                        <td>森啓惺</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>35</td>
+                        <td>森山心愛</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>36</td>
+                        <td>山口陽花</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>37</td>
+                        <td>山下真歩</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>38</td>
+                        <td>山田優希</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>39</td>
+                        <td>山本悠二朗</td>
+                    </tr>
+                    <tr>
+                        <td>1B</td>
+                        <td>40</td>
+                        <td>渡辺太造</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </main>
+    <footer>
+        <p>© 2025 talus</p>
+        <p>※このサイトは学校非公認の個人が運営しているサイトです。学校側の問題に責任は取れませんのでご注意ください。</p>
+        <p>
+            <a href="https://www.mito1-jh.ibk.ed.jp" target="_blank" rel="noopener noreferrer">茨城県立水戸第一高等学校附属中学校HP</a>
+        </p>
+    </footer>
+
+    <script type="module" src="notice.js"></script>
+    <script src="customAlert.js"></script>
+    <script src="verification.js"></script>
+</body>
+
+</html>
