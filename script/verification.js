@@ -9,10 +9,10 @@ const names = [
     "船尾帆夏", "古川陽菜", "松井由愛", "森啓惺", "森山心愛", "山口陽花", "山下真歩", "山田優希", "山本悠二朗", "渡辺太造"
 ];
 
-const /script/verificationKey = "/script/verification";
+const verificationKey = "verification";
 
-function check/script/verification() {
-    const verified = localStorage.getItem(/script/verificationKey) === "true" ? true : false;
+function checkVerification() {
+    const verified = localStorage.getItem(verificationKey) === "true" ? true : false;
 
     if (verified) return;
 
@@ -71,5 +71,5 @@ function check/script/verification() {
     }, 10);
 }
 
-// Call the check/script/verification function
-check/script/verification();
+// Call the checkVerification function
+checkVerification();
