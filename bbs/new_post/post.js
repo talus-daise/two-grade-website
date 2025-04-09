@@ -57,5 +57,5 @@ document.getElementById("postForm").addEventListener("submit", async (e) => {
     }
 
     showCustomAlert("投稿完了！");
-    window.location.href = `bbs.html?thread=${thread}`;
+    window.location.href = `/bbs/?thread=${thread}`;
 });

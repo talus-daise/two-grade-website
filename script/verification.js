@@ -9,10 +9,10 @@ const names = [
     "船尾帆夏", "古川陽菜", "松井由愛", "森啓惺", "森山心愛", "山口陽花", "山下真歩", "山田優希", "山本悠二朗", "渡辺太造"
 ];
 
-const verificationKey = "verification";
+const /script/verificationKey = "/script/verification";
 
-function checkVerification() {
-    const verified = localStorage.getItem(verificationKey) === "true" ? true : false;
+function check/script/verification() {
+    const verified = localStorage.getItem(/script/verificationKey) === "true" ? true : false;
 
     if (verified) return;
 
@@ -54,8 +54,8 @@ function checkVerification() {
         alertContainer.style.opacity = "0";
         const clientName = nameBox.value;
         const isValid = names.includes(clientName);
-        localStorage.removeItem(verificationKey);
-        localStorage.setItem(verificationKey, isValid);
+        localStorage.removeItem(/script/verificationKey);
+        localStorage.setItem(/script/verificationKey, isValid);
         setTimeout(() => alertBackground.remove(), 500);
         let clientUrl = window.location.pathname;
         window.location.pathname = isValid ? clientUrl : "caution.html";
@@ -71,5 +71,5 @@ function checkVerification() {
     }, 10);
 }
 
-// Call the checkVerification function
-checkVerification();
+// Call the check/script/verification function
+check/script/verification();
