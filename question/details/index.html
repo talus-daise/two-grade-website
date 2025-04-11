@@ -68,11 +68,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/two-grade-website/classroom_notify/">
-                        <i class="fa-solid fa-circle-info"></i>お知らせ
-                    </a>
-                </li>
-                <li>
                     <a href="/two-grade-website/question/">
                         <i class="fa-solid fa-circle-question"></i>質問箱
                     </a>
@@ -150,7 +145,7 @@
 			// ページタイトルを更新
 			document.getElementById('page-title').textContent = `${question.title} - 質問箱 | R6年度1学年ウェブサイト`;
 
-			document.getElementById('page-link').innerHTML = `<a href="details/?id=${questionId}"><i class="fa-solid fa-circle-info"></i>質問「${question.title}」の詳細</a>`
+			document.getElementById('page-link').innerHTML = `<a href="?id=${questionId}"><i class="fa-solid fa-circle-info"></i>質問「${question.title}」の詳細</a>`
 
 			fetchAnswers();
 		}
