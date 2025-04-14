@@ -1,0 +1,222 @@
+[
+    {
+        "genre": "過去形",
+        "list": [
+            {
+                "question": "beの過去形は？",
+                "options": [
+                    "was",
+                    "were",
+                    "beed",
+                    "beed"
+                ],
+                "answer": "was"
+            },
+            {
+                "question": "haveの過去形は？",
+                "options": [
+                    "had",
+                    "haved",
+                    "haveed",
+                    "haved"
+                ],
+                "answer": "had"
+            },
+            {
+                "question": "doの過去形は？",
+                "options": [
+                    "did",
+                    "doed",
+                    "done",
+                    "doe"
+                ],
+                "answer": "did"
+            },
+            {
+                "question": "seeの過去形は？",
+                "options": [
+                    "saw",
+                    "seed",
+                    "seen",
+                    "seeed"
+                ],
+                "answer": "saw"
+            },
+            {
+                "question": "comeの過去形は？",
+                "options": [
+                    "came",
+                    "comed",
+                    "comeed",
+                    "cameed"
+                ],
+                "answer": "came"
+            },
+            {
+                "question": "getの過去形は？",
+                "options": [
+                    "got",
+                    "getted",
+                    "gotted",
+                    "getd"
+                ],
+                "answer": "got"
+            },
+            {
+                "question": "makeの過去形は？",
+                "options": [
+                    "made",
+                    "maked",
+                    "makeed",
+                    "makd"
+                ],
+                "answer": "made"
+            },
+            {
+                "question": "takeの過去形は？",
+                "options": [
+                    "took",
+                    "taken",
+                    "taked",
+                    "takeed"
+                ],
+                "answer": "took"
+            },
+            {
+                "question": "sayの過去形は？",
+                "options": [
+                    "said",
+                    "sayed",
+                    "sayed",
+                    "saied"
+                ],
+                "answer": "said"
+            },
+            {
+                "question": "knowの過去形は？",
+                "options": [
+                    "knew",
+                    "knowed",
+                    "knowed",
+                    "knewed"
+                ],
+                "answer": "knew"
+            },
+            {
+                "question": "thinkの過去形は？",
+                "options": [
+                    "thought",
+                    "thinked",
+                    "thunk",
+                    "thougt"
+                ],
+                "answer": "thought"
+            },
+            {
+                "question": "findの過去形は？",
+                "options": [
+                    "found",
+                    "finded",
+                    "founded",
+                    "findd"
+                ],
+                "answer": "found"
+            },
+            {
+                "question": "giveの過去形は？",
+                "options": [
+                    "gave",
+                    "gived",
+                    "given",
+                    "giveed"
+                ],
+                "answer": "gave"
+            },
+            {
+                "question": "tellの過去形は？",
+                "options": [
+                    "told",
+                    "telled",
+                    "tolded",
+                    "tell"
+                ],
+                "answer": "told"
+            },
+            {
+                "question": "becomeの過去形は？",
+                "options": [
+                    "became",
+                    "becomed",
+                    "becomeed",
+                    "becomed"
+                ],
+                "answer": "became"
+            },
+            {
+                "question": "speakの過去形は？",
+                "options": [
+                    "spoke",
+                    "spoked",
+                    "speaked",
+                    "speakd"
+                ],
+                "answer": "spoke"
+            },
+            {
+                "question": "eatの過去形は？",
+                "options": [
+                    "ate",
+                    "eated",
+                    "eaten",
+                    "eatd"
+                ],
+                "answer": "ate"
+            },
+            {
+                "question": "goの過去形は？",
+                "options": [
+                    "went",
+                    "goed",
+                    "goe",
+                    "gone"
+                ],
+                "answer": "went"
+            }
+        ]
+    },
+    {
+        "genre": "未来形",
+        "list": [
+            {
+                "question": "willは何詞？",
+                "options": [
+                    "副詞",
+                    "名詞",
+                    "動詞",
+                    "形容詞"
+                ],
+                "answer": "副詞"
+            },
+            {
+                "question": "willの否定形は？",
+                "options": [
+                    "wiln't",
+                    "willn't",
+                    "won't",
+                    "win't"
+                ],
+                "answer": "won't"
+            },
+            {
+                "question": "be going toの意味は？",
+                "options": [
+                    "〜する予定",
+                    "〜している",
+                    "〜するかも",
+                    "〜しなければならない"
+                ],
+                "answer": "〜する予定"
+            }
+        ]
+    }
+]
