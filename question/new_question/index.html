@@ -163,6 +163,12 @@
         }
 
         document.getElementById('question-form').addEventListener('submit', postQuestion);
+
+        window.addEventListener('beforeunload', function (event) {
+            event.preventDefault() // (1)
+            event.returnValue = '' // (2)
+        })
+
     </script>
     <script type="module" src="/two-grade-website/notice/notice.js"></script>
     <script src="/two-grade-website/script/customAlert.js"></script>

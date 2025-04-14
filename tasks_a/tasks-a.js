@@ -66,3 +66,9 @@ async function loadTasks() {
 }
 
 loadTasks();
+
+window.addEventListener('beforeunload', function (event) {
+    event.preventDefault() // (1)
+    event.returnValue = '' // (2)
+  })
+  
