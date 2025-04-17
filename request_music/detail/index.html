@@ -81,7 +81,7 @@
         </nav>
         <p class="header__breadcrumb">
             <a href="../../"><i class="fa-solid fa-house"></i>トップページ</a>
-            <a href="../../request_music/"><i class="fa-solid fa-music"></i>リクエスト曲一覧</a>
+            <a href="../"><i class="fa-solid fa-music"></i>リクエスト曲一覧</a>
             <span id="musicDate"></span>
         </p>
     </header>
@@ -134,7 +134,7 @@
         let url = data.find(item => item.date === video)?.url;
 
         document.getElementById("page-title").textContent = `${video} - リクエスト曲 | R7年度2学年総合ウェブサイト`;
-        document.getElementById("musicDate").innerHTML = `<a href="detail/?date=${video}"><i class="fa-solid fa-calendar-days"></i>${video}</a>`;
+        document.getElementById("musicDate").innerHTML = `<a href="?date=${video}"><i class="fa-solid fa-calendar-days"></i>${video}</a>`;
         document.getElementById("h2").innerHTML = `<h2>${video}</h2>`;
         document.getElementById("videoContainer").innerHTML = `<iframe src="${url}"></iframe>`;
     </script>
