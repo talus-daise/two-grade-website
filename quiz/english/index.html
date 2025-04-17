@@ -5,7 +5,7 @@
 	<!--文字コード・互換モード-->
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
-	<title>新規投稿 - 掲示板 | R7年度2学年総合ウェブサイト</title>
+	<title>?? | R7年度2学年総合ウェブサイト</title>
 	<!--ビューポート-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--css-->
@@ -81,30 +81,13 @@
         </nav>
         <p class="header__breadcrumb">
             <a href="../../"><i class="fa-solid fa-house"></i>トップページ</a>
-            <a href="../../bbs/"><i class="fa-solid fa-chalkboard"></i>掲示板</a>
-            <a href="new_post/" ><i class="fa-solid fa-pen-to-square"></i>新規投稿</a>
+            <a href="../../quiz/">クイズ</a>
+            <a href="../../quiz/english/">英語</a>
         </p>
     </header>
 
     <main>
-        <h1>新規投稿</h1>
-    <a href="../../">掲示板トップへ</a>
 
-    <h2>スレッド一覧</h2>
-    <ul id="threadList"></ul>
-
-    <h2>投稿フォーム</h2>
-    <form id="postForm">
-        <label>スレッド: 
-            <select id="thread" required>
-                <option value="">スレッドを選択</option>
-            </select>
-        </label><br>
-        <input type="text" id="username" placeholder="名前" required><br>
-        <input type="text" id="title" placeholder="タイトル" required><br>
-        <textarea id="content" placeholder="本文" required></textarea><br>
-        <button type="submit">投稿</button>
-    </form>
     </main>
 
     <footer>
@@ -113,9 +96,7 @@
         <p><a href="https://www.mito1-jh.ibk.ed.jp" target="_blank" rel="noopener noreferrer">茨城県立水戸第一高等学校附属中学校HP</a></p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.4"></script>
-    <script type="module" src="script/post.js"></script>
-    <script type="module" src="../../notice/notice.js"></script>
+	<script type="module" src="../../notice/notice.js"></script>
     <script src="../../script/customAlert.js"></script>
 	<script src="../../script/verification.js"></script>
 </body>

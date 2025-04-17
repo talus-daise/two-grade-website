@@ -5,7 +5,7 @@
 	<!--文字コード・互換モード-->
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
-	<title>課題(A) | R7年度2学年総合ウェブサイト</title>
+	<title>クイズ | R7年度2学年総合ウェブサイト</title>
 	<!--ビューポート-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--css-->
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="tasks-a.html">
+                    <a href="../tasks_a/">
                         <i class="fa-solid fa-list-check"></i>課題(A)
                     </a>
                 </li>
@@ -81,51 +81,24 @@
         </nav>
         <p class="header__breadcrumb">
             <a href="../"><i class="fa-solid fa-house"></i>トップページ</a>
-            <a href="../member_list/" ><i class="fa-solid fa-list-check"></i>課題(A)</a>
+            <a href="../quiz/" >クイズ</a>
         </p>
     </header>
 
     <main>
-        <h1>課題(A)</h1>
-        <article>
-            <p>現在A組で出されている課題の一覧です。</p>
-            <p>サイトを観覧できる人が投稿できるようになっているので、課題ができたりしたらどんどん投稿してください。</p>
-            <p>ただし、以下の注意をよく読んでからにしてください。</p>
-        </article>
-
-        <article>
-            <h2>課題を追加する際の注意</h2>
-            <p>できるだけ正しい情報を入力することにご協力ください。</p>
-            <p>もし正しくない情報や適切でない情報だった場合は削除させていただくことがありますのでご了承ください。</p>
-        </article>
-
-        <article>
-            <h2>課題を追加</h2>
-            <form id="taskForm">
-                <input type="text" id="title" placeholder="課題名" required><br>
-                <input type="date" id="deadline" required><br>
-                <input type="text" id="description" placeholder="課題内容" required><br>
-                <input type="text" id="notes" placeholder="備考"><br>
-                <button type="submit">追加</button>
-            </form>
-        </article>
-
-        <article>
-            <h2>課題一覧</h2>
-            <div class="tableContainer">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>課題名</th>
-                            <th>期限</th>
-                            <th>課題内容</th>
-                            <th>備考</th>
-                        </tr>
-                    </thead>
-                    <tbody id="taskTable"></tbody>
-                </table>
-            </div>
-        </article>
+        <h1>クイズ</h1>
+        <p>秒でできるクイズをたくさん用意しました。</p>
+        <p>暇つぶしにどうぞ。</p>
+        <p>クイズはだんだん増えていきます</p>
+        <h2>ジャンル</h2>
+        <ul>
+            <li><a href="../quiz/english/">英語</a></li>
+            <li><a href="../quiz/math/">数学</a></li>
+            <li><a href="../quiz/japanese/">国語</a></li>
+            <li><a href="../quiz/science/">理科</a></li>
+            <li><a href="../quiz/social_study/">社会</a></li>
+            <li><a href="../quiz/etc/">その他</a></li>
+        </ul>
     </main>
 
     <footer>
@@ -134,9 +107,7 @@
         <p><a href="https://www.mito1-jh.ibk.ed.jp" target="_blank" rel="noopener noreferrer">茨城県立水戸第一高等学校附属中学校HP</a></p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.4"></script>
-    <script type="module" src="tasks-a.js"></script>
-    <script type="module" src="../notice/notice.js"></script>
+	<script type="module" src="../notice/notice.js"></script>
     <script src="../script/customAlert.js"></script>
 	<script src="../script/verification.js"></script>
 </body>
