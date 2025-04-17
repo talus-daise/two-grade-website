@@ -1,0 +1,352 @@
+[
+    {
+        "genre": "過去形",
+        "list": [
+            {
+                "question": "beの過去形は？",
+                "options": [
+                    "was",
+                    "were",
+                    "been",
+                    "being"
+                ],
+                "answer": "was"
+            },
+            {
+                "question": "becomeの過去形は？",
+                "options": [
+                    "became",
+                    "becomed",
+                    "becoming",
+                    "become"
+                ],
+                "answer": "became"
+            },
+            {
+                "question": "beginの過去形は？",
+                "options": [
+                    "began",
+                    "beginned",
+                    "beginning",
+                    "begin"
+                ],
+                "answer": "began"
+            },
+            {
+                "question": "breakの過去形は？",
+                "options": [
+                    "broke",
+                    "breaked",
+                    "breaking",
+                    "break"
+                ],
+                "answer": "broke"
+            },
+            {
+                "question": "catchの過去形は？",
+                "options": [
+                    "caught",
+                    "catched",
+                    "catching",
+                    "catch"
+                ],
+                "answer": "caught"
+            },
+            {
+                "question": "chooseの過去形は？",
+                "options": [
+                    "chose",
+                    "choosed",
+                    "choosing",
+                    "choose"
+                ],
+                "answer": "chose"
+            },
+            {
+                "question": "comeの過去形は？",
+                "options": [
+                    "came",
+                    "comed",
+                    "coming",
+                    "come"
+                ],
+                "answer": "came"
+            },
+            {
+                "question": "doの過去形は？",
+                "options": [
+                    "did",
+                    "doed",
+                    "done",
+                    "doing"
+                ],
+                "answer": "did"
+            },
+            {
+                "question": "drinkの過去形は？",
+                "options": [
+                    "drank",
+                    "drinked",
+                    "drinking",
+                    "drink"
+                ],
+                "answer": "drank"
+            },
+            {
+                "question": "driveの過去形は？",
+                "options": [
+                    "drove",
+                    "drived",
+                    "driving",
+                    "drive"
+                ],
+                "answer": "drove"
+            },
+            {
+                "question": "eatの過去形は？",
+                "options": [
+                    "ate",
+                    "eated",
+                    "eating",
+                    "eat"
+                ],
+                "answer": "ate"
+            },
+            {
+                "question": "findの過去形は？",
+                "options": [
+                    "found",
+                    "finded",
+                    "finding",
+                    "find"
+                ],
+                "answer": "found"
+            },
+            {
+                "question": "flyの過去形は？",
+                "options": [
+                    "flew",
+                    "flied",
+                    "flying",
+                    "fly"
+                ],
+                "answer": "flew"
+            },
+            {
+                "question": "getの過去形は？",
+                "options": [
+                    "got",
+                    "getted",
+                    "getting",
+                    "get"
+                ],
+                "answer": "got"
+            },
+            {
+                "question": "giveの過去形は？",
+                "options": [
+                    "gave",
+                    "gived",
+                    "giving",
+                    "give"
+                ],
+                "answer": "gave"
+            },
+            {
+                "question": "goの過去形は？",
+                "options": [
+                    "went",
+                    "goed",
+                    "going",
+                    "go"
+                ],
+                "answer": "went"
+            },
+            {
+                "question": "haveの過去形は？",
+                "options": [
+                    "had",
+                    "haved",
+                    "having",
+                    "have"
+                ],
+                "answer": "had"
+            },
+            {
+                "question": "knowの過去形は？",
+                "options": [
+                    "knew",
+                    "knowed",
+                    "knowing",
+                    "know"
+                ],
+                "answer": "knew"
+            },
+            {
+                "question": "loseの過去形は？",
+                "options": [
+                    "lost",
+                    "losed",
+                    "losing",
+                    "lose"
+                ],
+                "answer": "lost"
+            },
+            {
+                "question": "makeの過去形は？",
+                "options": [
+                    "made",
+                    "maked",
+                    "making",
+                    "make"
+                ],
+                "answer": "made"
+            },
+            {
+                "question": "meetの過去形は？",
+                "options": [
+                    "met",
+                    "meeted",
+                    "meeting",
+                    "meet"
+                ],
+                "answer": "met"
+            },
+            {
+                "question": "readの過去形は？",
+                "options": [
+                    "read",
+                    "readed",
+                    "reading",
+                    "reads"
+                ],
+                "answer": "read"
+            },
+            {
+                "question": "runの過去形は？",
+                "options": [
+                    "ran",
+                    "runned",
+                    "running",
+                    "run"
+                ],
+                "answer": "ran"
+            },
+            {
+                "question": "sayの過去形は？",
+                "options": [
+                    "said",
+                    "sayed",
+                    "saying",
+                    "say"
+                ],
+                "answer": "said"
+            },
+            {
+                "question": "seeの過去形は？",
+                "options": [
+                    "saw",
+                    "seed",
+                    "seen",
+                    "seeing"
+                ],
+                "answer": "saw"
+            },
+            {
+                "question": "singの過去形は？",
+                "options": [
+                    "sang",
+                    "singed",
+                    "singing",
+                    "sing"
+                ],
+                "answer": "sang"
+            },
+            {
+                "question": "speakの過去形は？",
+                "options": [
+                    "spoke",
+                    "spoked",
+                    "speaking",
+                    "speak"
+                ],
+                "answer": "spoke"
+            },
+            {
+                "question": "takeの過去形は？",
+                "options": [
+                    "took",
+                    "taken",
+                    "taking",
+                    "take"
+                ],
+                "answer": "took"
+            },
+            {
+                "question": "tellの過去形は？",
+                "options": [
+                    "told",
+                    "telled",
+                    "telling",
+                    "tell"
+                ],
+                "answer": "told"
+            },
+            {
+                "question": "thinkの過去形は？",
+                "options": [
+                    "thought",
+                    "thinked",
+                    "thinking",
+                    "think"
+                ],
+                "answer": "thought"
+            },
+            {
+                "question": "writeの過去形は？",
+                "options": [
+                    "wrote",
+                    "writed",
+                    "writing",
+                    "write"
+                ],
+                "answer": "wrote"
+            }
+        ]
+    },
+    {
+        "genre": "未来形",
+        "list": [
+            {
+                "question": "willは何詞？",
+                "options": [
+                    "副詞",
+                    "名詞",
+                    "動詞",
+                    "形容詞"
+                ],
+                "answer": "副詞"
+            },
+            {
+                "question": "willの否定形は？",
+                "options": [
+                    "wiln't",
+                    "willn't",
+                    "won't",
+                    "willnot"
+                ],
+                "answer": "won't"
+            },
+            {
+                "question": "be going toの意味は？",
+                "options": [
+                    "〜する予定",
+                    "〜している",
+                    "〜するかも",
+                    "〜しなければならない"
+                ],
+                "answer": "〜する予定"
+            }
+        ]
+    }
+]
