@@ -266,7 +266,7 @@ function startQuiz(quizData) {
 
             handleClick(restartButton, () => startQuiz(restartData));
             handleClick(settingButton, () => setupQuizSettings(allData));
-            handleClick(backButton, () => window.location.href = `../`);
+            handleClick(backButton, () => window.location.href = `../genre/`);
 
             const handleResultKeyPress = (event) => {
                 switch (event.key) {
