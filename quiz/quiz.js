@@ -103,23 +103,30 @@ function setupQuizSettings(quizData) {
 
     // ジャンル選択時にスライダーの最大値を更新
     genreRadios.forEach((radio) => {
-        radio.addEventListener('change', () => {
-            const selectedGenre = document.querySelector('input[name="genre"]:checked').value;
-            const selectedQuizData = quizData.find((quiz) => quiz.genre === selectedGenre);
-
-            if (selectedQuizData && selectedQuizData.list) {
-                const maxQuestions = selectedQuizData.list.length;
-                questionCountInput.max = maxQuestions;
-
-                // スライダーの現在の値が最大値を超えている場合、最大値にリセット
-                if (parseInt(questionCountInput.value, 10) > maxQuestions) {
-                    questionCountInput.value = maxQuestions;
-                }
-
-                questionCountDisplay.textContent = questionCountInput.value;
-            }
-        });
+        radio.addEventListener('change', rangeInputReset);
     });
+
+    function rangeInputReset() {
+        const selectedGenre = document.querySelector('input[name="genre"]:checked').value;
+        const selectedQuizData = quizData.find((quiz) => quiz.genre === selectedGenre);
+
+        if (selectedQuizData && selectedQuizData.list) {
+            const maxQuestions = selectedQuizData.list.length;
+            questionCountInput.max = maxQuestions;
+
+            // スライダーの現在の値が最大値を超えている場合、最大値にリセット
+            if (parseInt(questionCountInput.value, 10) > maxQuestions) {
+                questionCountInput.value = maxQuestions;
+            }
+
+            questionCountDisplay.textContent = questionCountInput.value;
+        } else {
+            // selectedQuizData.list が存在しない場合のエラーハンドリング
+            console.error('選択されたジャンルの問題リストが見つかりません');
+            questionCountInput.max = 1; // デフォルト値
+            questionCountDisplay.textContent = 1;
+        }
+    }
 
     function startHundleKeyPress(event) {
         if (event.key === 'Enter') {
@@ -163,10 +170,12 @@ function setupQuizSettings(quizData) {
         document.removeEventListener('keydown', startHundleKeyPress);
         startQuiz(limitedQuizData, answerType);
     });
+
+    rangeInputReset();
 }
 
 // クイズを開始
-function startQuiz(quizData, answerType = 'select') { // デフォルトを選択式とする
+function startQuiz(quizData, answerType = 'select') {
     const quizContainer = document.getElementById('quiz-container');
     let startTime = Date.now(); // クイズ開始時刻を記録
 
@@ -187,19 +196,21 @@ function startQuiz(quizData, answerType = 'select') { // デフォルトを選�
     let currentQuestionIndex = 0;
     let score = 0;
     let selectedOptionIndex = null; // 現在選択中の選択肢のインデックス
+    let answered = false; // 回答済みフラグ
 
     let inputField; // inputField変数をより広いスコープで宣言
 
     function showQuestion() {
+        answered = false; // 新しい質問を表示する際に回答済みフラグをリセット
         const currentQuestion = quizData.list[currentQuestionIndex];
         const questionText = currentQuestion.question.replace(/\$\$(.*?)\$\$/g, (_, tex) => {
             return `<span class="mathjax">\\(${tex}\\)</span>`;
-        }); 
-    
+        });
+
         questionElement.innerHTML = questionText; // TeX 表記を含む質問を設定
         optionsElement.innerHTML = '';
         selectedOptionIndex = null; // 選択状態をリセット
-    
+
         if (answerType === 'select') {
             // 選択式の場合
             const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5);
@@ -211,7 +222,7 @@ function startQuiz(quizData, answerType = 'select') { // デフォルトを選�
                 button.style.fontSize = '1.5rem';
                 button.dataset.index = index; // インデックスをデータ属性に保存
                 optionsElement.appendChild(button);
-    
+
                 // ボタンのクリックイベント
                 button.addEventListener('click', () => {
                     checkAnswer(button, option, currentQuestion.answer);
@@ -224,17 +235,20 @@ function startQuiz(quizData, answerType = 'select') { // デフォルトを選�
             inputField.id = 'answer-input';
             inputField.style.fontSize = '1.5rem';
             optionsElement.appendChild(inputField);
-    
+
             inputField.focus(); // 入力フィールドにフォーカスを当てる
-    
+
             // 入力イベントで正答のみ判定
-            inputField.addEventListener('input', () => {
+            const handleInput = () => {
                 const userAnswer = inputField.value.trim();
                 if (userAnswer === currentQuestion.answer) {
                     checkAnswer(null, userAnswer, currentQuestion.answer);
+                    inputField.removeEventListener('input', handleInput); // イベントリスナーを削除
                 }
-            });
-    
+            };
+
+            inputField.addEventListener('input', handleInput);
+
             // Enterキーで次の質問に進む
             inputField.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
@@ -245,12 +259,14 @@ function startQuiz(quizData, answerType = 'select') { // デフォルトを選�
                 }
             });
         }
-    
+
         // MathJax を再レンダリング
         if (window.MathJax) {
-            MathJax.typesetPromise();
+            MathJax.typesetPromise()
+                .then(() => console.log('MathJax のレンダリングが完了しました'))
+                .catch((err) => console.error('MathJax のレンダリングに失敗しました:', err));
         }
-    
+
         // キーボードイベントで選択肢を選ぶ
         document.addEventListener('keydown', handleKeyPress);
     }
@@ -259,63 +275,55 @@ function startQuiz(quizData, answerType = 'select') { // デフォルトを選�
         const optionButtons = document.querySelectorAll('.option-button');
         if (answerType === 'select') {
             if (event.key >= '1' && event.key <= String(optionButtons.length)) {
-                // 数字キーで選択肢を選ぶ
-                selectedOptionIndex = parseInt(event.key, 10) - 1;
-                const selectedButton = optionButtons[selectedOptionIndex];
-                const selectedOption = selectedButton.textContent.split(': ')[1];
-                const correctAnswer = quizData.list[currentQuestionIndex].answer;
-
-                checkAnswer(selectedButton, selectedOption, correctAnswer);
+                const index = parseInt(event.key) - 1;
+                if (optionButtons[index]) {
+                    optionButtons[index].click();
+                }
             } else if (event.key === 'Enter') {
-                // Enterキーで次の質問に進む
-                if (nextButton.style.display === 'block') {
-                    nextButton.click(); // 次の質問ボタンをクリック
-                }
+                nextButton.click(); // 回答済みの場合は次の質問へ
             }
-        } else if (answerType === 'input') {
-            if (event.key === 'Enter') {
-                // Enterキーで次の質問に進む
-                if (nextButton.style.display === 'block') {
-                    nextButton.click(); // 次の質問ボタンをクリック
-                }
-            }
+        } else if (event.key === 'Enter' && answered) {
+            nextButton.click(); // 回答済みの場合は次の質問へ
+        } else if (event.key === 'Enter' && inputField) {
+            checkAnswer(null, inputField.value.trim(), quizData.list[currentQuestionIndex].answer);
         }
     }
 
     function checkAnswer(selectedButton, selectedOption, correctAnswer) {
+        if (answered) return; // すでに回答済みの場合は何もしない
+        answered = true; // 回答済みフラグを設定
+
         if (answerType === 'select') {
-            document.querySelectorAll('.option-button').forEach((button) => {
+            selectedButton.style.backgroundColor = '#b64300'; // 選択したボタンの色を変更
+            selectedButton.style.color = '#fff'; // 選択したボタンの文字色を変更
+
+            if (selectedOption === correctAnswer) {
+                resultElement.textContent = '正解！';
+                score++;
+                selectedButton.style.backgroundColor = '#4CAF50'; // 正解の色
+                selectedButton.style.color = '#fff'; // 正解の文字色
+            } else {
+                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;">${correctAnswer}</span> です。`;
+            }
+            // 選択肢ボタンを無効にする
+            document.querySelectorAll('.option-button').forEach(button => {
                 button.disabled = true;
-                // ボタンのテキストから番号を除いた選択肢部分を取得
-                const buttonOption = button.textContent.split(': ')[1];
-                if (buttonOption === correctAnswer) {
-                    button.style.backgroundColor = '#b64300';
-                    button.style.color = '#fff';
-                }
             });
+        } else if (answerType === 'input') {
+            if (selectedOption === correctAnswer) {
+                resultElement.textContent = '正解！';
+                score++;
+            } else {
+                resultElement.textContent = `不正解。正解は ${correctAnswer} です。`;
+            }
+            // 入力フィールドを無効にする
+            if (inputField) {
+                inputField.disabled = true;
+            }
         }
 
-        let isCorrect;
-        try {
-            // ユーザーの回答と正解を評価
-            const userAnswer = eval(selectedOption);
-            const correctAns = eval(correctAnswer);
-            isCorrect = Math.abs(userAnswer - correctAns) < 0.001; // 浮動小数点数の比較
-        } catch (e) {
-            // 数式として評価できない場合、文字列として比較
-            isCorrect = selectedOption === correctAnswer;
-        }
-
-        resultElement.textContent = isCorrect
-            ? '正解！'
-            : `不正解！正解は「${correctAnswer}」です。`;
-
-        if (isCorrect) score++;
+        resultElement.style.display = 'block';
         nextButton.style.display = 'block';
-
-        if (currentQuestionIndex === quizData.list.length - 1) {
-            nextButton.textContent = '結果を見る';
-        }
     }
 
     nextButton.addEventListener('click', () => {

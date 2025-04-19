@@ -3,7 +3,7 @@
         "genre": "正負の数(易)",
         "list": [
             {
-                "question": "$$-5 + 3 - (-2) \\times 4 = ?$$",
+                "question": "$$-5 - 3 - (-2) \\times 4 = ?$$",
                 "options": [
                     "0",
                     "-10",
