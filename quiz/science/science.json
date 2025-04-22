@@ -255,12 +255,12 @@
             {
                 "question": "P波は約何km/h？",
                 "options": [
-                    "6",
+                    "7",
                     "3",
                     "10",
                     "20"
                 ],
-                "answer": "6"
+                "answer": "7"
             },
             {
                 "question": "初期微動に続いて起こる大きな揺れのことを何と言う？",
@@ -290,7 +290,7 @@
                     "Slow",
                     "Shake"
                 ],
-                "answer": "Second"
+                "answer": "Secondary"
             },
             {
                 "question": "S波は約何km/h？",
