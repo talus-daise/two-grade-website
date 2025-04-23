@@ -8,28 +8,28 @@ function showKeyboard() {
                 <td></td>
             </tr>
             <tr>
-                <td><button id="key" value="1">1</button></td>
-                <td><button id="key" value="2">2</button></td>
-                <td><button id="key" value="3">3</button></td>
-                <td><button id="key" value="+">+</button></td>
+                <td><button class="key" value="1">1</button></td>
+                <td><button class="key" value="2">2</button></td>
+                <td><button class="key" value="3">3</button></td>
+                <td><button class="key" value="+">+</button></td>
             </tr>
             <tr>
-                <td><button id="key" value="4">4</button></td>
-                <td><button id="key" value="5">5</button></td>
-                <td><button id="key" value="6">6</button></td>
-                <td><button id="key" value="-">-</button></td>
+                <td><button class="key" value="4">4</button></td>
+                <td><button class="key" value="5">5</button></td>
+                <td><button class="key" value="6">6</button></td>
+                <td><button class="key" value="-">-</button></td>
             </tr>
             <tr>
-                <td><button id="key" value="7">7</button></td>
-                <td><button id="key" value="8">8</button></td>
-                <td><button id="key" value="9">9</button></td>
-                <td><button id="key" value="*">*</button></td>
+                <td><button class="key" value="7">7</button></td>
+                <td><button class="key" value="8">8</button></td>
+                <td><button class="key" value="9">9</button></td>
+                <td><button class="key" value="\\times">*</button></td>
             </tr>
             <tr>
-                <td><button id="key" value="0">0</button></td>
-                <td><button id="key" value=".">.</button></td>
-                <td><button id="key" value="C">C</button></td>
-                <td><button id="key" value="/">/</button></td>
+                <td><button class="key" value="0">0</button></td>
+                <td><button class="key" value=".">.</button></td>
+                <td><button class="key" value="C">C</button></td>
+                <td><button class="key" value="\\div">/</button></td>
             </tr>
         </table>
             `;
@@ -44,7 +44,7 @@ function showKeyboard() {
 
     document.body.appendChild(keyboard);
 
-    document.querySelectorAll("#key").forEach(button => {
+    document.querySelectorAll(".key").forEach(button => {
         button.addEventListener("click", keyboardButtonClick);
     });
 
