@@ -10,9 +10,14 @@ function pick(arr) {
 
 function formatLatex(expr) {
     return "$$" + expr
+        .replace(/√(\d+)/g, '\\sqrt{$1}') // √の後に数字が続く場合
         .replace(/\*/g, '\\times')
         .replace(/\//g, '\\div')
-        + " = ?$$";
+        + "$$";
+}
+
+function formatFraction(expr) {
+    return expr.replace(/(\d+) \/ (\d+)/g, '\\frac{$1}{$2}');
 }
 
 function calculate(a, op, b) {
@@ -21,16 +26,8 @@ function calculate(a, op, b) {
         case '-': return a - b;
         case '*': return a * b;
         case '/': return a / b;
-        case '': return a.split(' / ').reduce(left, right => {
-            return left / right;
-        })
     }
     throw new Error(`Invalid operator: ${op}`);
-}
-
-function formatFrac(frac) {
-    let {left, right} = frac.split(' / ');
-    return `\\frac{${left}}{${right}}`
 }
 
 function generatePosAndNegEazy(patternType) {
@@ -115,8 +112,13 @@ function generatePosAndNegEazy(patternType) {
 function generateRoot(patternType) {
     let a = randomInt(1, 9);
     let b = randomInt(1, 9);
-    let c = `${randomInt(1, 9)} / ${randomInt(1, 9)}`;
-    let d = `${randomInt(1, 9)} / ${randomInt(1, 9)}`;
+    let c = randomInt(1, 9);
+    let d = randomInt(1, 9);
+    let e = randomInt(1, 9);
+    let f = randomInt(1, 9);
+    let frac1 = `${c} / ${d}`;
+    let frac2 = `${e} / ${f}`;
+
     let sign = pick(["", "-"]);
 
     try {
@@ -125,13 +127,13 @@ function generateRoot(patternType) {
 
         if (patternType === 1) {
             result = sign === '-' ? `-${a}` : `${a}`;
-            question = `${sign}\\sqrt{${a*a}}`;
+            question = `${sign}\\sqrt{${a * a}}`;
         } else if (patternType === 2) {
             result = `${sign}√${a * b}`;
             question = `${sign}\\sqrt{${a}} \\times \\sqrt{${b}}`;
         } else {
-            result = Math.floor(calculate(c) * calculate(d));
-            question = `${sign}\\sqrt{${formatFrac(c)}} \\times \\sqrt{${formatFrac(d)}}`
+            result = `${sign}√${c * e} / ${d * f}`;
+            question = `${sign}\\sqrt{${formatFraction(frac1)}} \\times \\sqrt{${formatFraction(frac2)}}`
         }
 
         if (a < 0 || b < 0 || c < 0 || d < 0) throw "not int";
@@ -201,5 +203,7 @@ function generateQuestion(genre) {
 
     const optionsArray = Array.from(options).map(String).sort(() => Math.random() - 0.5);
 
-    return { question, options: optionsArray, answer };
+    return {
+        question, options: optionsArray, answer
+    };
 }

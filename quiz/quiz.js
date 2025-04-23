@@ -224,16 +224,8 @@ function startQuiz(quizData, answerType = 'select') {
 
     function showQuestion() {
         answered = false; // 新しい質問を表示する際に回答済みフラグをリセット
-        let currentQuestion;
 
-        // 科目が数学の場合、generateQuestionを使用
-        if (subject === 'math') {
-            let settings = JSON.parse(localStorage.getItem('quizSettings_math'));
-            let selectedGenre = settings.genre;
-            currentQuestion = generateQuestion(selectedGenre);
-        } else {
-            currentQuestion = quizData.list[currentQuestionIndex];
-        }
+        let currentQuestion = quizData.list[currentQuestionIndex];
 
         const questionText = currentQuestion.question.replace(/\$\$(.*?)\$\$/g, (_, tex) => {
             return `<span class="mathjax">\\(${tex}\\)</span>`;
@@ -273,9 +265,11 @@ function startQuiz(quizData, answerType = 'select') {
             // 入力イベントで正答のみ判定
             const handleInput = () => {
                 const userAnswer = inputField.value.trim();
-                MathJax.typesetPromise()
-                    .then(() => console.log('MathJax のレンダリングが完了しました'))
-                    .catch((err) => console.error('MathJax のレンダリングに失敗しました:', err));
+                if (subject === 'math') {
+                    MathJax.typesetPromise()
+                        .then(() => console.log('MathJax のレンダリングが完了しました'))
+                        .catch((err) => console.error('MathJax のレンダリングに失敗しました:', err));
+                }
                 if (userAnswer === currentQuestion.answer) {
                     checkAnswer(null, userAnswer, currentQuestion.answer);
                     inputField.removeEventListener('input', handleInput); // イベントリスナーを削除
@@ -284,7 +278,9 @@ function startQuiz(quizData, answerType = 'select') {
 
             inputField.addEventListener('input', handleInput);
 
-            showKeyboard(); // キーボードを表示
+            if (subject === 'math') {
+                showKeyboard(); // キーボードを表示
+            }
 
             // Enterキーで次の質問に進む
             inputField.addEventListener('keydown', (event) => {
@@ -328,6 +324,8 @@ function startQuiz(quizData, answerType = 'select') {
         if (answered) return; // すでに回答済みの場合は何もしない
         answered = true; // 回答済みフラグを設定
 
+        let formatAnswer = correctAnswer;
+
         if (answerType === 'select') {
             selectedButton.style.backgroundColor = '#b64300'; // 選択したボタンの色を変更
             selectedButton.style.color = '#fff'; // 選択したボタンの文字色を変更
@@ -338,7 +336,10 @@ function startQuiz(quizData, answerType = 'select') {
                 selectedButton.style.backgroundColor = '#4CAF50'; // 正解の色
                 selectedButton.style.color = '#fff'; // 正解の文字色
             } else {
-                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;">${correctAnswer}</span> です。`;
+                if (subject === 'math') {
+                    formatAnswer = formatLatex(correctAnswer);
+                }
+                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;" class="mathjax">${formatAnswer}</span> です。`;
             }
             // 選択肢ボタンを無効にする
             document.querySelectorAll('.option-button').forEach(button => {
@@ -349,13 +350,23 @@ function startQuiz(quizData, answerType = 'select') {
                 resultElement.textContent = '正解！';
                 score++;
             } else {
-                resultElement.textContent = `不正解。正解は ${correctAnswer} です。`;
+                if (subject === 'math') {
+                    formatAnswer = formatLatex(correctAnswer);
+                }
+                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;" class="mathjax">${formatAnswer}</span> です。`;
             }
             // 入力フィールドを無効にする
             if (inputField) {
                 inputField.disabled = true;
             }
-            hideKeyboard(); // キーボードを非表示
+            if (subject === 'math') {
+                MathJax.typesetPromise()
+                    .then(() => console.log('MathJax のレンダリングが完了しました'))
+                    .catch((err) => console.error('MathJax のレンダリングに失敗しました:', err));
+
+                resultElement.style.display = 'flex';
+                hideKeyboard(); // キーボードを非表示
+            }
         }
 
         resultElement.style.display = 'block';

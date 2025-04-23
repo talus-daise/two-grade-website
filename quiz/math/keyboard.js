@@ -47,6 +47,8 @@ function showKeyboard() {
     document.querySelectorAll("#key").forEach(button => {
         button.addEventListener("click", keyboardButtonClick);
     });
+
+    document.addEventListener("keydown", keyboardInput);
 }
 
 function keyboardButtonClick(event) {
@@ -62,9 +64,20 @@ function keyboardButtonClick(event) {
     input.focus();
 }
 
+function keyboardInput(event) {
+    switch (event.key) {
+        case "r":
+            event.preventDefault();
+            keyboardButtonClick({ target: { value: "√" } });
+            break;
+    }
+}
+
 function hideKeyboard() {
     const keyboard = document.getElementById("keyboard");
     if (keyboard) {
         keyboard.remove();
     }
+    document.removeEventListener("keydown", keyboardButtonClick);
+    document.removeEventListener("keydown", keyboardInput);
 }
