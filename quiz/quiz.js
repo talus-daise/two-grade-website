@@ -37,7 +37,7 @@ let restartData;
 function setupQuizSettings(quizData) {
     const quizContainer = document.getElementById('quiz-container');
     const genres = quizData.map((quiz) => quiz.genre);
-
+    
     quizContainer.innerHTML = `
         <h2>クイズの設定</h2>
         <form id="quiz-settings-form">
@@ -59,11 +59,11 @@ function setupQuizSettings(quizData) {
 
             <h3>回答形式を選択してください</h3>
             <label>
-                <input type="radio" name="answer-type" value="select" checked>
+                <input type="radio" name="answer-type" value="select" id="select-answer" checked>
                 選択式
             </label>
             <label>
-                <input type="radio" name="answer-type" value="input">
+                <input type="radio" name="answer-type" value="input" id="input-answer">
                 入力式
             </label><br>
 
@@ -76,6 +76,8 @@ function setupQuizSettings(quizData) {
     const startButton = document.getElementById('start-quiz-button');
     const genreRadios = document.querySelectorAll('input[name="genre"]');
     const answerTypeRadios = document.querySelectorAll('input[name="answer-type"]');
+    const selectAnswerRadio = document.getElementById('select-answer');
+    const inputAnswerRadio = document.getElementById('input-answer');
 
     // 設定を localStorage から読み込む
     const savedSettings = JSON.parse(localStorage.getItem(settingsKey));
@@ -92,7 +94,7 @@ function setupQuizSettings(quizData) {
             questionCountInput.value = savedSettings.questionCount;
             questionCountDisplay.textContent = savedSettings.questionCount;
         }
-
+        
         // 回答形式
         const savedAnswerType = savedSettings.answerType;
         if (savedAnswerType) {
@@ -100,7 +102,7 @@ function setupQuizSettings(quizData) {
             if (answerTypeRadio) answerTypeRadio.checked = true;
         }
     }
-
+    
     // 質問数の表示を更新
     questionCountInput.addEventListener('input', () => {
         questionCountDisplay.textContent = questionCountInput.value;
@@ -110,7 +112,7 @@ function setupQuizSettings(quizData) {
     genreRadios.forEach((radio) => {
         radio.addEventListener('change', rangeInputReset);
     });
-
+    
     function rangeInputReset() {
         const selectedGenre = document.querySelector('input[name="genre"]:checked').value;
         const selectedQuizData = quizData.find((quiz) => quiz.genre === selectedGenre);
@@ -123,8 +125,20 @@ function setupQuizSettings(quizData) {
             if (parseInt(questionCountInput.value, 10) > maxQuestions) {
                 questionCountInput.value = maxQuestions;
             }
-
+            
             questionCountDisplay.textContent = questionCountInput.value;
+
+            // answerType が存在しない場合に select をデフォルト値とする
+            const answerType = selectedQuizData.answerType || 'select';
+
+            // 回答形式の選択肢を有効化
+            if (answerType === 'input') {
+                selectAnswerRadio.disabled = true;
+                inputAnswerRadio.disabled = false;
+            } else {
+                selectAnswerRadio.disabled = false;
+                inputAnswerRadio.disabled = false;
+            }
         } else {
             // selectedQuizData.list が存在しない場合のエラーハンドリング
             console.error('選択されたジャンルの問題リストが見つかりません');
@@ -324,7 +338,7 @@ function startQuiz(quizData, answerType = 'select') {
         if (answered) return; // すでに回答済みの場合は何もしない
         answered = true; // 回答済みフラグを設定
 
-        let formatAnswer = correctAnswer;
+        correctAnswer = correctAnswer.replace(' / ', '/');
 
         if (answerType === 'select') {
             selectedButton.style.backgroundColor = '#b64300'; // 選択したボタンの色を変更
@@ -336,10 +350,7 @@ function startQuiz(quizData, answerType = 'select') {
                 selectedButton.style.backgroundColor = '#4CAF50'; // 正解の色
                 selectedButton.style.color = '#fff'; // 正解の文字色
             } else {
-                if (subject === 'math') {
-                    formatAnswer = formatLatex(correctAnswer);
-                }
-                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;" class="mathjax">${formatAnswer}</span> です。`;
+                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;" class="mathjax">${correctAnswer}</span> です。`;
             }
             // 選択肢ボタンを無効にする
             document.querySelectorAll('.option-button').forEach(button => {
@@ -353,7 +364,7 @@ function startQuiz(quizData, answerType = 'select') {
                 if (subject === 'math') {
                     formatAnswer = formatLatex(correctAnswer);
                 }
-                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;" class="mathjax">${formatAnswer}</span> です。`;
+                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;" class="mathjax">${correctAnswer}</span> です。`;
             }
             // 入力フィールドを無効にする
             if (inputField) {
