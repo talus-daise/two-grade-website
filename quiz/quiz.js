@@ -99,7 +99,7 @@ function setupQuizSettings(quizData) {
         const savedAnswerType = savedSettings.answerType;
         if (savedAnswerType) {
             const answerTypeRadio = [...answerTypeRadios].find((radio) => radio.value === savedAnswerType);
-            if (answerTypeRadio) answerTypeRadio.checked = true;
+            if (answerTypeRadio) answerTypeRadio.click(); // 選択肢を選択
         }
     }
     
@@ -135,6 +135,7 @@ function setupQuizSettings(quizData) {
             if (answerType === 'input') {
                 selectAnswerRadio.disabled = true;
                 inputAnswerRadio.disabled = false;
+                inputAnswerRadio.click();
             } else {
                 selectAnswerRadio.disabled = false;
                 inputAnswerRadio.disabled = false;
@@ -245,7 +246,7 @@ function startQuiz(quizData, answerType = 'select') {
             return `<span class="mathjax">\\(${tex}\\)</span>`;
         });
 
-        questionElement.innerHTML = questionText; // TeX 表記を含む質問を設定
+        questionElement.innerHTML = questionText.replace('\n', '<br>'); // TeX 表記を含む質問を設定
         optionsElement.innerHTML = '';
         selectedOptionIndex = null; // 選択状態をリセット
 

@@ -526,12 +526,12 @@
             {
                 "question": "次の文を英訳しなさい。\n私たちはコーヒーを3カップとオレンジジュースを5杯欲しいです。",
                 "options": [
-                    "We want three cups of coddee and five glasses of orange juice.",
+                    "We want three cups of coffee and five glasses of orange juice.",
                     "",
                     "",
                     ""
                 ],
-                "answer": "We want three cups of coddee and five glasses of orange juice."
+                "answer": "We want three cups of coffee and five glasses of orange juice."
             },
             {
                 "question": "次の文を英訳しなさい。\nペンと紙が一枚必要です。",
@@ -586,12 +586,12 @@
             {
                 "question": "次の文を英訳しなさい。\nポットにはどれくらい砂糖が入っていますか？",
                 "options": [
-                    "How much suger is there in the pot?",
+                    "How much sugar is there in the pot?",
                     "",
                     "",
                     ""
                 ],
-                "answer": "How much suger is there in the pot?"
+                "answer": "How much sugar is there in the pot?"
             },
             {
                 "question": "次の文を英訳しなさい。\nほんの少しです。",
