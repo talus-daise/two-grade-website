@@ -125,13 +125,13 @@ a[href^="//"]:after {
     margin-left: 1rem;
 }
 
-.tableContainer {
+.table-container {
     width: 100%;
     overflow: auto;
 }
 
-.tableContainer th,
-.tableContainer td {
+.table-container th,
+.table-container td {
     min-width: 10rem;
 }
 
