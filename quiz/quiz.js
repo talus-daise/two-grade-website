@@ -1,28 +1,19 @@
-// スクリプトタグから値を取得
 const scriptTag = document.currentScript;
 const subject = scriptTag.getAttribute('data-subject');
-
-let allData;
-
-// 教科ごとの設定キー
 const settingsKey = `quizSettings_${subject}`;
+let allData, restartData;
 
-// クイズデータを取得またはlocalStorageから読み込む
 function loadQuizData() {
     fetch(`./${subject}.json`)
-        .then((response) => response.json())
+        .then((res) => res.json())
         .then((data) => {
             allData = data;
-            console.log('クイズデータ:', allData);
-            localStorage.setItem('quizData_' + subject, JSON.stringify(allData)); // データをlocalStorageに保存
+            localStorage.setItem(`quizData_${subject}`, JSON.stringify(allData));
             setupQuizSettings(allData);
         })
-        .catch((error) => console.error('クイズデータの読み込みに失敗しました:', error));
+        .catch((err) => console.error('クイズデータの読み込みに失敗しました:', err));
 }
 
-loadQuizData();
-
-// 配列をランダムにシャッフルするユーティリティ関数
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -31,42 +22,24 @@ function shuffleArray(array) {
     return array;
 }
 
-let restartData;
-
-// ジャンル選択と問題数設定を同じ画面で表示
 function setupQuizSettings(quizData) {
-    const quizContainer = document.getElementById('quiz-container');
-    const genres = quizData.map((quiz) => quiz.genre);
-    
-    quizContainer.innerHTML = `
+    const container = document.getElementById('quiz-container');
+    const genres = quizData.map(q => q.genre);
+
+    container.innerHTML = `
         <h2>クイズの設定</h2>
         <form id="quiz-settings-form">
             <h3>ジャンルを選択してください</h3>
-            ${genres
-            .map(
-                (genre, index) => `
+            ${genres.map((genre, i) => `
                 <label>
-                    <input type="radio" name="genre" value="${genre}" ${index === 0 ? 'checked' : ''}>
-                    ${genre}
-                </label><br>
-            `
-            )
-            .join('')}
+                    <input type="radio" name="genre" value="${genre}" ${i === 0 ? 'checked' : ''}> ${genre}
+                </label><br>`).join('')}
             <h3>質問数を選択してください</h3>
-            <label for="question-count">質問数:</label><br>
             <input type="range" id="question-count" min="1" value="1">
             <span id="question-count-display">1</span> 問<br>
-
             <h3>回答形式を選択してください</h3>
-            <label>
-                <input type="radio" name="answer-type" value="select" id="select-answer" checked>
-                選択式
-            </label>
-            <label>
-                <input type="radio" name="answer-type" value="input" id="input-answer">
-                入力式
-            </label><br>
-
+            <label><input type="radio" name="answer-type" value="select" id="select-answer" checked> 選択式</label>
+            <label><input type="radio" name="answer-type" value="input" id="input-answer"> 入力式</label><br>
             <button type="button" id="start-quiz-button">[enter] クイズを開始</button>
         </form>
     `;
@@ -79,404 +52,156 @@ function setupQuizSettings(quizData) {
     const selectAnswerRadio = document.getElementById('select-answer');
     const inputAnswerRadio = document.getElementById('input-answer');
 
-    // 設定を localStorage から読み込む
-    const savedSettings = JSON.parse(localStorage.getItem(settingsKey));
-    if (savedSettings) {
-        // ジャンル
-        const savedGenre = savedSettings.genre;
-        if (savedGenre) {
-            const genreRadio = [...genreRadios].find((radio) => radio.value === savedGenre);
-            if (genreRadio) genreRadio.checked = true;
-        }
-
-        // 質問数
-        if (savedSettings.questionCount) {
-            questionCountInput.value = savedSettings.questionCount;
-            questionCountDisplay.textContent = savedSettings.questionCount;
-        }
-        
-        // 回答形式
-        const savedAnswerType = savedSettings.answerType;
-        if (savedAnswerType) {
-            const answerTypeRadio = [...answerTypeRadios].find((radio) => radio.value === savedAnswerType);
-            if (answerTypeRadio) answerTypeRadio.click(); // 選択肢を選択
-        }
+    const saved = JSON.parse(localStorage.getItem(settingsKey));
+    if (saved) {
+        const genreRadio = [...genreRadios].find(r => r.value === saved.genre);
+        if (genreRadio) genreRadio.checked = true;
+        questionCountInput.value = saved.questionCount || 1;
+        questionCountDisplay.textContent = questionCountInput.value;
+        const answerTypeRadio = [...answerTypeRadios].find(r => r.value === saved.answerType);
+        if (answerTypeRadio) answerTypeRadio.click();
     }
-    
-    // 質問数の表示を更新
+
     questionCountInput.addEventListener('input', () => {
         questionCountDisplay.textContent = questionCountInput.value;
     });
 
-    // ジャンル選択時にスライダーの最大値を更新
-    genreRadios.forEach((radio) => {
-        radio.addEventListener('change', rangeInputReset);
-    });
-    
-    function rangeInputReset() {
+    genreRadios.forEach(r => r.addEventListener('change', updateRangeMax));
+    updateRangeMax();
+
+    function updateRangeMax() {
         const selectedGenre = document.querySelector('input[name="genre"]:checked').value;
-        const selectedQuizData = quizData.find((quiz) => quiz.genre === selectedGenre);
+        const data = quizData.find(q => q.genre === selectedGenre);
+        const max = data?.list?.length || 10;
+        questionCountInput.max = max;
+        if (parseInt(questionCountInput.value, 10) > max) {
+            questionCountInput.value = max;
+        }
+        questionCountDisplay.textContent = questionCountInput.value;
 
-        if (selectedQuizData && selectedQuizData.list) {
-            const maxQuestions = selectedQuizData.list.length;
-            questionCountInput.max = maxQuestions;
-
-            // スライダーの現在の値が最大値を超えている場合、最大値にリセット
-            if (parseInt(questionCountInput.value, 10) > maxQuestions) {
-                questionCountInput.value = maxQuestions;
-            }
-            
-            questionCountDisplay.textContent = questionCountInput.value;
-
-            // answerType が存在しない場合に select をデフォルト値とする
-            const answerType = selectedQuizData.answerType || 'select';
-
-            // 回答形式の選択肢を有効化
-            if (answerType === 'input') {
-                selectAnswerRadio.disabled = true;
-                inputAnswerRadio.disabled = false;
-                inputAnswerRadio.click();
-            } else {
-                selectAnswerRadio.disabled = false;
-                inputAnswerRadio.disabled = false;
-            }
+        const type = data?.answerType || 'select';
+        if (type === 'input') {
+            selectAnswerRadio.disabled = true;
+            inputAnswerRadio.disabled = false;
+            inputAnswerRadio.click();
         } else {
-            // selectedQuizData.list が存在しない場合のエラーハンドリング
-            console.error('選択されたジャンルの問題リストが見つかりません');
-            questionCountInput.max = 10; // デフォルト値
-            questionCountDisplay.textContent = 10;
+            selectAnswerRadio.disabled = false;
+            inputAnswerRadio.disabled = false;
         }
     }
 
-    function startHundleKeyPress(event) {
-        if (event.key === 'Enter') {
-            startButton.click();
-        }
-    }
-
-    // Enterキーでクイズ開始
-    document.addEventListener('keydown', startHundleKeyPress);
-
-    // クイズ開始ボタンのクリックイベント
+    document.addEventListener('keydown', handleEnterStart);
     startButton.addEventListener('click', () => {
         const selectedGenre = document.querySelector('input[name="genre"]:checked').value;
         const answerType = document.querySelector('input[name="answer-type"]:checked').value;
-        let selectedQuizData = quizData.find((quiz) => quiz.genre === selectedGenre);
+        const data = quizData.find(q => q.genre === selectedGenre);
 
-        if (!selectedQuizData || !selectedQuizData.list) {
-            console.error('指定されたジャンルのクイズデータが見つかりません');
-            // 数学の場合、または selectedQuizData がない場合に空のリストを初期化
-            if (subject === 'math') {
-                selectedQuizData = { list: [] }; // 空のリストで初期化
-            } else {
-                return;
-            }
-        }
+        const count = parseInt(questionCountInput.value, 10);
+        let quizSubset;
 
-        const questionCount = parseInt(questionCountInput.value, 10);
-
-        let limitedQuizData;
         if (subject === 'math') {
-            // 数学の場合、指定された問題数だけ問題を生成
-            const generatedQuestions = [];
-            for (let i = 0; i < questionCount; i++) {
-                generatedQuestions.push(generateQuestion(selectedGenre));
-            }
-            limitedQuizData = { list: generatedQuestions };
+            quizSubset = { list: Array.from({ length: count }, () => generateQuestion(selectedGenre)) };
         } else {
-            // 数学以外の場合、既存のロジックを使用
-            const shuffledQuizList = shuffleArray([...selectedQuizData.list]);
-            limitedQuizData = {
-                list: shuffledQuizList.slice(0, questionCount),
-            };
+            if (!data?.list) return;
+            quizSubset = { list: shuffleArray([...data.list]).slice(0, count) };
         }
 
-        restartData = {
-            quizData: limitedQuizData,
-            answerType: answerType,
-        };
+        restartData = { quizData: quizSubset, answerType };
+        localStorage.setItem(settingsKey, JSON.stringify({ genre: selectedGenre, questionCount: count, answerType }));
 
-        // 設定を localStorage に保存
-        const settingsToSave = {
-            genre: selectedGenre,
-            questionCount: questionCount,
-            answerType: answerType,
-        };
-        localStorage.setItem(settingsKey, JSON.stringify(settingsToSave));
-
-        document.removeEventListener('keydown', startHundleKeyPress);
-        startQuiz(limitedQuizData, answerType);
+        document.removeEventListener('keydown', handleEnterStart);
+        startQuiz(quizSubset, answerType);
     });
 
-    rangeInputReset();
+    function handleEnterStart(e) {
+        if (e.key === 'Enter') startButton.click();
+    }
 }
 
-// クイズを開始
 function startQuiz(quizData, answerType = 'select') {
-    const quizContainer = document.getElementById('quiz-container');
-    let startTime = Date.now(); // クイズ開始時刻を記録
-
-    quizContainer.innerHTML = `
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = `
         <div id="question-container">
             <h2 id="question"></h2>
             <div id="options"></div>
             <p id="result"></p>
-            <button id="next-button" style="display: none;">次の質問</button>
+            <button id="next-button" style="display:none;">次の質問</button>
         </div>
     `;
 
-    const questionElement = document.getElementById('question');
-    const optionsElement = document.getElementById('options');
-    const resultElement = document.getElementById('result');
-    const nextButton = document.getElementById('next-button');
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const resultEl = document.getElementById('result');
+    const nextBtn = document.getElementById('next-button');
 
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let selectedOptionIndex = null; // 現在選択中の選択肢のインデックス
-    let answered = false; // 回答済みフラグ
+    let index = 0, score = 0, answered = false, inputField;
 
-    let inputField; // inputField変数をより広いスコープで宣言
+    showQuestion();
 
     function showQuestion() {
-        answered = false; // 新しい質問を表示する際に回答済みフラグをリセット
-
-        let currentQuestion = quizData.list[currentQuestionIndex];
-
-        const questionText = currentQuestion.question.replace(/\$\$(.*?)\$\$/g, (_, tex) => {
-            return `<span class="mathjax">\\(${tex}\\)</span>`;
-        });
-
-        questionElement.innerHTML = questionText.replace('\n', '<br>'); // TeX 表記を含む質問を設定
-        optionsElement.innerHTML = '';
-        selectedOptionIndex = null; // 選択状態をリセット
+        answered = false;
+        const q = quizData.list[index];
+        questionEl.innerHTML = q.question.replace(/\$\$(.*?)\$\$/g, (_, tex) => `<span class="mathjax">\\(${tex}\\)</span>`).replace('\n', '<br>');
+        optionsEl.innerHTML = '';
 
         if (answerType === 'select') {
-            // 選択式の場合
-            const shuffledOptions = [...currentQuestion.options].sort(() => Math.random() - 0.5);
-            shuffledOptions.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.textContent = `${index + 1}: ${option}`; // 選択肢に番号を付ける
-                button.classList.add('option-button');
-                button.style.padding = '10px 20px';
-                button.style.fontSize = '1.5rem';
-                button.dataset.index = index; // インデックスをデータ属性に保存
-                optionsElement.appendChild(button);
-
-                // ボタンのクリックイベント
-                button.addEventListener('click', () => {
-                    checkAnswer(button, option, currentQuestion.answer);
-                });
+            shuffleArray([...q.options]).forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.textContent = `${i + 1}: ${opt}`;
+                btn.className = 'option-button';
+                btn.style = 'padding:10px 20px;font-size:1.5rem';
+                btn.addEventListener('click', () => checkAnswer(btn, opt, q.answer));
+                optionsEl.appendChild(btn);
             });
-        } else if (answerType === 'input') {
-            // 入力式の場合
-            inputField = document.createElement('input'); // ここでinputFieldを初期化
-            inputField.type = 'text';
-            inputField.id = 'answer-input';
-            inputField.style.fontSize = '1.5rem';
-            optionsElement.appendChild(inputField);
-
-            inputField.focus(); // 入力フィールドにフォーカスを当てる
-
-            // 入力イベントで正答のみ判定
-            const handleInput = () => {
-                const userAnswer = inputField.value.trim();
-                if (subject === 'math') {
-                    MathJax.typesetPromise()
-                        .then(() => console.log('MathJax のレンダリングが完了しました'))
-                        .catch((err) => console.error('MathJax のレンダリングに失敗しました:', err));
-                }
-                if (userAnswer === currentQuestion.answer) {
-                    checkAnswer(null, userAnswer, currentQuestion.answer);
-                    inputField.removeEventListener('input', handleInput); // イベントリスナーを削除
-                }
-            };
-
-            inputField.addEventListener('input', handleInput);
-
-            if (subject === 'math') {
-                showKeyboard(); // キーボードを表示
-            }
-
-            // Enterキーで次の質問に進む
-            inputField.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                    event.preventDefault(); // デフォルトのEnterキーの動作を防止
-                    if (nextButton.style.display === 'block') {
-                        nextButton.click(); // 次の質問ボタンをクリック
-                    }
-                }
-            });
-        }
-
-        // MathJax を再レンダリング
-        if (window.MathJax) {
-            MathJax.typesetPromise()
-                .then(() => console.log('MathJax のレンダリングが完了しました'))
-                .catch((err) => console.error('MathJax のレンダリングに失敗しました:', err));
-        }
-
-        // キーボードイベントで選択肢を選ぶ
-        document.addEventListener('keydown', handleKeyPress);
-    }
-
-    function handleKeyPress(event) {
-        const optionButtons = document.querySelectorAll('.option-button');
-        if (event.key === 'Enter' && answered) {
-            nextButton.click(); // 回答済みの場合は次の質問へ
-        } else if (answerType === 'select') {
-            if (event.key >= '1' && event.key <= String(optionButtons.length)) {
-                const index = parseInt(event.key) - 1;
-                if (optionButtons[index]) {
-                    optionButtons[index].click();
-                }
-            }
-        } else if (event.key === 'Enter' && inputField) {
-            checkAnswer(null, inputField.value.trim(), quizData.list[currentQuestionIndex].answer);
-        }
-    }
-
-    function checkAnswer(selectedButton, selectedOption, correctAnswer) {
-        if (answered) return; // すでに回答済みの場合は何もしない
-        answered = true; // 回答済みフラグを設定
-
-        correctAnswer = correctAnswer.replace(' / ', '/');
-
-        if (answerType === 'select') {
-            selectedButton.style.backgroundColor = '#b64300'; // 選択したボタンの色を変更
-            selectedButton.style.color = '#fff'; // 選択したボタンの文字色を変更
-
-            if (selectedOption === correctAnswer) {
-                resultElement.textContent = '正解！';
-                score++;
-                selectedButton.style.backgroundColor = '#4CAF50'; // 正解の色
-                selectedButton.style.color = '#fff'; // 正解の文字色
-            } else {
-                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;" class="mathjax">${correctAnswer}</span> です。`;
-            }
-            // 選択肢ボタンを無効にする
-            document.querySelectorAll('.option-button').forEach(button => {
-                button.disabled = true;
-            });
-        } else if (answerType === 'input') {
-            if (selectedOption === correctAnswer) {
-                resultElement.textContent = '正解！';
-                score++;
-            } else {
-                if (subject === 'math') {
-                    formatAnswer = formatLatex(correctAnswer);
-                }
-                resultElement.innerHTML = `不正解。正解は <span style="color: #4CAF50; font-size:1.2rem;" class="mathjax">${correctAnswer}</span> です。`;
-            }
-            // 入力フィールドを無効にする
-            if (inputField) {
-                inputField.disabled = true;
-            }
-            if (subject === 'math') {
-                MathJax.typesetPromise()
-                    .then(() => console.log('MathJax のレンダリングが完了しました'))
-                    .catch((err) => console.error('MathJax のレンダリングに失敗しました:', err));
-
-                resultElement.style.display = 'flex';
-                hideKeyboard(); // キーボードを非表示
-            }
-        }
-
-        resultElement.style.display = 'block';
-        nextButton.style.display = 'block';
-    }
-
-    nextButton.addEventListener('click', () => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < quizData.list.length) {
-            resultElement.textContent = '';
-            nextButton.style.display = 'none';
-            showQuestion();
         } else {
-            document.removeEventListener('keydown', handleKeyPress); // キーボードイベントを解除
+            inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.style.fontSize = '1.5rem';
+            optionsEl.appendChild(inputField);
+            inputField.focus();
 
-            // クイズ終了時のボタン設定
-            const endTime = Date.now(); // クイズ終了時刻を記録
-            const elapsedTime = Math.floor((endTime - startTime) / 1000); // 経過時間を秒単位で計算
-
-            // クイズ終了時のボタン設定
-            quizContainer.innerHTML = `
-                <h2>クイズ終了！</h2>
-                <p>あなたのスコアは <span style="color: #b64300; font-size:1.5rem;">${score}</span> 
-                <span style="font-size:1.2rem;">/ ${quizData.list.length}</span> です。</p>
-                <p>クリア時間: <span style="font-size:1.5rem;">${elapsedTime}秒</span></p>
-                <button id="restart-button">[R] もう一度挑戦</button>
-                <button id="setting-button">[S] 設定へ戻る</button>
-                <button id="back-button">[B] 戻る</button>
-            `;
-
-            // スコアに応じて花火を表示
-            let confettiInterval;
-            if (score === quizData.list.length) {
-                const scoreElement = document.querySelector('span[style*="color: #b64300"]');
-                if (scoreElement) {
-                    const rect = scoreElement.getBoundingClientRect();
-                    const origin = {
-                        x: (rect.left + rect.width / 2) / window.innerWidth,
-                        y: (rect.top + rect.height / 2) / window.innerHeight,
-                    };
-
-                    confettiInterval = setInterval(() => {
-                        confetti({
-                            particleCount: 100,
-                            spread: 70,
-                            origin: origin,
-                        });
-                    }, 200);
-                    setTimeout(() => {
-                        clearInterval(confettiInterval);
-                    }, 1000);
-                }
-            }
-
-            const restartButton = document.getElementById('restart-button');
-            const settingButton = document.getElementById('setting-button');
-            const backButton = document.getElementById('back-button');
-
-            const handleClick = (button, action) => {
-                if (button) {
-                    button.addEventListener('click', action);
+            const onInput = () => {
+                if (inputField.value.trim() === q.answer) {
+                    checkAnswer(null, inputField.value.trim(), q.answer);
+                    inputField.removeEventListener('input', onInput);
                 }
             };
+            inputField.addEventListener('input', onInput);
 
-            handleClick(restartButton, () => {
-                if (restartData) {
-                    startQuiz(restartData.quizData, restartData.answerType); // 回答形式を渡す
+            inputField.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && nextBtn.style.display === 'block') {
+                    e.preventDefault();
+                    nextBtn.click();
                 }
             });
-            handleClick(settingButton, () => setupQuizSettings(allData));
-            handleClick(backButton, () => window.location.href = `../genre/`);
 
-            function removeResultButtons() {
-                if (restartButton) restartButton.remove();
-                if (settingButton) settingButton.remove();
-                if (backButton) backButton.remove();
-                document.removeEventListener('keydown', handleResultKeyPress);
+            if (subject === 'math' && typeof showKeyboard === 'function') {
+                showKeyboard();
             }
-
-            const handleResultKeyPress = (event) => {
-                switch (event.key) {
-                    case 'r':
-                        restartButton?.click();
-                        removeResultButtons();
-                        break;
-                    case 's':
-                        settingButton?.click();
-                        removeResultButtons();
-                        break;
-                    case 'b':
-                        backButton?.click();
-                        removeResultButtons();
-                        break;
-                }
-            };
-
-            document.addEventListener('keydown', handleResultKeyPress);
         }
-    });
-    showQuestion();
+
+        if (window.MathJax) MathJax.typesetPromise().catch(console.error);
+    }
+
+    function checkAnswer(button, selected, correct) {
+        if (answered) return;
+        answered = true;
+        const correctText = `正解: ${correct}`;
+        resultEl.textContent = selected === correct ? '正解！' : `不正解… ${correctText}`;
+        if (selected === correct) score++;
+        nextBtn.style.display = 'block';
+
+        nextBtn.onclick = () => {
+            index++;
+            if (index < quizData.list.length) {
+                resultEl.textContent = '';
+                nextBtn.style.display = 'none';
+                showQuestion();
+            } else {
+                container.innerHTML = `<h2>終了！ スコア: ${score} / ${quizData.list.length}</h2>`;
+            }
+        };
+    }
 }
+
+loadQuizData();
