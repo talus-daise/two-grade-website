@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!--文字コード・互換モード-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>2次方程式を解く | R7年度2学年総合ウェブサイト</title>
+    <!--ビューポート-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="notice/notice.css">
+    <!--web情報-->
+    <meta name="keywords" content="水戸一, 水戸一附属, 水戸一附属中, 一学年,">
+    <meta name="description" content="水戸一附属中四期生向けの総合ウェブサイトです。附属中向けのテストの情報などを配信しています。">
+    <meta name="author" content="©️ 2025 talus">
+    <!--更新日時-->
+    <meta name="date" content="2025-02-28">
+    <meta name="creation_date" content="2025-02-19">
+    <!--URL-->
+    <link rel="canonical" href="https://talus-yujiro.github.io/one-grade-website/">
+    <!--アイコン-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/mitoichi-fuzoku-180x180.png" sizes="180x180">
+    <!--windows-->
+    <meta name="msapplication-config" content="none">
+    <meta name="msapplication-TileImage" content="img/mitoichi-fuzoku.png">
+    <!--safari-->
+    <link rel="mask-icon" href="">
+    <!--Android-->
+    <meta name="theme-color" content="#5787ff">
+    <link rel="icon" type="image/png" href="img/mitoichi-fuzoku-192x192.png" sizes="192x192">
+    <!--CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.4"></script>
+    <script src="script/customAlert.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>2次方程式を解く</h1>
+    </header>
+
+    <main>
+        <label for="a">a:<input type="text" name="a" id="a"></label><br>
+        <label for="b">b:<input type="text" name="b" id="b"></label><br>
+        <label for="c">c:<input type="text" name="c" id="c"></label><br>
+        <button id="submit">解く！</button>
+        <button id="reset">リセット！</button>
+        <div id="result" style="font-size: 2rem;"></div>
+    </main>
+
+    <script type="module" src="notice/notice.js"></script>
+    <script src="script/customAlert.js"></script>
+    <script src="script/verification.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>
+        const ket_a = document.getElementById("a")
+
+        document.getElementById("submit").addEventListener("click", () => {
+            const a = Number(document.getElementById("a").value);
+            const b = Number(document.getElementById("b").value);
+            const c = Number(document.getElementById("c").value);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById("result").textContent = '値が正しくありません';
+                return;
+            }
+
+            const bottom = 2 * a;
+            let discriminant = Math.sqrt((b * b) - (4 * a * c));
+
+            if (!Number.isInteger(discriminant)) {
+                discriminant = `\\sqrt{${(b * b) - (4 * a * c)}}`;
+            }
+
+            let expr;
+
+            if (discriminant < 0) {
+                expr = '解なし';
+            } else if (discriminant === 0) {
+                const root = -b / bottom;
+                expr = `\\( x = ${root} \\)`;
+            } else {
+                // 正の判別式
+                expr = `\\( x = \\frac{${-b} \\pm ${discriminant}}{${bottom}} \\)`;
+            }
+
+            document.getElementById("result").innerHTML = expr;
+
+            MathJax.typesetPromise()
+                .then(() => {
+                    console.log('MathJax レンダリング成功');
+                })
+                .catch((err) => {
+                    console.error('MathJax レンダリング失敗:', err);
+                });
+        });
+
+        document.getElementById("reset").addEventListener("click", () => {
+            document.getElementById("a").value = '';
+            document.getElementById("b").value = '';
+            document.getElementById("c").value = '';
+            document.getElementById("result").textContent = '';
+        });
+
+        document.getElementById("c").addEventListener("keydown", (event) => {
+            if (event.key === 'Enter') {
+                document.getElementById('submit').click();
+            }
+        })
+    </script>
+</body>
+
+</html>

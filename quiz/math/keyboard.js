@@ -4,7 +4,7 @@ function showKeyboard() {
     keyboard.innerHTML = `
         <table>
             <tr>
-                <td><button id="key" value="√">√</button></td>
+                <td><button class="key" value="√">√</button></td>
                 <td></td>
             </tr>
             <tr>
