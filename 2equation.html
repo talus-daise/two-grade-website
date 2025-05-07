@@ -40,6 +40,12 @@
 <body>
     <header>
         <h1>2次方程式を解く</h1>
+        <p>入力されたa,b,cから以下のように計算します。</p>
+        <div style="font-size: 1.5rem;">
+            \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)
+        </div>
+        <p>約分などにはまだ対応していません。</p>
+        <a href="index.html">←戻る</a>
     </header>
 
     <main>
@@ -66,8 +72,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script>
-        const ket_a = document.getElementById("a")
-
         document.getElementById("submit").addEventListener("click", () => {
             const a = Number(document.getElementById("a").value);
             const b = Number(document.getElementById("b").value);
