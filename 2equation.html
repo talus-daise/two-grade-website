@@ -72,10 +72,14 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script>
+        let a_value = document.getElementById('a').value;
+        let b_value = document.getElementById('b').value;
+        let c_value = document.getElementById('c').value;
+
         document.getElementById("submit").addEventListener("click", () => {
-            const a = Number(document.getElementById("a").value);
-            const b = Number(document.getElementById("b").value);
-            const c = Number(document.getElementById("c").value);
+            const a = Number(a_value);
+            const b = Number(b_value);
+            const c = Number(c_value);
 
             if (isNaN(a) || isNaN(b) || isNaN(c)) {
                 document.getElementById("result").textContent = '値が正しくありません';
@@ -103,6 +107,10 @@
 
             document.getElementById("result").innerHTML = expr;
 
+            localStorage.setItem('2equation_a', a);
+            localStorage.setItem('2equation_b', b);
+            localStorage.setItem('2equation_c', c);
+
             MathJax.typesetPromise()
                 .then(() => {
                     console.log('MathJax レンダリング成功');
@@ -113,10 +121,14 @@
         });
 
         document.getElementById("reset").addEventListener("click", () => {
-            document.getElementById("a").value = '';
-            document.getElementById("b").value = '';
-            document.getElementById("c").value = '';
+            a_value = '';
+            b_value = '';
+            c_value = '';
             document.getElementById("result").textContent = '';
+
+            localStorage.removeItem('2equation_a');
+            localStorage.removeItem('2equation_b');
+            localStorage.removeItem('2equation_c');
         });
 
         document.getElementById("c").addEventListener("keydown", (event) => {

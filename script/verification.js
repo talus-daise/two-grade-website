@@ -126,8 +126,8 @@ function checkVerification() {
         alertContainer.style.opacity = "0";
         const clientName = nameBox.value;
         const isValid = names.includes(clientName);
-        localStorage.removeItem(/script/verificationKey);
-        localStorage.setItem(/script/verificationKey, isValid);
+        localStorage.removeItem(verificationKey);
+        localStorage.setItem(verificationKey, isValid);
         setTimeout(() => alertBackground.remove(), 500);
         let clientUrl = window.location.pathname;
         window.location.pathname = isValid ? clientUrl : "caution.html";
