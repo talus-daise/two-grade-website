@@ -2,27 +2,97 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 document.addEventListener("DOMContentLoaded", () => {
+    /** メニュー作成 */
+
     // メニューボタンの作成
     const menuButton = document.createElement("button");
     menuButton.id = "menuButton";
     menuButton.innerHTML = "&#9776;"; // ハンバーガーアイコン
     document.body.appendChild(menuButton);
 
+    const closeButton = document.createElement("button");
+    closeButton.id = "closeButton";
+    closeButton.innerHTML = "&#x2715;";
+    document.body.appendChild(closeButton)
+
     // サイドメニューの作成
     const asideMenu = document.createElement("aside");
     asideMenu.id = "asideMenu";
-    asideMenu.innerHTML = `
-        <h2>お知らせ</h2>
-        <h3 id="client-page"></h3>
-        <div id="notice-container"></div>
-    `;
+    asideMenu.innerHTML = '';
     document.body.appendChild(asideMenu);
 
     // メニューボタンのクリックイベント
     menuButton.addEventListener("click", () => {
         asideMenu.classList.toggle("open");
         menuButton.classList.toggle("open");
+        closeButton.classList.toggle("open");
     });
+
+    closeButton.addEventListener("click", () => {
+        asideMenu.classList.toggle("open");
+        menuButton.classList.toggle("open");
+        closeButton.classList.toggle("open");
+    });
+
+    /** サイトリンク */
+
+    asideMenu.innerHTML = '<h2>サイトマップ</h2>'
+
+    const linkListWrapper = document.createElement("nav");
+    const linkList = document.createElement("ul");
+    linkList.innerHTML = `
+                <li>
+                    <a href="/two-grade-website/member_list/">
+                        <i class="fa-solid fa-clipboard-list"></i>名簿
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/test/">
+                        <i class="fa-solid fa-calendar-days"></i>テスト予定
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/tasks_a/">
+                        <i class="fa-solid fa-list-check"></i>課題(A)
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/tasks_b/">
+                        <i class="fa-solid fa-list-check"></i>課題(B)
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/bbs/">
+                        <i class="fa-solid fa-chalkboard"></i>掲示板
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/question/">
+                        <i class="fa-solid fa-circle-question"></i>みとい知恵袋
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/request_music/">
+                        <i class="fa-solid fa-music"></i>リクエスト曲
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/quiz/">
+                        <i class="fa-solid fa-q"></i>ポチ問！
+                    </a>
+                </li>
+    `;
+
+    linkListWrapper.appendChild(linkList);
+    asideMenu.appendChild(linkListWrapper)
+
+    /** お知らせ */
+
+    asideMenu.innerHTML += `
+        <h2>お知らせ</h2>
+        <h3 id="client-page"></h3>
+        <div id="notice-container"></div>
+    `;
 
     // Supabase設定
     const supabaseUrl = "https://mgsbwkidyxmicbacqeeh.supabase.co";
@@ -82,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li>${item.content}</li>
                 `;
             });
-            
+
             noticeGroup.appendChild(noticeItem);
             noticeContainer.appendChild(noticeGroup);
         });

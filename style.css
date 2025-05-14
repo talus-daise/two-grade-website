@@ -47,26 +47,20 @@ h1 a {
 
 nav ul {
     padding: 0;
-    display: flex;
-    justify-content: space-around;
     list-style: none;
     gap: 0.5rem;
     flex-wrap: wrap;
 }
 
 nav li {
-    flex-grow: 1;
-    width: calc(100% / 4 - 2rem);
-    margin: 0.5rem;
+    width: 25%;
 }
 
 nav a {
     display: block;
     padding: 0.5rem;
-    text-align: center;
+    text-align: left;
     background-color: #739afc;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px #00134c;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
@@ -229,6 +223,9 @@ button:active {
 
 /* タブレット対応 */
 @media (max-width: 960px) {
+    nav li {
+        width: 50%;
+    }
 
     header,
     main,
@@ -245,7 +242,7 @@ button:active {
     }
 
     nav li {
-        width: calc(50% - 3rem);
+        width: 100%;
     }
 
     nav a {
