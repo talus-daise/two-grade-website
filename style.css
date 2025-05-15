@@ -50,10 +50,6 @@ nav ul {
     gap: 0.5rem;
 }
 
-nav li {
-    width: 10rem;
-}
-
 li>ul>li>a::before {
     content: '　\25B6';
 }
@@ -227,6 +223,10 @@ button:active {
 @media (max-width: 960px) {
     nav ul {
         width: 50%;
+    }
+
+    nav li {
+        width: 10rem;
     }
 
     header,

@@ -229,7 +229,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         }
 
-        subMenu.classList.add("bbs-submenu"); // スタイル用クラス
         bbs.appendChild(subMenu); // linkListWrapper ではなく bbs に追加
     }
 
