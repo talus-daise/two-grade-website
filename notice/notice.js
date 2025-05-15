@@ -41,42 +41,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const linkListWrapper = document.createElement("nav");
     const linkList = document.createElement("ul");
     linkList.innerHTML = `
-                <li>
+                <li id="memberList">
                     <a href="/two-grade-website/member_list/">
                         <i class="fa-solid fa-clipboard-list"></i>名簿
                     </a>
                 </li>
-                <li>
+                <li id="test">
                     <a href="/two-grade-website/test/">
                         <i class="fa-solid fa-calendar-days"></i>テスト予定
                     </a>
                 </li>
-                <li>
+                <li id="tasksA">
                     <a href="/two-grade-website/tasks_a/">
                         <i class="fa-solid fa-list-check"></i>課題(A)
                     </a>
                 </li>
-                <li>
+                <li id="tasksB">
                     <a href="/two-grade-website/tasks_b/">
                         <i class="fa-solid fa-list-check"></i>課題(B)
                     </a>
                 </li>
-                <li>
+                <li id="bbs">
                     <a href="/two-grade-website/bbs/">
                         <i class="fa-solid fa-chalkboard"></i>掲示板
                     </a>
                 </li>
-                <li>
+                <li id="question">
                     <a href="/two-grade-website/question/">
                         <i class="fa-solid fa-circle-question"></i>みとい知恵袋
                     </a>
                 </li>
-                <li>
+                <li id="requestMusic">
                     <a href="/two-grade-website/request_music/">
                         <i class="fa-solid fa-music"></i>リクエスト曲
                     </a>
                 </li>
-                <li>
+                <li id="quiz">
                     <a href="/two-grade-website/quiz/">
                         <i class="fa-solid fa-q"></i>ポチ問！
                     </a>
@@ -84,15 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     linkListWrapper.appendChild(linkList);
-    asideMenu.appendChild(linkListWrapper)
+    asideMenu.appendChild(linkListWrapper);
 
     /** お知らせ */
 
-    asideMenu.innerHTML += `
+    asideMenu.appendChild(document.createElement("hr")); // 区切り用
+    asideMenu.insertAdjacentHTML("beforeend", `
         <h2>お知らせ</h2>
         <h3 id="client-page"></h3>
         <div id="notice-container"></div>
-    `;
+    `);
+
 
     // Supabase設定
     const supabaseUrl = "https://mgsbwkidyxmicbacqeeh.supabase.co";
@@ -148,9 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
             noticeItem.classList.add('notice-item');
 
             dateGroup.forEach(item => {
-                noticeItem.innerHTML += `
-                    <li>${item.content}</li>
-                `;
+                const li = document.createElement("li");
+                li.textContent = item.content;
+                noticeItem.appendChild(li);
             });
 
             noticeGroup.appendChild(noticeItem);
@@ -158,5 +160,113 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    window.onload = loadNotice;
+    loadNotice();
+
+
+    const bbs = document.getElementById("bbs");
+    const question = document.getElementById("question");
+    const requestMusic = document.getElementById("requestMusic");
+    const quiz = document.getElementById("quiz");
+
+    let subMenu = null;
+
+    // サブメニューの生成関数
+    function createSubMenu(event) {
+        console.log(event)
+        if (subMenu) return;
+
+        let page = event.target.innerText;
+
+        subMenu = document.createElement("ul");
+        if (page === '掲示板') {
+            subMenu.innerHTML = `
+                <li>
+                    <a href="/two-grade-website/bbs/new_post/">
+                        新規投稿
+                    </a>
+                </li>
+            `;
+        } else if (page === 'みとい知恵袋') {
+            subMenu.innerHTML = `
+                <li>
+                    <a href="/two-grade-website/question/new_question/">
+                        新規質問投稿
+                    </a>
+                </li>
+            `;
+        } else if (page === 'ポチ問！') {
+            subMenu.innerHTML = `
+                <li>
+                    <a href="/two-grade-website/quiz/english/">
+                        英語
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/quiz/math/">
+                        数学
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/quiz/japanese/">
+                        国語
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/quiz/science/">
+                        理科
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/quiz/social_study/">
+                        社会
+                    </a>
+                </li>
+                <li>
+                    <a href="/two-grade-website/quiz/etc/">
+                        その他
+                    </a>
+                </li>
+            `;
+        }
+
+        subMenu.classList.add("bbs-submenu"); // スタイル用クラス
+        bbs.appendChild(subMenu); // linkListWrapper ではなく bbs に追加
+    }
+
+    // サブメニューの削除関数
+    function removeSubMenu() {
+        if (subMenu) {
+            subMenu.remove();
+            subMenu = null;
+        }
+    }
+
+    // 画面幅でPC/スマホを判定
+    function isWideScreen() {
+        return window.innerWidth >= 428; // スマホかPCかの閾値（必要に応じて調整）
+    }
+
+    // PC: hover イベント
+    bbs.addEventListener("mouseover", (event) => {
+        if (isWideScreen()) {
+            createSubMenu(event);
+        }
+    });
+    bbs.addEventListener("mouseleave", () => {
+        if (isWideScreen()) {
+            removeSubMenu();
+        }
+    });
+
+    // スマホ: click イベント
+    bbs.addEventListener("click", (e) => {
+        if (!isWideScreen()) {
+            if (subMenu) {
+                removeSubMenu();
+            } else {
+                e.preventDefault();
+                createSubMenu(e);
+            }
+        }
+    });
 });
