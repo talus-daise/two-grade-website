@@ -61,7 +61,7 @@ main {
 
 footer {
     padding: 1rem 1.5rem;
-    background-color: var(--sub-color);
+    background-color: var(--main-color);
     color: var(--text-color-white);
 }
 
