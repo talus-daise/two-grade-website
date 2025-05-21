@@ -1,5 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+:root {
+    --background-color: #ffffff;
+    --base-color: #e3f2fd;
+    --main-color: #3498db;
+    --accent-color: #FE483B;
+    --accent-color-thin: #f8cecb;
+    --text-color-default: #1f1f1f;
+    --text-color-white: #f1f1f1;
+    --text-color-link: #3498db;
+    --sub-color: #a3bcd6;
+}
 
 * {
     font-family: 'Inter', 'Noto Sans JP', sans-serif;
@@ -7,76 +19,68 @@
 }
 
 html {
-    background-color: #5787ff;
+    background-color: var(--base-color);
     box-sizing: border-box;
 }
 
-header,
+body {
+    margin: 0;
+    color: var(--text-color-default);
+}
+
 main,
 footer {
-    background-color: #abc3ff;
-    color: #00134c;
-    filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.7)) drop-shadow(0px 1px 5px rgba(227, 150, 6, 0.4));
-    padding: 1rem 1.5rem;
-    margin: 2rem auto;
     max-width: 960px;
-    border-radius: 10px;
 }
 
-::selection {
-    color: #abc3ff;
-    background: #0732b1;
-}
-
-::-moz-selection {
-    color: #abc3ff;
-    background: #0732b1;
-}
-
-nav {
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    margin: 0;
+    border-radius: 0;
+    background-color: var(--main-color);
+    color: var(--text-color-white);
     width: 100%;
-    margin: 2rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 2rem 0.5rem;
+    color: var(--text-color-white);
+}
+
+h1 {
+    padding: 1rem;
+}
+
+main {
+    margin: 8rem 2rem auto;
+}
+
+footer {
+    padding: 1rem 1.5rem;
+    background-color: var(--sub-color);
+    color: var(--text-color-white);
+}
+
+footer a {
+    color: var(--text-color-white);
+}
+
+::selection,
+::-moz-selection {
+    color: var(--text-color-white);
+    background: var(--main-color);
 }
 
 h1 a {
-    color: #00134c;
-    text-decoration: none;
-}
-
-nav ul {
-    width: 30%;
-    padding: 0;
-    list-style: none;
-    gap: 0.5rem;
-}
-
-li>ul>li>a::before {
-    content: '　\25B6';
-}
-
-nav a {
-    display: block;
-    padding: 0.5rem;
-    text-align: left;
-    background-color: #739afc;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-nav i {
-    color: #0732b1;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #fff;
-    background-color: #0732b1;
-}
-
-nav a:hover i {
-    color: #fff;
+    color: var(--text-color-white);
 }
 
 .header__breadcrumb a {
+    color: var(--text-color-white);
     white-space: nowrap;
 }
 
@@ -95,13 +99,13 @@ i {
 }
 
 a {
-    color: #0732b1;
+    color: var(--text-color-link);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #00134c;
+    color: var(--accent-color);
 }
 
 a[href^="http"]:after,
@@ -111,14 +115,8 @@ a[href^="//"]:after {
     content: '\f08e';
 }
 
-.new::after {
-    content: 'new!';
-    color: #b64300;
-    margin-left: 1rem;
-}
-
 .table-container {
-    width: 100%;
+    width: calc(100% - 2rem);
     overflow: auto;
 }
 
@@ -139,13 +137,13 @@ th,
 td {
     width: fit-content;
     text-align: center;
-    border-top: 2px dashed #00134c;
+    border-top: 2px dashed var(--text-color-default);
     padding: 0.5rem 1rem;
     white-space: nowrap;
 }
 
 th {
-    border: 2px dashed #00134c;
+    border: 2px dashed var(--text-color-default);
     border-bottom: none;
 }
 
@@ -154,46 +152,39 @@ tr td:nth-child(4) {
     white-space: normal;
 }
 
-input {
-    color: #00134c;
-    background-color: #abc3ff;
+input,
+textarea {
+    color: var(--text-color-default);
+    background-color: var(--background-color);
     padding: 0.5rem;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.6) inset;
-    border: 1px solid #00134c;
+    box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.2) inset;
+    border: 1px solid var(--main-color);
     margin: 0.5rem;
 }
 
 textarea {
-    color: #00134c;
-    background-color: #abc3ff;
-    padding: 0.5rem;
-    margin: 0.5rem;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.6) inset;
-    border: 1px solid #00134c;
     vertical-align: top;
     width: 20rem;
     height: 3rem;
 }
 
 button {
-    color: #00134c;
-    background-color: #5787ff;
+    color: var(--text-color-white);
+    background-color: var(--main-color);
     border-radius: 5px;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
-    border: 1px solid #00134c;
+    border: 1px solid var(--base-color);
     margin: 0.5rem;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 button:active {
-    color: #abc3ff;
-    background-color: #0732b1;
+    color: var(--text-color-white);
+    background-color: var(--accent-color);
 }
 
 .faster {
-    color: #b64300;
+    color: var(--accent-color);
 }
 
 .pochimon {
@@ -219,36 +210,70 @@ button:active {
     margin: 0 1rem;
 }
 
+section {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding-bottom: 1rem;
+}
+
+section h2 {
+    display: block;
+    color: var(--text-color-white);
+    background-color: var(--main-color);
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding: 1.5rem 1.5rem;
+}
+
+section>*:not(h2, p) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+section p {
+    margin: auto 1rem;
+}
+
+section.highlight {
+    background-color: var(--accent-color-thin);
+}
+
+section.highlight h2 {
+    background-color: var(--accent-color);
+}
+
+main h1 {
+    background-color: var(--main-color);
+    color: var(--text-color-white);
+    border-radius: 10px;
+}
+
+.main__student table{
+    width: calc(100% - 2rem);
+}
+
+main>a {
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 5px;
+}
+
+
 /* タブレット対応 */
 @media (max-width: 960px) {
-    nav ul {
-        width: 50%;
-    }
-
-    nav li {
-        width: 10rem;
-    }
-
-    header,
-    main,
-    footer {
-        margin: 1rem auto;
+    main {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
     }
 }
 
 /* スマホ対応 */
 @media (max-width: 428px) {
-    nav ul {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 0.3rem;
-    }
-
-    nav a {
-        width: 100%;
-        padding: 1rem;
-    }
-
     table {
         overflow: auto;
     }
@@ -259,6 +284,10 @@ button:active {
     }
 
     .main__classlist iframe {
+        width: 100%;
+    }
+
+    textarea {
         width: 100%;
     }
 }

@@ -50,19 +50,20 @@
 
     <main>
         <h1>課題(A)</h1>
-        <article>
+        <section>
+            <h2>ページ概要</h2>
             <p>現在A組で出されている課題の一覧です。</p>
             <p>サイトを観覧できる人が投稿できるようになっているので、課題ができたりしたらどんどん投稿してください。</p>
             <p>ただし、以下の注意をよく読んでからにしてください。</p>
-        </article>
+        </section>
 
-        <article>
+        <section class="highlight">
             <h2>課題を追加する際の注意</h2>
             <p>できるだけ正しい情報を入力することにご協力ください。</p>
             <p>もし正しくない情報や適切でない情報だった場合は削除させていただくことがありますのでご了承ください。</p>
-        </article>
+        </section>
 
-        <article>
+        <section>
             <h2>課題を追加</h2>
             <form id="taskForm">
                 <input type="text" id="title" placeholder="課題名" required><br>
@@ -71,9 +72,9 @@
                 <input type="text" id="notes" placeholder="備考"><br>
                 <button type="submit">追加</button>
             </form>
-        </article>
+        </section>
 
-        <article>
+        <section>
             <h2>課題一覧</h2>
             <div class="table-container">
                 <table>
@@ -88,7 +89,7 @@
                     <tbody id="taskTable"></tbody>
                 </table>
             </div>
-        </article>
+        </section>
     </main>
 
     <footer>
@@ -104,6 +105,8 @@
     <!--マニフェスト-->
     <link rel="manifest" href="../manifest.json">
 	<script src="../script/verification.js"></script>
+    <script data-goatcounter="https://talus.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>

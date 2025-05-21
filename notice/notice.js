@@ -2,6 +2,10 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 document.addEventListener("DOMContentLoaded", () => {
+    const headerHeight = document.querySelector("header").offsetHeight;
+    const main = document.querySelector("main");
+    main.style.marginTop = `calc(${headerHeight}px + 1rem)`;
+
     /** メニュー作成 */
 
     // メニューボタンの作成
@@ -26,12 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
         asideMenu.classList.toggle("open");
         menuButton.classList.toggle("open");
         closeButton.classList.toggle("open");
+        document.body.classList.add('no-scroll');
+        createComment(Math.floor(Math.random() * 4));
     });
 
     closeButton.addEventListener("click", () => {
         asideMenu.classList.toggle("open");
         menuButton.classList.toggle("open");
         closeButton.classList.toggle("open");
+        document.body.classList.remove('no-scroll');
     });
 
     /** サイトリンク */
@@ -85,6 +92,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
     linkListWrapper.appendChild(linkList);
     asideMenu.appendChild(linkListWrapper);
+
+    asideMenu.appendChild(document.createElement("hr")); // 区切り用
+    asideMenu.insertAdjacentHTML("beforeend", `
+            <h2>ひとくちコメント</h2>
+            <p id="comment"></p>
+    `);
+
+    function createComment(random) {
+        const beforeNum = localStorage.getItem("comment-random");
+        const testItem = localStorage.getItem("test-item");
+        const nextTest = localStorage.getItem("next-test");
+        const testSubject = localStorage.getItem("test-subject");
+
+        const date = new Date(nextTest);
+        const formatDate = date.toISOString().split("T")[0];
+
+        const comment = document.getElementById("comment");
+
+        if (beforeNum == random) {
+            random += 2;
+        }
+
+        switch (random) {
+            default:
+                comment.innerHTML = `何も言うことはない。`;
+                break;
+            case 0:
+                comment.innerHTML = `次のテストは${testSubject || '[[リンクは削除されました]]'}で${formatDate || '[[リンクは削除されました]]'}に${testItem || '[[リンクは削除されました]]'}を提出のようです。`;
+                break;
+            case 1:
+            case 2:
+                const days = ["日", "月", "火", "水", "木", "金", "土"];
+                const today = new Date();
+                const weekday = days[today.getDay()];
+                let dayComment;
+                switch (weekday) {
+                    case '日':
+                        dayComment = random === 1 ? '今日は楽しんで明日から頑張ろう。' : 'サザエさん症候群。';
+                        break;
+                    case '月':
+                        dayComment = random === 1 ? '今日はサイアクな日だ。' : 'はながさき、ことりがさえずっている';
+                        break;
+                    case '火':
+                        dayComment = random === 1 ? '勉強してる？' : '一番影薄いよね。';
+                        break;
+                    case '水':
+                        dayComment = random === 1 ? '折り返し。あと少し。' : 'あと半分、君はどう過ごすか';
+                        break;
+                    case '木':
+                        dayComment = random === 1 ? 'もう一息！少しの頑張りが休日を。' : '火曜日よりは影が薄くない。';
+                        break;
+                    case '金':
+                        dayComment = random === 1 ? 'フィーバータイム！' : '明日から休日！(わかりきっている)';
+                        break;
+                    case '土':
+                        dayComment = random === 1 ? '休日もこんなの見て偉いね。' : '何やってるんですか？べんkry)';
+                        break;
+                }
+                comment.innerHTML = `${weekday}曜日。${dayComment}`;
+                break;
+            case 3:
+                comment.innerHTML = `たまには<a href="/two-grade-website/bbs/">掲示板</a>も見てみてよ。`;
+                break;
+            case 4:
+                comment.innerHTML = `<a href="/two-grade-website/tasks_a/">課</a><a href="/two-grade-website/tasks_b">題</a>は残ってない？`;
+                break;
+            case 5:
+                comment.innerHTML = `<a href="/two-grade-website/quiz/genre/">問題</a>で復習しない？`;
+                break;
+        };
+
+        localStorage.setItem("comment-random", random);
+    }
 
     /** お知らせ */
 
@@ -165,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const bbs = document.getElementById("bbs");
     const question = document.getElementById("question");
-    const requestMusic = document.getElementById("requestMusic");
     const quiz = document.getElementById("quiz");
 
     let subMenu = null;
@@ -186,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                 </li>
             `;
+            bbs.appendChild(subMenu);
         } else if (page === 'みとい知恵袋') {
             subMenu.innerHTML = `
                 <li>
@@ -194,6 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                 </li>
             `;
+            question.appendChild(subMenu);
         } else if (page === 'ポチ問！') {
             subMenu.innerHTML = `
                 <li>
@@ -227,9 +308,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                 </li>
             `;
+            quiz.appendChild(subMenu);
         }
-
-        bbs.appendChild(subMenu); // linkListWrapper ではなく bbs に追加
     }
 
     // サブメニューの削除関数
@@ -245,6 +325,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return window.innerWidth >= 428; // スマホかPCかの閾値（必要に応じて調整）
     }
 
+    const pageList = document.querySelectorAll('ul>li')
+
     // PC: hover イベント
     bbs.addEventListener("mouseover", (event) => {
         if (isWideScreen()) {
@@ -252,6 +334,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     bbs.addEventListener("mouseleave", () => {
+        if (isWideScreen()) {
+            removeSubMenu();
+        }
+    });
+
+    question.addEventListener("mouseover", (event) => {
+        if (isWideScreen()) {
+            createSubMenu(event);
+        }
+    });
+    question.addEventListener("mouseleave", () => {
+        if (isWideScreen()) {
+            removeSubMenu();
+        }
+    });
+
+    quiz.addEventListener("mouseover", (event) => {
+        if (isWideScreen()) {
+            createSubMenu(event);
+        }
+    });
+    quiz.addEventListener("mouseleave", () => {
         if (isWideScreen()) {
             removeSubMenu();
         }
@@ -268,4 +372,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    question.addEventListener("click", (e) => {
+        if (!isWideScreen()) {
+            if (subMenu) {
+                removeSubMenu();
+            } else {
+                e.preventDefault();
+                createSubMenu(e);
+            }
+        }
+    });
+
+    quiz.addEventListener("click", (e) => {
+        if (!isWideScreen()) {
+            if (subMenu) {
+                removeSubMenu();
+            } else {
+                e.preventDefault();
+                createSubMenu(e);
+            }
+        }
+    });
+
+
 });

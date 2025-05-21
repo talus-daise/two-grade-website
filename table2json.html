@@ -2,13 +2,13 @@
 <html lang="ja">
 
 <head>
-	<!--文字コード・互換モード-->
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
-	<title>table to json | R7年度2学年総合ウェブサイト</title>
-	<!--ビューポート-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--css-->
+    <!--文字コード・互換モード-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>table to json | R7年度2学年総合ウェブサイト</title>
+    <!--ビューポート-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="notice/notice.css">
@@ -43,39 +43,54 @@
     </header>
 
     <main>
-        <textarea id="table" rows="10" cols="20"></textarea>
+        <textarea id="input" rows="10" cols="20"></textarea>
         <button id="submit">変換</button>
         <pre id="output"></pre>
     </main>
 
-	<script type="module" src="notice/notice.js"></script>
+    <script type="module" src="notice/notice.js"></script>
     <script src="script/customAlert.js"></script>
-	<script src="script/verification.js"></script>
+    <script src="script/verification.js"></script>
     <script>
-        document.getElementById("submit").addEventListener("click", () => {
-            const table = document.getElementById("table")
-            const input = table.value.trim();
-            const lines = input.split("\n");
+        document.getElementById("submit").addEventListener("click", convertToJSON);
 
-            const result = {
-                genre: "表現方法",
-                list: lines.map(line => {
-                    const parts = line.trim().split(/\s+/);
-                    const question = parts.slice(0, -5).join(' ');
-                    const options = parts.slice(-5, -1);
-                    const answer = parts[parts.length - 1];
-                    return {
-                        question,
-                        options,
-                        answer
-                    };
-                })
-            };
+        function convertToJSON() {
+            const input = document.getElementById('input').value.trim();
+            const lines = input.split('\n').filter(line => line.trim() !== '');
 
-            // 結果を表示
-            document.getElementById("output").textContent = JSON.stringify(result, null, 2);
-        });
+            if (lines.length === 0) return;
+
+            const questions = [];
+            const firstCells = lines[0].split('\t').map(s => s.trim());
+            const genre = firstCells[0];
+
+            for (const line of lines) {
+                const cells = line.split('\t').map(s => s.trim());
+                if (cells.length < 7) continue;
+
+                const question = cells[1];
+                const option = cells.slice(2, 6);
+                const answer = cells[6];
+
+                questions.push({
+                    question,
+                    option,
+                    answer
+                });
+            }
+
+            const result = [
+                {
+                    genre,
+                    list: questions
+                }
+            ];
+
+            document.getElementById('output').textContent = JSON.stringify(result, null, 2);
+        }
     </script>
+    <script data-goatcounter="https://talus.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>

@@ -51,18 +51,19 @@
 
     <main>
         <h1>新しい質問を投稿</h1>
-        <form id="question-form">
-            <input type="text" id="question-title" placeholder="質問のタイトル" required><br>
-            <textarea id="question-content" placeholder="質問の内容" required></textarea><br>
-            <label for="question-username">ユーザー名:</label>
-            <input type="text" id="question-username" required><br>
-            <input type="checkbox" id="faster">
-            <label for="faster">至急求む</label><br>
-            <button type="submit">投稿する</button>
-        </form>
-
-        <p><a href="../../question/">質問一覧に戻る</a></p>
-
+        <a href="../../question/">質問一覧に戻る</a>
+        <section>
+            <h2>質問情報</h2>
+            <form id="question-form">
+                <input type="text" id="question-title" placeholder="質問のタイトル" required><br>
+                <textarea id="question-content" placeholder="質問の内容" required></textarea><br>
+                <label for="question-username">ユーザー名:</label>
+                <input type="text" id="question-username" required><br>
+                <input type="checkbox" id="faster">
+                <label for="faster">至急求む</label><br>
+                <button type="submit">投稿する</button>
+            </form>
+        </section>
     </main>
 
     <footer>
@@ -138,6 +139,7 @@
     <!--マニフェスト-->
     <link rel="manifest" href="../../manifest.json">
     <script src="../../script/verification.js"></script>
+    <script data-goatcounter="https://talus.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>

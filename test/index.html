@@ -53,12 +53,14 @@
     </header>
     <main>
         <h1>テスト予定</h1>
-        <article>
+        <section>
+            <h2>ページ概要</h2>
             <p>現在日程が決まっているテスト一覧です。</p>
             <p>テスト対策に活用ください。</p>
             <p>まだ未定であったり、日程が定まっていないものは掲載しておりません。</p>
-        </article>
-        <article>
+        </section>
+        <section>
+            <h2>テスト一覧</h2>
             <div class="table-container">
                 <table>
                     <thead>
@@ -66,45 +68,44 @@
                             <th>教科</th>
                             <th>範囲</th>
                             <th>日程</th>
+                            <th>提出物</th>
                             <th>備考</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>英語</td>
-                            <td>Lesson11</td>
-                            <td>2025-05-08</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>数学</td>
-                            <td>代数2 1,2章 式と計算・平方根</td>
-                            <td>2025-05-15</td>
-                            <td>4時間目</td>
-                        </tr>
-                        <tr>
                             <td>国語</td>
                             <td>？</td>
                             <td>2025-05-22</td>
-                            <td>合わせて新中問提出</td>
-                        </tr>
-                        <tr>
-                            <td>歴史</td>
-                            <td>3章2節（74頁）～4章2節（123頁）</td>
-                            <td>5月最終週</td>
-                            <td>合わせてKeyワーク提出</td>
+                            <td>新中問</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>数学</td>
                             <td>代数2 3章 ２次方程式</td>
                             <td>2025-05-27</td>
+                            <td></td>
                             <td>確認テスト</td>
+                        </tr>
+                        <tr>
+                            <td>歴史</td>
+                            <td>3章2節（74頁）～4章2節（123頁）</td>
+                            <td>2025-06-06</td>
+                            <td>keyワーク</td>
+                            <td>一時間目</td>
+                        </tr>
+                        <tr>
+                            <td>地理</td>
+                            <td>教科書p114~137 keyワークp96~113</td>
+                            <td>2025-06-06</td>
+                            <td>keyワーク</td>
+                            <td>歴史と同時？</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-        </article>
+        </section>
     </main>
     <footer>
         <p>© 2025 talus</p>
@@ -115,9 +116,59 @@
     </footer>
     <script type="module" src="../notice/notice.js"></script>
     <script src="../script/customAlert.js"></script>
-    <!--マニフェスト-->
-    <link rel="manifest" href="../manifest.json">
     <script src="../script/verification.js"></script>
+    <script>
+        function parseDate(text) {
+            const today = new Date();
+            if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+                // ISO形式 (例: 2025-05-22)
+                return new Date(text);
+            } else if (/(\d+)月第(\d)週/.test(text)) {
+                const match = text.match(/(\d+)月第(\d)週/);
+                const month = parseInt(match[1], 10) - 1; // JavaScriptは0始まり
+                const week = parseInt(match[2], 10);
+                // 1日から開始して、週数を反映（だいたいの3日を足す）
+                return new Date(today.getFullYear(), month, 1 + (week - 1) * 7 + 2);
+            } else {
+                return null;
+            }
+        }
+
+        function findNearestTest() {
+            const rows = document.querySelectorAll("table tbody tr");
+            const today = new Date();
+            let nearestRow = null;
+            let nearestDate = null;
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll("td");
+                const dateText = cells[2].textContent.trim();
+                const parsedDate = parseDate(dateText);
+
+                if (parsedDate && parsedDate >= today) {
+                    if (!nearestDate || parsedDate < nearestDate) {
+                        nearestDate = parsedDate;
+                        nearestRow = row;
+                    }
+                }
+            });
+
+            if (nearestRow) {
+                const subject = nearestRow.querySelectorAll("td")[0].textContent.trim();
+                const item = nearestRow.querySelectorAll("td")[3].textContent.trim();
+                console.log(`次の提出物（${subject}）: ${item || "（記載なし）"}`);
+                localStorage.setItem("test-item", item);
+                localStorage.setItem("next-test", nearestDate);
+                localStorage.setItem("test-subject", subject)
+            } else {
+                console.log("これからのテストは見つかりませんでした。");
+            }
+        }
+
+        findNearestTest();
+    </script>
+    <script data-goatcounter="https://talus.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>
