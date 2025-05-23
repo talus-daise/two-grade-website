@@ -49,12 +49,19 @@
     </header>
 
     <main>
-        <label for="a">a:<input type="number" name="a" id="a"></label><br>
-        <label for="b">b:<input type="number" name="b" id="b"></label><br>
-        <label for="c">c:<input type="number" name="c" id="c"></label><br>
-        <button id="submit">解く！</button>
-        <button id="reset">リセット！</button>
-        <div id="result" style="font-size: 2rem;"></div>
+        <section>
+            <h2>計算</h2>
+            <label for="a">a:<input type="number" name="a" id="a"></label><br>
+            <label for="b">b:<input type="number" name="b" id="b"></label><br>
+            <label for="c">c:<input type="number" name="c" id="c"></label><br>
+            <button id="submit">解く！</button>
+            <button id="reset">リセット！</button>
+        </section>
+
+        <section>
+            <h2>結果</h2>
+            <div id="result" style="font-size: 2rem;"></div>
+        </section>
     </main>
 
     <script type="module" src="notice/notice.js"></script>
@@ -78,7 +85,7 @@
             b_value = document.getElementById('b').value;
             c_value = document.getElementById('c').value;
         })
-        
+
 
         document.getElementById("submit").addEventListener("click", () => {
             const a = Number(a_value);
@@ -141,8 +148,7 @@
             }
         })
     </script>
-    <script data-goatcounter="https://talus.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://talus.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>

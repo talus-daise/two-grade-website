@@ -51,8 +51,10 @@
 
     <main>
         <h1>リクエスト曲一覧</h1>
-        <span id="h2"></span>
+        <section>
+            <h2 id="h2"></h2>
         <div id="videoContainer"></div>
+        </section>
     </main>
 
     <footer>
@@ -100,7 +102,7 @@
 
         document.getElementById("page-title").textContent = `${video} - リクエスト曲 | R7年度2学年総合ウェブサイト`;
         document.getElementById("musicDate").innerHTML = `<a href="?date=${video}"><i class="fa-solid fa-calendar-days"></i>${video}</a>`;
-        document.getElementById("h2").innerHTML = `<h2>${video}</h2>`;
+        document.getElementById("h2").innerHTML = video;
         document.getElementById("videoContainer").innerHTML = `<iframe src="${url}"></iframe>`;
     </script>
     <script data-goatcounter="https://talus.goatcounter.com/count"

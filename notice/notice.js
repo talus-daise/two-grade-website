@@ -2,9 +2,13 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const headerHeight = document.querySelector("header").offsetHeight;
-    const main = document.querySelector("main");
-    main.style.marginTop = `calc(${headerHeight}px + 1rem)`;
+    setInterval(() => {
+        const headerHeight = document.querySelector("header").offsetHeight;
+        const main = document.querySelector("main");
+        main.style.marginTop = `calc(${headerHeight}px + 1rem)`;
+    }, 1000)
+
+
 
     /** メニュー作成 */
 
