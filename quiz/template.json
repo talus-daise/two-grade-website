@@ -4,6 +4,7 @@
         "list": [
             {
                 "question": "",
+                "inputType": "input",
                 "option": [
                     "",
                     "",

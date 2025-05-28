@@ -20,7 +20,7 @@
     <meta name="date" content="2025-02-28">
     <meta name="creation_date" content="2025-02-19">
     <!--URL-->
-    <link rel="canonical" href="https://talus-yujiro.github.io/one-grade-website/">
+    <link rel="canonical" href="https://talus-yujiro.github.io/two-grade-website/">
     <!--アイコン-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/mitoichi-fuzoku-180x180.png" sizes="180x180">
@@ -69,13 +69,13 @@
             const reader = new FileReader();
             reader.onload = (e) => {
                 const text = e.target.result;
-                const lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
+                const lines = text.split(/\r?\n/).filter(line => line.trim() !== "").slice(1); // ← 最初の1行をスキップ
                 const genreMap = new Map();
 
                 lines.forEach((line, index) => {
                     const cols = line.split("\t").map(col => col.trim());
                     if (cols.length !== 7) {
-                        console.warn(`スキップ: ${index + 1}行目（列数=${cols.length}） → ${line}`);
+                        console.warn(`スキップ: ${index + 2}行目（列数=${cols.length}） → ${line}`); // +2に変更して実際の行番号に対応
                         return;
                     }
 
@@ -103,13 +103,16 @@
         });
 
         document.getElementById("copyBtn").addEventListener("click", () => {
+            const latestJson = document.getElementById("output").textContent;
             if (!latestJson) {
                 alert("変換結果がありません");
                 return;
             }
             navigator.clipboard.writeText(latestJson).then(() => {
                 document.getElementById("copyBtn").textContent = 'Copied!';
-                setTimeout(resolve => {resolve}, 10000)
+                setTimeout(() => {
+                    document.getElementById("copyBtn").textContent = 'コピー';
+                }, 1000); // ← setTimeoutの中身を修正
             }).catch(err => {
                 alert("コピーに失敗しました: " + err);
             });

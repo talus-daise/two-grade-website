@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 comment.innerHTML = `<a href="/two-grade-website/tasks_a/">課</a><a href="/two-grade-website/tasks_b">題</a>は残ってない？`;
                 break;
             case 5:
-                comment.innerHTML = `<a href="/two-grade-website/quiz/genre/">問題</a>で復習しない？`;
+                comment.innerHTML = `<a href="/two-grade-website/quiz/game/">問題</a>で復習しない？`;
                 break;
         };
 
