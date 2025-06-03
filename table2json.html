@@ -74,17 +74,18 @@
 
                 lines.forEach((line, index) => {
                     const cols = line.split("\t").map(col => col.trim());
-                    if (cols.length !== 7) {
+                    if (cols.length !== 8) {
                         console.warn(`スキップ: ${index + 2}行目（列数=${cols.length}） → ${line}`); // +2に変更して実際の行番号に対応
                         return;
                     }
 
-                    const [genre, question, opt1, opt2, opt3, opt4, answer] = cols;
+                    const [genre, id, question, opt1, opt2, opt3, opt4, answer] = cols;
                     if (!genreMap.has(genre)) {
                         genreMap.set(genre, []);
                     }
 
                     genreMap.get(genre).push({
+                        id,
                         question,
                         options: [opt1, opt2, opt3, opt4],
                         answer

@@ -35,6 +35,7 @@
     <!--CDN-->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.4"></script>
     <script src="../../script/customAlert.js"></script>
+    <script src="https://unpkg.com/wanakana"></script>
     <!--マニフェスト-->
     <link rel="manifest" href="../../manifest.json">
 </head>
@@ -45,8 +46,7 @@
         <h1 style="font-size: 10vw;">ポチ問！</h1>
         <div style="display: flex;">
             <button onclick="changeScreen('subject')">スタート</button>
-            <button
-                onclick="() => window.location.href = 'https://talus-yujiro.github.io/two-grade-website/quiz/'">やめる</button>
+            <button>やめる</button>
         </div>
     </div>
 
@@ -58,7 +58,8 @@
             <button onclick="selectSubject('math')">数学</button>
             <button onclick="selectSubject('japanese')">国語</button>
             <button onclick="selectSubject('science')">理科</button>
-            <button onclick="selectSubject('social_study')">社会</button>
+            <button onclick="selectSubject('geogra')">地理</button>
+            <button onclick="selectSubject('history')">歴史</button>
             <button onclick="selectSubject('etc')">その他</button>
         </div>
         <button class="back" onclick="changeScreen('home')">ホームに戻る</button>
@@ -95,11 +96,18 @@
         <p id="timeResult">クリア時間: 0秒</p>
         <p id="scoreResult">スコア: 0点</p>
         <button onclick="startQuiz()">もう一度はじめから</button>
+        <button onclick="changeScreen('questionList')">今回の問題を振り返る</button>
         <div style="display: flex;">
             <button class="back" onclick="changeScreen('questionCount')">設定へ戻る</button>
             <button class="back" onclick="changeScreen('genre')">ジャンルに戻る</button>
             <button class="back" onclick="changeScreen('subject')">教科に戻る</button>
         </div>
+    </div>
+
+    <div id="questionList" class="screen">
+        <h1>問題一覧</h1>
+        <div id="listContainer" class="list-container"></div>
+        <button class="back" onclick="changeScreen('result')">戻る</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>

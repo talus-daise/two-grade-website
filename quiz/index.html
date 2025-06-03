@@ -2,16 +2,16 @@
 <html lang="ja">
 
 <head>
-	<!--文字コード・互換モード-->
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
-	<title>ポチ問！ | R7年度2学年総合ウェブサイト</title>
-	<!--ビューポート-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--css-->
-    <link rel="stylesheet" href="../style.css">
+    <!--文字コード・互換モード-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>ジャンル - ポチ問！ | R7年度2学年総合ウェブサイト</title>
+    <!--ビューポート-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
+    <link rel="stylesheet" href="../pochimon.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
-    <link rel="stylesheet" href="../notice/notice.css">
+    <link rel="stylesheet" href="../../notice/notice.css">
     <!--web情報-->
     <meta name="keywords" content="水戸一, 水戸一附属, 水戸一附属中, 一学年,">
     <meta name="description" content="水戸一附属中四期生向けの総合ウェブサイトです。附属中向けのテストの情報などを配信しています。">
@@ -22,8 +22,8 @@
     <!--URL-->
     <link rel="canonical" href="https://talus-yujiro.github.io/two-grade-website/">
     <!--アイコン-->
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../img/mitoichi-fuzoku-180x180.png" sizes="180x180">
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../../img/mitoichi-fuzoku-180x180.png" sizes="180x180">
     <!--windows-->
     <meta name="msapplication-config" content="none">
     <meta name="msapplication-TileImage" content="./img/mitoichi-fuzoku.png">
@@ -31,50 +31,84 @@
     <link rel="mask-icon" href="">
     <!--Android-->
     <meta name="theme-color" content="#5787ff">
-    <link rel="icon" type="image/png" href="../img/mitoichi-fuzoku-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="../../img/mitoichi-fuzoku-192x192.png" sizes="192x192">
     <!--CDN-->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.4"></script>
-    <script src="../script/customAlert.js"></script>
+    <script src="../../script/customAlert.js"></script>
+    <script src="https://unpkg.com/wanakana"></script>
     <!--マニフェスト-->
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="../../manifest.json">
 </head>
 
 <body>
-    <header>
-        <h1><a href="../">R7年度2学年総合ウェブサイト</a></h1>
-        <p class="header__breadcrumb">
-            <a href="../"><i class="fa-solid fa-house"></i>トップページ</a>
-            <a href="../quiz/"><i class="fa-solid fa-q"></i>ポチ問！</a>
-        </p>
-    </header>
-
-    <main>
-        <h1>ポチ問！</h1>
-        <section>
-            <h2>ページ概要</h2>
-        <p>秒でできるクイズをたくさん用意しました。</p>
-        <p>暇つぶしにどうぞ。</p>
-        <p>ポチッとワンクリックで楽しめるのでポチ問！です</p>
-        <hr>
-        <div class="pochimon__container">
-            <a href="game/"><img src="pochimon!.png" alt="ポチ問！" class="pochimon" width="100px"></a>へ進む！
+    <!-- ホーム画面 -->
+    <div id="home" class="screen active">
+        <h1 style="font-size: 10vw;">ポチ問！</h1>
+        <div style="display: flex;">
+            <button onclick="changeScreen('subject')">スタート</button>
+            <button
+                onclick="() => window.location.href = 'https://talus-yujiro.github.io/two-grade-website/quiz/'">やめる</button>
         </div>
-        </section>
-    </main>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 talus</p>
-        <p>※このサイトは学校非公認の個人が運営しているサイトです。学校側の問題に責任は取れませんのでご注意ください。</p>
-        <p><a href="https://www.mito1-jh.ibk.ed.jp" target="_blank" rel="noopener noreferrer">茨城県立水戸第一高等学校附属中学校HP</a></p>
-    </footer>
+    <!-- 教科選択画面 -->
+    <div id="subject" class="screen">
+        <h1>教科を選んでください</h1>
+        <div class="subject-list">
+            <button onclick="selectSubject('english')">英語</button>
+            <button onclick="selectSubject('math')">数学</button>
+            <button onclick="selectSubject('japanese')">国語</button>
+            <button onclick="selectSubject('science')">理科</button>
+            <button onclick="selectSubject('social_study')">社会</button>
+            <button onclick="selectSubject('etc')">その他</button>
+        </div>
+        <button class="back" onclick="changeScreen('home')">ホームに戻る</button>
+    </div>
 
-	<script type="module" src="../notice/notice.js"></script>
-    <script src="../script/customAlert.js"></script>
-    <!--マニフェスト-->
-    <link rel="manifest" href="../manifest.json">
-	<script src="../script/verification.js"></script>
-    <script data-goatcounter="https://talus.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <!-- ジャンル選択画面 -->
+    <div id="genre" class="screen">
+        <h1>ジャンルを選んでください</h1>
+        <div id="genreList" class="genre-list"></div>
+        <button class="back" onclick="changeScreen('subject')">教科に戻る</button>
+    </div>
+
+    <!-- 問題数選択画面 -->
+    <div id="questionCount" class="screen">
+        <h1>問題数と入力方法を選んでください</h1>
+        <div class="slider-container" id="sliderContainer">
+        </div>
+        <div class="mode-select">
+            <button onclick="selectMode('choice')">選択式</button>
+            <button onclick="selectMode('input')">入力式</button>
+        </div>
+        <button class="back" onclick="changeScreen('genre')">ジャンルに戻る</button>
+    </div>
+
+    <!-- クイズ画面 -->
+    <div id="quiz" class="screen">
+        <h1 id="questionText">問題文</h1>
+        <div id="optionArea" class="question-options"></div>
+    </div>
+
+    <!-- リザルト画面 -->
+    <div id="result" class="screen result-screen">
+        <h1>結果</h1>
+        <p id="timeResult">クリア時間: 0秒</p>
+        <p id="scoreResult">スコア: 0点</p>
+        <button onclick="startQuiz()">もう一度はじめから</button>
+        <div style="display: flex;">
+            <button class="back" onclick="changeScreen('questionCount')">設定へ戻る</button>
+            <button class="back" onclick="changeScreen('genre')">ジャンルに戻る</button>
+            <button class="back" onclick="changeScreen('subject')">教科に戻る</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="math.js"></script>
+    <script src="keyboard.js"></script>
+    <script data-goatcounter="https://talus.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script src="../quiz.js"></script>
 </body>
 
 </html>

@@ -34,8 +34,8 @@ function selectSubject(subject) {
 
 function showSlider(count) {
     document.getElementById("sliderContainer").innerHTML = `
-        <label>問題数: <span id="questionCountDisplay">10</span>問</label>
-        <input id="questionSlider" type="range" min="1" max="${count}" value="10"
+        <label>問題数: <span id="questionCountDisplay">${Math.floor(count / 2)}</span>問</label>
+        <input id="questionSlider" type="range" min="1" max="${count}" value="${Math.floor(count / 2)}"
             oninput="updateQuestionCountDisplay(this.value)">
     `;
     changeScreen("questionCount");
@@ -74,6 +74,7 @@ function startQuiz() {
     currentIndex = 0;
     score = 0;
     startTime = Date.now();
+    document.getElementById("listContainer").textContent = '';
     showQuestion();
     changeScreen("quiz");
 }
@@ -99,7 +100,7 @@ function showQuestion() {
                     score++;
                     showFeedback(true);
                 } else showFeedback(false);
-                nextQuestion();
+                nextQuestion(opt);
             };
             optionArea.appendChild(btn);
         });
@@ -110,65 +111,119 @@ function showQuestion() {
             }
         }
     } else {
-        let input = "";
-        showKeyboardType();
         const span = document.createElement("span");
         span.classList.add("input-area");
         span.style.fontSize = "3vw";
-        span.textContent = input;
+        span.style.outline = "none";
+        span.contentEditable = "true";
+        span.textContent = "";
         optionArea.appendChild(span);
+        
+        setTimeout(() => {
+            span.focus();
+        }, 0);
 
-        document.onkeydown = function (e) {
-            if (e.key === "Enter") {
-                if (input === q.answer) {
+        let rawInput = "";
+
+        // キーボード入力イベントの処理
+        const handleKeyDown = (e) => {
+            rawInput = span.textContent;
+            if (e.key === 'Process') {
+                return;
+            } else if (e.key === "Enter") {
+                e.preventDefault(); // 改行防止
+                const answerInput = span.textContent;
+                if (answerInput === q.answer) {
                     score++;
                     showFeedback(true);
-                } else showFeedback(false);
-                document.onkeydown = null;
-                nextQuestion();
+                } else {
+                    showFeedback(false);
+                }
+                document.removeEventListener("keydown", handleKeyDown);
+                nextQuestion(answerInput);
+                return;
             } else if (e.key === "Backspace") {
-                input = input.slice(0, -1);
+                e.preventDefault();
+                rawInput = rawInput.slice(0, -1);
             } else if (e.key.length === 1) {
-                input += e.key;
-            } else if (e.key === 'Escape') {
-                changeScreen('result');
-            } else if (e.key === 'ZenkakuHankaku') {
-                keyboardtype = keyboardtype === 'hankaku' ? 'zenkaku' : 'hankaku'; 
-                showKeyboardType()
+                e.preventDefault();
+                rawInput += e.key;
+            } else if (e.key === "Escape") {
+                e.preventDefault();
+                changeScreen("result");
+                return;
             }
-            span.textContent = input;
-            if (input === q.answer) {
+
+            // spanの表示を更新
+            span.textContent = rawInput;
+
+            // 正解判定（早期クリア時）
+            const answerInput = span.textContent;
+            if (answerInput === q.answer) {
                 score++;
                 showFeedback(true);
-                document.onkeydown = null;
-                nextQuestion();
+                document.removeEventListener("keydown", handleKeyDown);
+                nextQuestion(answerInput);
+                return;
             }
+
             console.log(e.key);
         };
+
+        document.addEventListener("keydown", handleKeyDown);
     }
 }
 
-function nextQuestion() {
+function nextQuestion(userAnswer) {
+    const currentQuestion = questions[currentIndex].question;
+    const currentAnswer = questions[currentIndex].answer;
+
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+        <p>${currentIndex + 1}問目　<span style="color: ${currentAnswer === userAnswer ? 'green' : 'red'}">${currentAnswer === userAnswer ? '○正解' : '×不正解'}</span></p>
+        <h3>${currentQuestion}</h3>
+        <p>正解: ${currentAnswer}</p>
+        <p>あなたの答え: ${userAnswer}</p>
+        <hr>
+    `;
+
+    document.getElementById("listContainer").appendChild(div);
+
     currentIndex++;
     if (currentIndex >= numQuestions || currentIndex >= questions.length) {
         const timeTaken = Math.floor((Date.now() - startTime) / 1000);
         document.getElementById("timeResult").textContent = `クリア時間: ${timeTaken}秒`;
         document.getElementById("scoreResult").textContent = `スコア: ${score} / ${currentIndex}`;
         changeScreen("result");
+        if (score === currentIndex) confetti();
     } else {
         showQuestion();
     }
 }
 
 function showKeyboardType() {
+    const element = document.querySelector('#keyboardType'); // または .class や tag名など
+
+    if (element) {
+        element.remove();
+    }
+
     const keyboard = document.createElement("p");
     if (keyboardtype === 'hankaku') keyboard.textContent = 'Aa';
     else keyboard.textContent = 'あ';
-    
+
+    keyboard.id = 'keyboardType';
     keyboard.style.position = 'absolute';
     keyboard.style.bottom = '1vw';
     keyboard.style.right = '1vw';
-    keyboard.style.fontSize = '2vw'
+    keyboard.style.fontSize = '2vw';
+
+    document.getElementById("quiz").appendChild(keyboard);
+}
+
+function convertToHiragana(input) {
+    return wanakana.toHiragana(input);
 }
 
 function resetGame() {

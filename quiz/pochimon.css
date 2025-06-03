@@ -106,3 +106,19 @@ button {
 .result-screen p {
     margin: 1vw;
 }
+
+.list-container {
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    max-height: 100%;
+    align-content: center;
+    width: 100%;
+}
+
+.list-container div {
+    margin-bottom: 1vw;
+    min-width: 100%;
+}
