@@ -3,6 +3,7 @@
         "genre": "1-Lesson11",
         "list": [
             {
+                "id": "001",
                 "question": "<Keypoint> ( ) is a zoo in my town. ( )に入るのは？",
                 "options": [
                     "There",
@@ -13,6 +14,7 @@
                 "answer": "There"
             },
             {
+                "id": "002",
                 "question": "<Keypoint> ( ) two white tigers in the zoo. ( )に入るのは？",
                 "options": [
                     "There are",
@@ -23,6 +25,7 @@
                 "answer": "There are"
             },
             {
+                "id": "003",
                 "question": "<Keypoint> There ( ) a shopping mall near the zoo three years ago. ( )に入るのは？",
                 "options": [
                     "was",
@@ -33,6 +36,7 @@
                 "answer": "was"
             },
             {
+                "id": "004",
                 "question": "<Keypoint> There ( ) a lot of tourists in the town. ( )に入るのは？",
                 "options": [
                     "were",
@@ -43,6 +47,7 @@
                 "answer": "were"
             },
             {
+                "id": "005",
                 "question": "<Keypoint> There ( ) any traffic lights on this road. ( )に入るのは？",
                 "options": [
                     "aren't",
@@ -53,6 +58,7 @@
                 "answer": "aren't"
             },
             {
+                "id": "006",
                 "question": "<Keypoint> There is ( ) library near our school. ( )に入るのは？",
                 "options": [
                     "no",
@@ -63,6 +69,7 @@
                 "answer": "no"
             },
             {
+                "id": "007",
                 "question": "<Keypoint> There ( ) no traffic lights on this island ten years ago. ( )に入るのは？",
                 "options": [
                     "were",
@@ -73,6 +80,7 @@
                 "answer": "were"
             },
             {
+                "id": "008",
                 "question": "<Keypoint> ( ) a supermarket near your house? ( )に入るのは？",
                 "options": [
                     "Is there",
@@ -83,6 +91,7 @@
                 "answer": "Is there"
             },
             {
+                "id": "009",
                 "question": "<Keypoint> ( ) any coffee shops on this island? ( )に入るのは？",
                 "options": [
                     "Are there",
@@ -93,6 +102,7 @@
                 "answer": "Are there"
             },
             {
+                "id": "010",
                 "question": "<Keypoint> ── Yes, ( ). / No, ( )n't. (単数) ( )に入るのは？",
                 "options": [
                     "there is",
@@ -103,6 +113,7 @@
                 "answer": "there is"
             },
             {
+                "id": "011",
                 "question": "<Keypoint> ── Yes, ( ). / No, ( )n't. (複数) ( )に入るのは？",
                 "options": [
                     "there are",
@@ -113,6 +124,7 @@
                 "answer": "there are"
             },
             {
+                "id": "012",
                 "question": "<Keypoint> There are ( a ) beautiful places in Japan. ( )に入るのは？",
                 "options": [
                     "a lot of",
@@ -123,6 +135,7 @@
                 "answer": "a lot of"
             },
             {
+                "id": "013",
                 "question": "<Keypoint> ( ) a lot of rain in Okinawa? ( )に入るのは？",
                 "options": [
                     "Is there",
@@ -133,6 +146,7 @@
                 "answer": "Is there"
             },
             {
+                "id": "014",
                 "question": "<Keypoint> There is ( ) snow in Okinawa. ( )に入るのは？",
                 "options": [
                     "little",
@@ -143,6 +157,7 @@
                 "answer": "little"
             },
             {
+                "id": "015",
                 "question": "<Keypoint> Is there ( ) snow in Hokkaido? ( )に入るのは？",
                 "options": [
                     "much",
@@ -153,6 +168,7 @@
                 "answer": "much"
             },
             {
+                "id": "016",
                 "question": "<Keypoint> We want three ( c ) coffee and five ( g ) orange juice. ( )に入るのは？",
                 "options": [
                     "cups of, glasses of",
@@ -163,6 +179,7 @@
                 "answer": "cups of, glasses of"
             },
             {
+                "id": "017",
                 "question": "<Keypoint> I need a pen and a ( s ) of paper. ( )に入るのは？",
                 "options": [
                     "sheet",
@@ -173,6 +190,7 @@
                 "answer": "sheet"
             },
             {
+                "id": "018",
                 "question": "<Keypoint> How ( m r ) are there in this hotel? ( )に入るのは？",
                 "options": [
                     "many rooms",
@@ -183,6 +201,7 @@
                 "answer": "many rooms"
             },
             {
+                "id": "019",
                 "question": "<Keypoint> How ( m s ) were there at the entrance? ( )に入るのは？",
                 "options": [
                     "many students",
@@ -193,6 +212,7 @@
                 "answer": "many students"
             },
             {
+                "id": "020",
                 "question": "<Keypoint> ( ) suger is there in the pot? ( )に入るのは？",
                 "options": [
                     "How much",
@@ -203,6 +223,7 @@
                 "answer": "How much"
             },
             {
+                "id": "021",
                 "question": "<Keypoint> ── Only a ( l ). / There's only a ( l ) ( )に入るのは？",
                 "options": [
                     "little",
@@ -213,6 +234,7 @@
                 "answer": "little"
             },
             {
+                "id": "022",
                 "question": "How many ( b ) are there? ( ) に入るのは？",
                 "options": [
                     "bottles",
@@ -223,6 +245,7 @@
                 "answer": "bottles"
             },
             {
+                "id": "023",
                 "question": "How much ( w ) is there? ( ) に入るのは？",
                 "options": [
                     "water",
@@ -233,6 +256,7 @@
                 "answer": "water"
             },
             {
+                "id": "024",
                 "question": "次の文を英訳しなさい。 〜の中央に",
                 "options": [
                     "in the center of",
@@ -243,6 +267,7 @@
                 "answer": "in the center of"
             },
             {
+                "id": "025",
                 "question": "次の文を英訳しなさい。 〜の前に",
                 "options": [
                     "in front of",
@@ -253,6 +278,7 @@
                 "answer": "in front of"
             },
             {
+                "id": "026",
                 "question": "次の文を英訳しなさい。 〜の隣に",
                 "options": [
                     "next to",
@@ -263,6 +289,7 @@
                 "answer": "next to"
             },
             {
+                "id": "027",
                 "question": "次の文を英訳しなさい。 〜の後ろに",
                 "options": [
                     "behind",
@@ -273,6 +300,7 @@
                 "answer": "behind"
             },
             {
+                "id": "028",
                 "question": "次の文を英訳しなさい。 〜の近くに",
                 "options": [
                     "near",
@@ -283,6 +311,7 @@
                 "answer": "near"
             },
             {
+                "id": "029",
                 "question": "次の文を英訳しなさい。 〜のそばに",
                 "options": [
                     "by",
@@ -293,6 +322,7 @@
                 "answer": "by"
             },
             {
+                "id": "030",
                 "question": "次の文を英訳しなさい。 〜と…との間に",
                 "options": [
                     "beetween , and",
@@ -303,6 +333,7 @@
                 "answer": "beetween , and"
             },
             {
+                "id": "031",
                 "question": "次の文を英訳しなさい。 〜の真上に",
                 "options": [
                     "over",
@@ -313,6 +344,7 @@
                 "answer": "over"
             },
             {
+                "id": "032",
                 "question": "次の文を英訳しなさい。 〜の周りに",
                 "options": [
                     "around",
@@ -323,6 +355,7 @@
                 "answer": "around"
             },
             {
+                "id": "033",
                 "question": "次の文を英訳しなさい。 例えば〜のような…",
                 "options": [
                     "such as",
@@ -333,6 +366,7 @@
                 "answer": "such as"
             },
             {
+                "id": "034",
                 "question": "次の文を英訳しなさい。 例えば〜",
                 "options": [
                     "for example",
@@ -348,6 +382,7 @@
         "genre": "1-Lesson11-全書き",
         "list": [
             {
+                "id": "035",
                 "question": "<Keypoint> 次の文を英訳しなさい。 私の街には動物園があります。",
                 "options": [
                     "There is a zoo in my town.",
@@ -358,6 +393,7 @@
                 "answer": "There is a zoo in my town."
             },
             {
+                "id": "036",
                 "question": "<Keypoint> 次の文を英訳しなさい。 動物園には2匹の白いトラがいます。",
                 "options": [
                     "There are two white tigers in the zoo.",
@@ -368,6 +404,7 @@
                 "answer": "There are two white tigers in the zoo."
             },
             {
+                "id": "037",
                 "question": "<Keypoint> 次の文を英訳しなさい。 3年前、動物園の近くにはショッピングモールがありました。",
                 "options": [
                     "There was a shopping mall near the zoo three years ago.",
@@ -378,6 +415,7 @@
                 "answer": "There was a shopping mall near the zoo three years ago."
             },
             {
+                "id": "038",
                 "question": "<Keypoint> 次の文を英訳しなさい。 街にはたくさんの観光客がいました。",
                 "options": [
                     "There were a lot of tourists in the town.",
@@ -388,6 +426,7 @@
                 "answer": "There were a lot of tourists in the town."
             },
             {
+                "id": "039",
                 "question": "<Keypoint> 次の文を英訳しなさい。 この道には一つも信号機がありません。",
                 "options": [
                     "There aren't any traffic lights on this road.",
@@ -398,6 +437,7 @@
                 "answer": "There aren't any traffic lights on this road."
             },
             {
+                "id": "040",
                 "question": "<Keypoint> 次の文を英訳しなさい。 私たちの学校には図書館（図書室）がありません。",
                 "options": [
                     "There is no library in our school.",
@@ -408,6 +448,7 @@
                 "answer": "There is no library in our school."
             },
             {
+                "id": "041",
                 "question": "<Keypoint> 次の文を英訳しなさい。 10年前、この島には信号機がありませんでした。",
                 "options": [
                     "There were no traffic lights on this island ten years ago.",
@@ -418,6 +459,7 @@
                 "answer": "There were no traffic lights on this island ten years ago."
             },
             {
+                "id": "042",
                 "question": "<Keypoint> 次の文を英訳しなさい。 あなたの家の近くにスーパーマーケットはありますか？",
                 "options": [
                     "Is there a supermarket near your house?",
@@ -428,6 +470,7 @@
                 "answer": "Is there a supermarket near your house?"
             },
             {
+                "id": "043",
                 "question": "<Keypoint> 次の文を英訳しなさい。 はい、あります。（単数）",
                 "options": [
                     "Yes, there is.",
@@ -438,6 +481,7 @@
                 "answer": "Yes, there is."
             },
             {
+                "id": "044",
                 "question": "<Keypoint> 次の文を英訳しなさい。 いいえ、ありません。（単数）",
                 "options": [
                     "No, there isn't.",
@@ -448,6 +492,7 @@
                 "answer": "No, there isn't."
             },
             {
+                "id": "045",
                 "question": "<Keypoint> 次の文を英訳しなさい。 この島にはいくつかコーヒーショップはありますか？",
                 "options": [
                     "Are there any coffee shops on this island?",
@@ -458,6 +503,7 @@
                 "answer": "Are there any coffee shops on this island?"
             },
             {
+                "id": "046",
                 "question": "<Keypoint> 次の文を英訳しなさい。 はい、あります。（複数）",
                 "options": [
                     "Yes, there are.",
@@ -468,6 +514,7 @@
                 "answer": "Yes, there are."
             },
             {
+                "id": "047",
                 "question": "<Keypoint> 次の文を英訳しなさい。 いいえ、ありません。（複数）",
                 "options": [
                     "No, there aren't.",
@@ -478,6 +525,7 @@
                 "answer": "No, there aren't."
             },
             {
+                "id": "048",
                 "question": "<Keypoint> 次の文を英訳しなさい。 日本にはたくさんのきれいな場所があります。",
                 "options": [
                     "There are a lot of  beautiful places in Japan.",
@@ -488,6 +536,7 @@
                 "answer": "There are a lot of  beautiful places in Japan."
             },
             {
+                "id": "049",
                 "question": "<Keypoint> 次の文を英訳しなさい。 沖縄ではたくさん雨が降りますか？",
                 "options": [
                     "Is there a lot of rain in Okinawa?",
@@ -498,6 +547,7 @@
                 "answer": "Is there a lot of rain in Okinawa?"
             },
             {
+                "id": "050",
                 "question": "<Keypoint> 次の文を英訳しなさい。 沖縄では少し雪が降ります。",
                 "options": [
                     "There is little snow in Okinawa.",
@@ -508,6 +558,7 @@
                 "answer": "There is little snow in Okinawa."
             },
             {
+                "id": "051",
                 "question": "<Keypoint> 次の文を英訳しなさい。 北海道ではたくさん雪が降りますか？",
                 "options": [
                     "Is there much snow in Hokkaido?",
@@ -518,6 +569,7 @@
                 "answer": "Is there much snow in Hokkaido?"
             },
             {
+                "id": "052",
                 "question": "<Keypoint> 次の文を英訳しなさい。 私たちはコーヒーを3カップとオレンジジュースを5杯欲しいです。",
                 "options": [
                     "We want three cups of coddee and five glasses of orange juice.",
@@ -528,6 +580,7 @@
                 "answer": "We want three cups of coddee and five glasses of orange juice."
             },
             {
+                "id": "053",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ペンと紙が一枚必要です。",
                 "options": [
                     "I need a pen and a sheet of paper.",
@@ -538,6 +591,7 @@
                 "answer": "I need a pen and a sheet of paper."
             },
             {
+                "id": "054",
                 "question": "<Keypoint> 次の文を英訳しなさい。 このホテルには部屋がいくつありますか？",
                 "options": [
                     "How many rooms are there in this hotel?",
@@ -548,6 +602,7 @@
                 "answer": "How many rooms are there in this hotel?"
             },
             {
+                "id": "055",
                 "question": "<Keypoint> 次の文を英訳しなさい。 20あります。",
                 "options": [
                     "There are twenty.",
@@ -558,6 +613,7 @@
                 "answer": "There are twenty."
             },
             {
+                "id": "056",
                 "question": "<Keypoint> 次の文を英訳しなさい。 エントランスに生徒は何人いましたか？",
                 "options": [
                     "How many students were there at the entrance?",
@@ -568,6 +624,7 @@
                 "answer": "How many students were there at the entrance?"
             },
             {
+                "id": "057",
                 "question": "<Keypoint> 次の文を英訳しなさい。 8いました。",
                 "options": [
                     "There were eight.",
@@ -578,6 +635,7 @@
                 "answer": "There were eight."
             },
             {
+                "id": "058",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ポットにはどれくらい砂糖が入っていますか？",
                 "options": [
                     "How much suger is there in the pot?",
@@ -588,6 +646,7 @@
                 "answer": "How much suger is there in the pot?"
             },
             {
+                "id": "059",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ほんの少しです。",
                 "options": [
                     "Only a little.",
@@ -603,6 +662,7 @@
         "genre": "1-Lesson12",
         "list": [
             {
+                "id": "060",
                 "question": "<単語> 安い",
                 "options": [
                     "cheap",
@@ -613,6 +673,7 @@
                 "answer": "cheap"
             },
             {
+                "id": "061",
                 "question": "<単語> 高い",
                 "options": [
                     "expensive",
@@ -623,6 +684,7 @@
                 "answer": "expensive"
             },
             {
+                "id": "062",
                 "question": "<単語> 軽い(l)",
                 "options": [
                     "light",
@@ -633,6 +695,7 @@
                 "answer": "light"
             },
             {
+                "id": "063",
                 "question": "<単語> 重い",
                 "options": [
                     "heavy",
@@ -643,6 +706,7 @@
                 "answer": "heavy"
             },
             {
+                "id": "064",
                 "question": "<単語> 難しい",
                 "options": [
                     "difficult",
@@ -653,6 +717,7 @@
                 "answer": "difficult"
             },
             {
+                "id": "065",
                 "question": "<単語> 簡単な",
                 "options": [
                     "easy",
@@ -663,6 +728,7 @@
                 "answer": "easy"
             },
             {
+                "id": "066",
                 "question": "<単語> ぬれた",
                 "options": [
                     "wet",
@@ -673,6 +739,7 @@
                 "answer": "wet"
             },
             {
+                "id": "067",
                 "question": "<単語> かわいた",
                 "options": [
                     "dry",
@@ -683,6 +750,7 @@
                 "answer": "dry"
             },
             {
+                "id": "068",
                 "question": "<単語> 熱帯雨林",
                 "options": [
                     "rainforest",
@@ -693,6 +761,7 @@
                 "answer": "rainforest"
             },
             {
+                "id": "069",
                 "question": "<単語> 水族館",
                 "options": [
                     "aquarium",
@@ -703,6 +772,7 @@
                 "answer": "aquarium"
             },
             {
+                "id": "070",
                 "question": "<単語> 内部に",
                 "options": [
                     "inside",
@@ -713,6 +783,7 @@
                 "answer": "inside"
             },
             {
+                "id": "071",
                 "question": "<単語> 現実の",
                 "options": [
                     "real",
@@ -723,6 +794,7 @@
                 "answer": "real"
             },
             {
+                "id": "072",
                 "question": "<単語> 南アメリカ（2語）",
                 "options": [
                     "South America",
@@ -733,6 +805,7 @@
                 "answer": "South America"
             },
             {
+                "id": "073",
                 "question": "<単語> 色彩豊かな",
                 "options": [
                     "colorful",
@@ -743,6 +816,7 @@
                 "answer": "colorful"
             },
             {
+                "id": "074",
                 "question": "<単語> チョウ",
                 "options": [
                     "butterfly",
@@ -753,6 +827,7 @@
                 "answer": "butterfly"
             },
             {
+                "id": "075",
                 "question": "<単語> 自転車",
                 "options": [
                     "bicycle",
@@ -763,6 +838,7 @@
                 "answer": "bicycle"
             },
             {
+                "id": "076",
                 "question": "<単語> ブラジル",
                 "options": [
                     "Brazil",
@@ -773,6 +849,7 @@
                 "answer": "Brazil"
             },
             {
+                "id": "077",
                 "question": "<単語> 一生懸命に",
                 "options": [
                     "hard",
@@ -783,6 +860,7 @@
                 "answer": "hard"
             },
             {
+                "id": "078",
                 "question": "<単語> 早い",
                 "options": [
                     "early",
@@ -793,6 +871,7 @@
                 "answer": "early"
             },
             {
+                "id": "079",
                 "question": "<単語> 人気のある",
                 "options": [
                     "popular",
@@ -803,6 +882,7 @@
                 "answer": "popular"
             },
             {
+                "id": "080",
                 "question": "<単語> 展示",
                 "options": [
                     "exhibit",
@@ -813,6 +893,7 @@
                 "answer": "exhibit"
             },
             {
+                "id": "081",
                 "question": "<単語> プラネタリウム",
                 "options": [
                     "planetarium",
@@ -823,6 +904,7 @@
                 "answer": "planetarium"
             },
             {
+                "id": "082",
                 "question": "<単語> 注意深く",
                 "options": [
                     "carefully",
@@ -833,6 +915,7 @@
                 "answer": "carefully"
             },
             {
+                "id": "083",
                 "question": "<単語> wellの比較級",
                 "options": [
                     "better",
@@ -843,6 +926,7 @@
                 "answer": "better"
             },
             {
+                "id": "084",
                 "question": "<単語> 点数",
                 "options": [
                     "score",
@@ -853,6 +937,7 @@
                 "answer": "score"
             },
             {
+                "id": "085",
                 "question": "<単語> 最も",
                 "options": [
                     "most",
@@ -863,6 +948,7 @@
                 "answer": "most"
             },
             {
+                "id": "086",
                 "question": "<単語> goodの比較級",
                 "options": [
                     "better",
@@ -873,6 +959,7 @@
                 "answer": "better"
             },
             {
+                "id": "087",
                 "question": "<単語> wellの最上級",
                 "options": [
                     "best",
@@ -883,6 +970,7 @@
                 "answer": "best"
             },
             {
+                "id": "088",
                 "question": "<単語> 病気の",
                 "options": [
                     "ill",
@@ -893,6 +981,7 @@
                 "answer": "ill"
             },
             {
+                "id": "089",
                 "question": "<単語> ひどく",
                 "options": [
                     "badly",
@@ -903,6 +992,7 @@
                 "answer": "badly"
             },
             {
+                "id": "090",
                 "question": "<単語> bad, illの比較級",
                 "options": [
                     "worse",
@@ -913,6 +1003,7 @@
                 "answer": "worse"
             },
             {
+                "id": "091",
                 "question": "<単語> badlyの比較級",
                 "options": [
                     "worse",
@@ -923,6 +1014,7 @@
                 "answer": "worse"
             },
             {
+                "id": "092",
                 "question": "<単語> badlyの最上級",
                 "options": [
                     "worst",
@@ -933,6 +1025,7 @@
                 "answer": "worst"
             },
             {
+                "id": "093",
                 "question": "<単語> many, muchの比較級",
                 "options": [
                     "more",
@@ -943,6 +1036,7 @@
                 "answer": "more"
             },
             {
+                "id": "094",
                 "question": "<単語> littleの比較級",
                 "options": [
                     "less",
@@ -953,6 +1047,7 @@
                 "answer": "less"
             },
             {
+                "id": "095",
                 "question": "<単語> littleの最上級",
                 "options": [
                     "least",
@@ -963,6 +1058,7 @@
                 "answer": "least"
             },
             {
+                "id": "096",
                 "question": "<単語> それぞれの",
                 "options": [
                     "each",
@@ -973,6 +1069,7 @@
                 "answer": "each"
             },
             {
+                "id": "097",
                 "question": "<単語> ワニ",
                 "options": [
                     "alligator",
@@ -983,6 +1080,7 @@
                 "answer": "alligator"
             },
             {
+                "id": "098",
                 "question": "<単語> かっこいい",
                 "options": [
                     "cool",
@@ -993,6 +1091,7 @@
                 "answer": "cool"
             },
             {
+                "id": "099",
                 "question": "<単語> 特に",
                 "options": [
                     "especially",
@@ -1003,6 +1102,7 @@
                 "answer": "especially"
             },
             {
+                "id": "100",
                 "question": "<単語> 〜に興味をもつ",
                 "options": [
                     "be interested in",
@@ -1013,6 +1113,7 @@
                 "answer": "be interested in"
             },
             {
+                "id": "101",
                 "question": "<単語> 看板、標識",
                 "options": [
                     "sign",
@@ -1023,6 +1124,7 @@
                 "answer": "sign"
             },
             {
+                "id": "102",
                 "question": "<単語> 言語、言葉",
                 "options": [
                     "language",
@@ -1033,6 +1135,7 @@
                 "answer": "language"
             },
             {
+                "id": "103",
                 "question": "<単語> 敬具（2語）",
                 "options": [
                     "Sincerely yours",
@@ -1043,6 +1146,7 @@
                 "answer": "Sincerely yours"
             },
             {
+                "id": "104",
                 "question": "<単語> 返信、返答",
                 "options": [
                     "reply",
@@ -1053,6 +1157,7 @@
                 "answer": "reply"
             },
             {
+                "id": "105",
                 "question": "<単語> 主な",
                 "options": [
                     "main",
@@ -1063,6 +1168,7 @@
                 "answer": "main"
             },
             {
+                "id": "106",
                 "question": "<単語> 広く話されている",
                 "options": [
                     "widely-spoken",
@@ -1073,6 +1179,7 @@
                 "answer": "widely-spoken"
             },
             {
+                "id": "107",
                 "question": "<単語> 10億",
                 "options": [
                     "billion",
@@ -1083,6 +1190,7 @@
                 "answer": "billion"
             },
             {
+                "id": "108",
                 "question": "<単語> 州",
                 "options": [
                     "state",
@@ -1093,6 +1201,7 @@
                 "answer": "state"
             },
             {
+                "id": "109",
                 "question": "<単語> 民族の",
                 "options": [
                     "ethnic",
@@ -1103,6 +1212,7 @@
                 "answer": "ethnic"
             },
             {
+                "id": "110",
                 "question": "<単語> 集団",
                 "options": [
                     "group",
@@ -1113,6 +1223,7 @@
                 "answer": "group"
             },
             {
+                "id": "111",
                 "question": "<単語> 〜より多い（2語）",
                 "options": [
                     "more than",
@@ -1123,6 +1234,7 @@
                 "answer": "more than"
             },
             {
+                "id": "112",
                 "question": "<単語> 同じ",
                 "options": [
                     "same",
@@ -1133,6 +1245,7 @@
                 "answer": "same"
             },
             {
+                "id": "113",
                 "question": "<単語> 同時に（4語）",
                 "options": [
                     "at the same time",
@@ -1143,6 +1256,7 @@
                 "answer": "at the same time"
             },
             {
+                "id": "114",
                 "question": "<単語> 紙幣（2語）",
                 "options": [
                     "bank note",
@@ -1153,6 +1267,7 @@
                 "answer": "bank note"
             },
             {
+                "id": "115",
                 "question": "<単語> 地元の",
                 "options": [
                     "local",
@@ -1163,6 +1278,7 @@
                 "answer": "local"
             },
             {
+                "id": "116",
                 "question": "<単語> 両方",
                 "options": [
                     "both",
@@ -1173,6 +1289,7 @@
                 "answer": "both"
             },
             {
+                "id": "117",
                 "question": "<単語> 世話",
                 "options": [
                     "care",
@@ -1183,6 +1300,7 @@
                 "answer": "care"
             },
             {
+                "id": "118",
                 "question": "<単語> お元気で（2語）",
                 "options": [
                     "take care",
@@ -1198,6 +1316,7 @@
         "genre": "1-Lesson12-全書き",
         "list": [
             {
+                "id": "119",
                 "question": "<Keypoint> 次の文を英訳しなさい。 私はわたしの母と背が同じです。",
                 "options": [
                     "I am as tall as my mother.",
@@ -1208,6 +1327,7 @@
                 "answer": "I am as tall as my mother."
             },
             {
+                "id": "120",
                 "question": "<Keypoint> 次の文を英訳しなさい。 私の古い自転車は新しいものと同じ値段です。",
                 "options": [
                     "My old bicycle was as expensive as my new one.",
@@ -1218,6 +1338,7 @@
                 "answer": "My old bicycle was as expensive as my new one."
             },
             {
+                "id": "121",
                 "question": "<Keypoint> 次の文を英訳しなさい。 野球は私の国とあなたの国で同じくらい人気です。",
                 "options": [
                     "Baseball is as popular in my country as in your country.",
@@ -1228,6 +1349,7 @@
                 "answer": "Baseball is as popular in my country as in your country."
             },
             {
+                "id": "122",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ヨシキはロバートと同じくらい上手にサッカーをします。",
                 "options": [
                     "Yoshiki plays soccer as well as Robert.",
@@ -1238,6 +1360,7 @@
                 "answer": "Yoshiki plays soccer as well as Robert."
             },
             {
+                "id": "123",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ロバートは彼の母と同じくらい早く起きます。",
                 "options": [
                     "Robert gets up as early as his mother.",
@@ -1248,6 +1371,7 @@
                 "answer": "Robert gets up as early as his mother."
             },
             {
+                "id": "124",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ブラジルでは野球はサッカーほど人気ではないです。",
                 "options": [
                     "In Brazil baseball is not as popular as soccer.",
@@ -1258,6 +1382,7 @@
                 "answer": "In Brazil baseball is not as popular as soccer."
             },
             {
+                "id": "125",
                 "question": "<Keypoint> 次の文を英訳しなさい。 私たちのサッカーチームはあなたのものと同じくらいのプレーヤーを持っていません。",
                 "options": [
                     "Our soccer team doesn't have as many players as yours.",
@@ -1268,6 +1393,7 @@
                 "answer": "Our soccer team doesn't have as many players as yours."
             },
             {
+                "id": "126",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ケンはジョンと同じくらいたくさん練習をしていません。",
                 "options": [
                     "Ken doesn't practice baseball as hard as John does.",
@@ -1278,6 +1404,7 @@
                 "answer": "Ken doesn't practice baseball as hard as John does."
             },
             {
+                "id": "127",
                 "question": "<Keypoint> 次の文を英訳しなさい。 スミス先生は私の父より背が高いです。",
                 "options": [
                     "Mr. Smith is taller than my father.",
@@ -1288,6 +1415,7 @@
                 "answer": "Mr. Smith is taller than my father."
             },
             {
+                "id": "128",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ジョンの新しいパソコンは私のものより大きいです。",
                 "options": [
                     "John's new PC is bigger than mine.",
@@ -1298,6 +1426,7 @@
                 "answer": "John's new PC is bigger than mine."
             },
             {
+                "id": "129",
                 "question": "<Keypoint> 次の文を英訳しなさい。 この質問はあの質問より私には難しかった。",
                 "options": [
                     "This question was more difficult for me than that one.",
@@ -1308,6 +1437,7 @@
                 "answer": "This question was more difficult for me than that one."
             },
             {
+                "id": "130",
                 "question": "<Keypoint> 次の文を英訳しなさい。 マイクはジョンより早く走ります。",
                 "options": [
                     "Mike runs faster than John.",
@@ -1318,6 +1448,7 @@
                 "answer": "Mike runs faster than John."
             },
             {
+                "id": "131",
                 "question": "<Keypoint> 次の文を英訳しなさい。 もっと遅く話してください。",
                 "options": [
                     "Please speak more slowly.",
@@ -1328,6 +1459,7 @@
                 "answer": "Please speak more slowly."
             },
             {
+                "id": "132",
                 "question": "<Keypoint> 次の文を英訳しなさい。 富士山は日本で一番高い山です。",
                 "options": [
                     "Mt. Fuji is the highest mountain in Japan.",
@@ -1338,6 +1470,7 @@
                 "answer": "Mt. Fuji is the highest mountain in Japan."
             },
             {
+                "id": "133",
                 "question": "<Keypoint> 次の文を英訳しなさい。 東京は日本の全ての都市の中で一番大きいです。",
                 "options": [
                     "Tokyo is the largest of all city in Japan.",
@@ -1348,6 +1481,7 @@
                 "answer": "Tokyo is the largest of all city in Japan."
             },
             {
+                "id": "134",
                 "question": "<Keypoint> 次の文を英訳しなさい。 パリは世界で旅行者に最も人気な都市です。",
                 "options": [
                     "Paris is the most popular city in the world for tourists.",
@@ -1358,6 +1492,7 @@
                 "answer": "Paris is the most popular city in the world for tourists."
             },
             {
+                "id": "135",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ケンは最初のバスに乗って一番早く学校に着きます。",
                 "options": [
                     "Ken takes the first bus and arrives earliest in the class.",
@@ -1368,6 +1503,7 @@
                 "answer": "Ken takes the first bus and arrives earliest in the class."
             },
             {
+                "id": "136",
                 "question": "<Keypoint> 次の文を英訳しなさい。 ヨウコは5人の中で最も先生の話を聞いていました。",
                 "options": [
                     "Yoko listened to the teacher most carefully of the five.",
@@ -1378,6 +1514,7 @@
                 "answer": "Yoko listened to the teacher most carefully of the five."
             },
             {
+                "id": "137",
                 "question": "<Keypoint> 次の文を英訳しなさい。 マイクはビルより上手にバスケットボールをします。",
                 "options": [
                     "Mike plays basketball better than Bill does.",
@@ -1388,6 +1525,7 @@
                 "answer": "Mike plays basketball better than Bill does."
             },
             {
+                "id": "138",
                 "question": "<Keypoint> 次の文を英訳しなさい。 そのスコアは歴史上一番悪かったです。",
                 "options": [
                     "The score in the game was the worst in history.",
@@ -1398,6 +1536,7 @@
                 "answer": "The score in the game was the worst in history."
             },
             {
+                "id": "139",
                 "question": "<Keypoint> 次の文を英訳しなさい。 マイクはたくさんのゲームを私たちのチームより多く楽しみました。",
                 "options": [
                     "Mike enjoyed the game most in our team.",
@@ -1408,6 +1547,7 @@
                 "answer": "Mike enjoyed the game most in our team."
             },
             {
+                "id": "140",
                 "question": "<Keypoint> 次の文を英訳しなさい。 マイクは私たちのチームメイトの中で一番上手なバスケットボールプレーヤーです。",
                 "options": [
                     "Mike is the best basketball player of our teammates.",
@@ -1418,6 +1558,7 @@
                 "answer": "Mike is the best basketball player of our teammates."
             },
             {
+                "id": "141",
                 "question": "<Keypoint> 次の文を英訳しなさい。 図書館と体育館ではどちらの方が古いですか？",
                 "options": [
                     "Which is older, the library or the gym?",
@@ -1428,6 +1569,7 @@
                 "answer": "Which is older, the library or the gym?"
             },
             {
+                "id": "142",
                 "question": "<Keypoint> 次の文を英訳しなさい。 図書館です。",
                 "options": [
                     "The library is.",
@@ -1438,6 +1580,7 @@
                 "answer": "The library is."
             },
             {
+                "id": "143",
                 "question": "<Keypoint> 次の文を英訳しなさい。 あなたの兄(弟)とトムの兄(弟)ではどちらが若いですか？",
                 "options": [
                     "Who is younger, your brother or Tom's brother?",
@@ -1448,6 +1591,7 @@
                 "answer": "Who is younger, your brother or Tom's brother?"
             },
             {
+                "id": "144",
                 "question": "<Keypoint> 次の文を英訳しなさい。 私の兄(弟)です。",
                 "options": [
                     "My brother is.",
@@ -1458,6 +1602,7 @@
                 "answer": "My brother is."
             },
             {
+                "id": "145",
                 "question": "<Keypoint> 次の文を英訳しなさい。 あなたの学校で最も有名なクラブはどれですか？",
                 "options": [
                     "Which is the most popular club in your school?",
@@ -1468,6 +1613,7 @@
                 "answer": "Which is the most popular club in your school?"
             },
             {
+                "id": "146",
                 "question": "<Keypoint> 次の文を英訳しなさい。 テニスクラブです。",
                 "options": [
                     "The tennis club is.",
@@ -1478,6 +1624,7 @@
                 "answer": "The tennis club is."
             },
             {
+                "id": "147",
                 "question": "<Keypoint> 次の文を英訳しなさい。 あなたのクラスで最も背が高い生徒は誰ですか？",
                 "options": [
                     "Who is the tallest student in your class?",
@@ -1488,6 +1635,7 @@
                 "answer": "Who is the tallest student in your class?"
             },
             {
+                "id": "148",
                 "question": "<Keypoint> 次の文を英訳しなさい。 トムです。",
                 "options": [
                     "Tom is.",
@@ -1498,6 +1646,7 @@
                 "answer": "Tom is."
             },
             {
+                "id": "149",
                 "question": "<Keypoint> 次の文を英訳しなさい。 4人の中で一番早く泳ぐのは誰ですか？",
                 "options": [
                     "Who swims fastest of the four?",
@@ -1508,6 +1657,7 @@
                 "answer": "Who swims fastest of the four?"
             },
             {
+                "id": "150",
                 "question": "<Keypoint> 次の文を英訳しなさい。 アンです。",
                 "options": [
                     "Ann does.",
@@ -1518,6 +1668,7 @@
                 "answer": "Ann does."
             },
             {
+                "id": "151",
                 "question": "<Keypoint> 次の文を英訳しなさい。 歴史と数学だったらどちらの方が好きですか？",
                 "options": [
                     "Which do youl like better, history or math?",
@@ -1528,6 +1679,7 @@
                 "answer": "Which do youl like better, history or math?"
             },
             {
+                "id": "152",
                 "question": "<Keypoint> 次の文を英訳しなさい。 歴史のほうが好きです。",
                 "options": [
                     "I like history better.",
@@ -1538,6 +1690,7 @@
                 "answer": "I like history better."
             },
             {
+                "id": "153",
                 "question": "<Keypoint> 次の文を英訳しなさい。 どの教科が一番好きですか？",
                 "options": [
                     "Which subject do you like best?",
@@ -1548,6 +1701,7 @@
                 "answer": "Which subject do you like best?"
             },
             {
+                "id": "154",
                 "question": "<Keypoint> 次の文を英訳しなさい。 体育が一番好きです。",
                 "options": [
                     "I like P.E. best.",
@@ -1558,6 +1712,7 @@
                 "answer": "I like P.E. best."
             },
             {
+                "id": "155",
                 "question": "<Keypoint> 次の文を英訳しなさい。 なんのスポーツが一番好きですか？",
                 "options": [
                     "What sport do you like best?",
@@ -1568,6 +1723,7 @@
                 "answer": "What sport do you like best?"
             },
             {
+                "id": "156",
                 "question": "<Keypoint> 次の文を英訳しなさい。 バスケットボールが一番好きです。",
                 "options": [
                     "I like basketball best.",
@@ -1578,6 +1734,7 @@
                 "answer": "I like basketball best."
             },
             {
+                "id": "157",
                 "question": "<本文> 次の文を英訳しなさい。 ここは熱帯雨林エリアです。",
                 "options": [
                     "Here is the rainforest area.",
@@ -1588,6 +1745,7 @@
                 "answer": "Here is the rainforest area."
             },
             {
+                "id": "158",
                 "question": "<本文> 次の文を英訳しなさい。 このエリアは水族館と同じくらい人気です。",
                 "options": [
                     "This area is as popular as the aquarium.",
@@ -1598,6 +1756,7 @@
                 "answer": "This area is as popular as the aquarium."
             },
             {
+                "id": "159",
                 "question": "<本文> 次の文を英訳しなさい。 中へ行きましょう。",
                 "options": [
                     "Let's go inside.",
@@ -1608,6 +1767,7 @@
                 "answer": "Let's go inside."
             },
             {
+                "id": "160",
                 "question": "<本文> 次の文を英訳しなさい。 あっ、中は暑いです。",
                 "options": [
                     "Oh, it's very hot inside.",
@@ -1618,6 +1778,7 @@
                 "answer": "Oh, it's very hot inside."
             },
             {
+                "id": "161",
                 "question": "<本文> 次の文を英訳しなさい。 はい。ここは本物の南アメリカの熱帯雨林と同じくらいの暑さになっています。",
                 "options": [
                     "Yes, it is. It's as hot as the real rainforest in South America.",
@@ -1628,6 +1789,7 @@
                 "answer": "Yes, it is. It's as hot as the real rainforest in South America."
             },
             {
+                "id": "162",
                 "question": "<本文> 次の文を英訳しなさい。 見て！ここに色とりどりなチョウがいる！",
                 "options": [
                     "Look! There are colorful butterflies here!",
@@ -1638,6 +1800,7 @@
                 "answer": "Look! There are colorful butterflies here!"
             },
             {
+                "id": "163",
                 "question": "<本文> 次の文を英訳しなさい。 きれいな鳥もいるよ。",
                 "options": [
                     "There are beautiful birds, too.",
@@ -1648,6 +1811,7 @@
                 "answer": "There are beautiful birds, too."
             },
             {
+                "id": "164",
                 "question": "<本文> 次の文を英訳しなさい。 はい、私たちはたくさんの鳥と同じくらいのチョウをこのエリアに持っています。",
                 "options": [
                     "Yes, we have as many birds as butterflies in this area.",
@@ -1658,6 +1822,7 @@
                 "answer": "Yes, we have as many birds as butterflies in this area."
             },
             {
+                "id": "165",
                 "question": "<本文> 次の文を英訳しなさい。 私たちはヘビとカエルの仲間をここのエリアに持っています。",
                 "options": [
                     "We have many kinds of snakes and frogs in this area.",
@@ -1668,6 +1833,7 @@
                 "answer": "We have many kinds of snakes and frogs in this area."
             },
             {
+                "id": "166",
                 "question": "<本文> 次の文を英訳しなさい。 私はこれらの黄色いカエルが好きです。彼らはかわいいです。",
                 "options": [
                     "I like these yellow frogs. They're cute.",
@@ -1678,6 +1844,7 @@
                 "answer": "I like these yellow frogs. They're cute."
             },
             {
+                "id": "167",
                 "question": "<本文> 次の文を英訳しなさい。 見て。あれらのカエルはこれらよりもっと色鮮やかだよ。",
                 "options": [
                     "Look. Those frogs are more colorful than these.",
@@ -1688,6 +1855,7 @@
                 "answer": "Look. Those frogs are more colorful than these."
             },
             {
+                "id": "168",
                 "question": "<本文> 次の文を英訳しなさい。 それらはきれいですが、色鮮やかなカエルは強い毒を持っていることがあります。",
                 "options": [
                     "They are beautiful, but some colorful frogs have storong poison.",
@@ -1698,6 +1866,7 @@
                 "answer": "They are beautiful, but some colorful frogs have storong poison."
             },
             {
+                "id": "169",
                 "question": "<本文> 次の文を英訳しなさい。 次はヘビのセクションです。",
                 "options": [
                     "Next is the snake section.",
@@ -1708,6 +1877,7 @@
                 "answer": "Next is the snake section."
             },
             {
+                "id": "170",
                 "question": "<本文> 次の文を英訳しなさい。 私には帰るよりヘビのほうが危険です。",
                 "options": [
                     "To me, snakes are more dangerous than frogs.",
@@ -1718,6 +1888,7 @@
                 "answer": "To me, snakes are more dangerous than frogs."
             },
             {
+                "id": "171",
                 "question": "<本文> 次の文を英訳しなさい。 トム、もっとゆっくり歩いて。ヘビが怖いの？",
                 "options": [
                     "Tom, walk more slowly. Are you afraid of snakes?",
@@ -1728,6 +1899,7 @@
                 "answer": "Tom, walk more slowly. Are you afraid of snakes?"
             },
             {
+                "id": "172",
                 "question": "<本文> 次の文を英訳しなさい。 そうでもないよ。このヘビはそんなに長くない。",
                 "options": [
                     "Not, really. This snake is not so long.",
@@ -1738,6 +1910,7 @@
                 "answer": "Not, really. This snake is not so long."
             },
             {
+                "id": "173",
                 "question": "<本文> 次の文を英訳しなさい。 これはどう？このオレンジ色のヘビは青のものより長いです。",
                 "options": [
                     "How about this? This orange snake is longer than the blue one.",
@@ -1748,6 +1921,7 @@
                 "answer": "How about this? This orange snake is longer than the blue one."
             },
             {
+                "id": "174",
                 "question": "<本文> 次の文を英訳しなさい。 私たちは校外学習でゴールデン・ゲート・パークに行きました。",
                 "options": [
                     "We went on a field trip to Golden Gate Park.",
@@ -1758,6 +1932,7 @@
                 "answer": "We went on a field trip to Golden Gate Park."
             },
             {
+                "id": "175",
                 "question": "<本文> 次の文を英訳しなさい。 私たちは公園内のカリフォルニア科学アカデミーを訪れました。",
                 "options": [
                     "We visited the California Academy of Sciences in the park.",
@@ -1768,6 +1943,7 @@
                 "answer": "We visited the California Academy of Sciences in the park."
             },
             {
+                "id": "176",
                 "question": "<本文> 次の文を英訳しなさい。 博物館：博物館は公園内で最も人気です。",
                 "options": [
                     "Museum : This museum is the most popular in the park.",
@@ -1778,6 +1954,7 @@
                 "answer": "Museum : This museum is the most popular in the park."
             },
             {
+                "id": "177",
                 "question": "<本文> 次の文を英訳しなさい。 大体120万人の人が毎年博物館を訪れます。",
                 "options": [
                     "About 1.2 million people visit the museum every year.",
@@ -1788,6 +1965,7 @@
                 "answer": "About 1.2 million people visit the museum every year."
             },
             {
+                "id": "178",
                 "question": "<本文> 次の文を英訳しなさい。 歴史：これはカリフォルニアで最も古い博物館です。",
                 "options": [
                     "History : It is the oldest museum in California.",
@@ -1798,6 +1976,7 @@
                 "answer": "History : It is the oldest museum in California."
             },
             {
+                "id": "179",
                 "question": "<本文> 次の文を英訳しなさい。 博物館は1853年に開館しました。",
                 "options": [
                     "The museum opened in 1853.",
@@ -1808,6 +1987,7 @@
                 "answer": "The museum opened in 1853."
             },
             {
+                "id": "180",
                 "question": "<本文> 次の文を英訳しなさい。 展示： 館内の水族館、熱帯雨林エリア、プラネタリウム、自然史博物館を見学しました。",
                 "options": [
                     "Exhibits : We visited the aquarium, the rainforest area, the planetarium and the natural history museum in the building.",
@@ -1818,6 +1998,7 @@
                 "answer": "Exhibits : We visited the aquarium, the rainforest area, the planetarium and the natural history museum in the building."
             },
             {
+                "id": "181",
                 "question": "<本文> 次の文を英訳しなさい。 私は熱帯雨林エリアが一番好きでした。",
                 "options": [
                     "I liked the rainforest area the best.",
@@ -1828,6 +2009,7 @@
                 "answer": "I liked the rainforest area the best."
             },
             {
+                "id": "182",
                 "question": "<本文> 次の文を英訳しなさい。 この博物館はとても大きいです。",
                 "options": [
                     "The museum is so big.",
@@ -1838,6 +2020,7 @@
                 "answer": "The museum is so big."
             },
             {
+                "id": "183",
                 "question": "<本文> 次の文を英訳しなさい。 公園内の他のエリアも大きかったです。",
                 "options": [
                     "Each area of the park was big.",
@@ -1848,6 +2031,7 @@
                 "answer": "Each area of the park was big."
             },
             {
+                "id": "184",
                 "question": "<本文> 次の文を英訳しなさい。 水族館とプラネタリウムではどちらの方が大きいですか？",
                 "options": [
                     "Which is larger, the aquarium or the planetarium?",
@@ -1858,6 +2042,7 @@
                 "answer": "Which is larger, the aquarium or the planetarium?"
             },
             {
+                "id": "185",
                 "question": "<本文> 次の文を英訳しなさい。 水族館です。",
                 "options": [
                     "The aquarium is.",
@@ -1868,6 +2053,7 @@
                 "answer": "The aquarium is."
             },
             {
+                "id": "186",
                 "question": "<本文> 次の文を英訳しなさい。 公園内でどのエリアが一番好きでしたか？",
                 "options": [
                     "Which area of the park did you like the best?",
@@ -1878,6 +2064,7 @@
                 "answer": "Which area of the park did you like the best?"
             },
             {
+                "id": "187",
                 "question": "<本文> 次の文を英訳しなさい。 私は熱帯雨林エリアを一番楽しみました。",
                 "options": [
                     "I enjoyed the rainforest area the most.",
@@ -1888,6 +2075,7 @@
                 "answer": "I enjoyed the rainforest area the most."
             },
             {
+                "id": "188",
                 "question": "<本文> 次の文を英訳しなさい。 チョウが大好きです。",
                 "options": [
                     "I loved the butterflies.",
@@ -1898,6 +2086,7 @@
                 "answer": "I loved the butterflies."
             },
             {
+                "id": "189",
                 "question": "<本文> 次の文を英訳しなさい。 私は水族館が一番好きでした。",
                 "options": [
                     "I liked the aquarium the best.",
@@ -1908,6 +2097,7 @@
                 "answer": "I liked the aquarium the best."
             },
             {
+                "id": "190",
                 "question": "<本文> 次の文を英訳しなさい。 とてもきれいで、ペンギンたちはかわいかったです。あなたはどう？ユミ。",
                 "options": [
                     "It was beautiful, and the penguins were cute. How about you, Yumi?",
@@ -1918,6 +2108,7 @@
                 "answer": "It was beautiful, and the penguins were cute. How about you, Yumi?"
             },
             {
+                "id": "191",
                 "question": "<本文> 次の文を英訳しなさい。 えーと、私は熱帯雨林エリアが一番好きでした。",
                 "options": [
                     "Well, I liked the rainforest the best.",
@@ -1928,6 +2119,7 @@
                 "answer": "Well, I liked the rainforest the best."
             },
             {
+                "id": "192",
                 "question": "<本文> 次の文を英訳しなさい。 白いワニはかっこよかったです。",
                 "options": [
                     "The white alligator was cool.",
@@ -1943,6 +2135,7 @@
         "genre": "2-Lesson1",
         "list": [
             {
+                "id": "193",
                 "question": "<Keypoint> Janet's father is from Spain, ( ) her mother is from America. ( )に入るのは？",
                 "options": [
                     "and",
@@ -1953,6 +2146,7 @@
                 "answer": "and"
             },
             {
+                "id": "194",
                 "question": "<Keypoint> Janet can sing very well, ( ) she's very shy. ( )に入るのは？",
                 "options": [
                     "but",
@@ -1963,6 +2157,7 @@
                 "answer": "but"
             },
             {
+                "id": "195",
                 "question": "<Keypoint> Does she speak Spanish ( ) English? ( )に入るのは？",
                 "options": [
                     "or",
@@ -1973,6 +2168,7 @@
                 "answer": "or"
             },
             {
+                "id": "196",
                 "question": "<Keypoint> Get up now, ( ) you'll be in time for school. ( )に入るのは？",
                 "options": [
                     "and",
@@ -1983,6 +2179,7 @@
                 "answer": "and"
             },
             {
+                "id": "197",
                 "question": "<Keypoint> Get up now, and you'll ( ) in time for school. ( )に入るのは？",
                 "options": [
                     "be",
@@ -1993,6 +2190,7 @@
                 "answer": "be"
             },
             {
+                "id": "198",
                 "question": "2語以上の語が集まってできる意味のまとまりのうち、主語＋動詞の形を含むものを何と言う？",
                 "options": [
                     "節",
@@ -2003,6 +2201,7 @@
                 "answer": "節"
             },
             {
+                "id": "199",
                 "question": "2語以上の語が集まってできる意味のまとまりのうち、主語＋動詞の形を含まないものを何と言う？",
                 "options": [
                     "句",
@@ -2013,6 +2212,7 @@
                 "answer": "句"
             },
             {
+                "id": "200",
                 "question": "トラッキーは阪神が好きで、キー太も阪神が好きだ。 これを英語に直すとき、接続詞のうち最も最適なものはどれ？",
                 "options": [
                     "and",
@@ -2023,6 +2223,7 @@
                 "answer": "and"
             },
             {
+                "id": "201",
                 "question": "トラッキーは阪神が好きだが、ジャビットは巨人が好きだ。 これを英語に直すとき、接続詞のうち最も最適なものはどれ？",
                 "options": [
                     "but",
@@ -2033,6 +2234,7 @@
                 "answer": "but"
             },
             {
+                "id": "202",
                 "question": "トラッキーは阪神とタイガースのどちらが好きですか？ これを英語に直すとき、接続詞のうち最も最適なものはどれ？",
                 "options": [
                     "or",
@@ -2043,6 +2245,7 @@
                 "answer": "or"
             },
             {
+                "id": "203",
                 "question": "☆応用　次のうち等位接続詞を選びなさい。",
                 "options": [
                     "for",
@@ -2053,6 +2256,7 @@
                 "answer": "for"
             },
             {
+                "id": "204",
                 "question": "命令文,  and ~ の意味は、〜しなさい、( )… である。( )に入るのは？",
                 "options": [
                     "そうすれば",
@@ -2063,6 +2267,7 @@
                 "answer": "そうすれば"
             },
             {
+                "id": "205",
                 "question": "命令文,  or ~ の意味は、〜しなさい、( )… である。( )に入るのは？",
                 "options": [
                     "そうしないと",
@@ -2073,6 +2278,7 @@
                 "answer": "そうしないと"
             },
             {
+                "id": "206",
                 "question": "<Keypoint> ( ) my sister was born, I was fove years old. ( )に入るのは？",
                 "options": [
                     "When",
@@ -2083,6 +2289,7 @@
                 "answer": "When"
             },
             {
+                "id": "207",
                 "question": "<Keypoint> I was very happy ( ) I met my new sister. ( )に入るのは？",
                 "options": [
                     "when",
@@ -2093,6 +2300,7 @@
                 "answer": "when"
             },
             {
+                "id": "208",
                 "question": "<Keypoint> I ( ) very happy when I met my new sister. ( )に入るのは？",
                 "options": [
                     "was",
@@ -2103,6 +2311,7 @@
                 "answer": "was"
             },
             {
+                "id": "209",
                 "question": "<Keypoint> ( ) my sister was witching TV, I finished my homework. ( )に入るのは？",
                 "options": [
                     "While",
@@ -2113,6 +2322,7 @@
                 "answer": "While"
             },
             {
+                "id": "210",
                 "question": "<Keypoint> I looked after my brothers ( ) my parents were not at home. ( )に入るのは？",
                 "options": [
                     "while",
@@ -2123,6 +2333,7 @@
                 "answer": "while"
             },
             {
+                "id": "211",
                 "question": "<Keypoint> ( ) I finished the test, I played with my friends in the schoolyard. ( )に入るのは？",
                 "options": [
                     "After",
@@ -2133,6 +2344,7 @@
                 "answer": "After"
             },
             {
+                "id": "212",
                 "question": "<Keypoint> After I finished the test, I played ( ) my friends in the schoolyard. ( )に入るのは？",
                 "options": [
                     "with",
@@ -2143,6 +2355,7 @@
                 "answer": "with"
             },
             {
+                "id": "213",
                 "question": "<Keypoint> I bought some flowers ( ) I went to Mary's birthday party. ( )に入るのは？",
                 "options": [
                     "before",
@@ -2153,6 +2366,7 @@
                 "answer": "before"
             },
             {
+                "id": "214",
                 "question": "<Keypoint> Look up at the sky. ( ) beautiful the raindow is! ( )に入るのは？",
                 "options": [
                     "How",
@@ -2163,6 +2377,7 @@
                 "answer": "How"
             },
             {
+                "id": "215",
                 "question": "<Keypoint> I waved to Emi, but she ignored me. ( ) rude she was! ( )に入るのは？",
                 "options": [
                     "How",
@@ -2173,6 +2388,7 @@
                 "answer": "How"
             },
             {
+                "id": "216",
                 "question": "<Keypoint> Look at the puppy. ( ) fast it runs!  ( )に入るのは？",
                 "options": [
                     "How",
@@ -2183,6 +2399,7 @@
                 "answer": "How"
             },
             {
+                "id": "217",
                 "question": "<Keypoint> ( ) a difficult test that was! I must study harder. ( )に入るのは？",
                 "options": [
                     "What",
@@ -2193,6 +2410,7 @@
                 "answer": "What"
             },
             {
+                "id": "218",
                 "question": "<Keypoint> What a difficult test that was! I must study ( ). ( )に入るのは？",
                 "options": [
                     "harder",
@@ -2203,6 +2421,7 @@
                 "answer": "harder"
             },
             {
+                "id": "219",
                 "question": "<Keypoint> ( ) interesting idea you have! Explain it to the class. ( )に入るのは？（2語）",
                 "options": [
                     "What an",
@@ -2213,6 +2432,7 @@
                 "answer": "What an"
             },
             {
+                "id": "220",
                 "question": "<Keypoint> ( ) rules they are! I'm going to leave the club. ( )に入るのは？（2語）",
                 "options": [
                     "What unfair",
@@ -2223,6 +2443,7 @@
                 "answer": "What unfair"
             },
             {
+                "id": "221",
                 "question": "<Keypoint> My brother always helps me with my homework. ── ( )! / What a kind brother! ( )に入るのは？（2語）",
                 "options": [
                     "How kind",
@@ -2233,6 +2454,7 @@
                 "answer": "How kind"
             },
             {
+                "id": "222",
                 "question": "<Keypoint> My brother always helps me with my homework. ── How kind! / ( ) brother! ( )に入るのは？（3語）",
                 "options": [
                     "What a kind",
@@ -2243,6 +2465,7 @@
                 "answer": "What a kind"
             },
             {
+                "id": "223",
                 "question": "<Read> My name is Cecile Fontaine, ( ) I'm from France. ( )に入るのは？",
                 "options": [
                     "and",
@@ -2253,6 +2476,7 @@
                 "answer": "and"
             },
             {
+                "id": "224",
                 "question": "<Read> I am a ( ) the manga club at school. ( )に入るのは？（2語）",
                 "options": [
                     "member of",
@@ -2263,6 +2487,7 @@
                 "answer": "member of"
             },
             {
+                "id": "225",
                 "question": "<Read> Through manga, we can learn many things about Japan ( ) culture. ( )に入るのは？（2語）",
                 "options": [
                     "and its",
@@ -2273,6 +2498,7 @@
                 "answer": "and its"
             },
             {
+                "id": "226",
                 "question": "<Read> ( ), I first saw a Japanese temple in a manga. ( )に入るのは？（2語）",
                 "options": [
                     "For example",
@@ -2283,6 +2509,7 @@
                 "answer": "For example"
             },
             {
+                "id": "227",
                 "question": "<Read> ( ), I saw the temple on TV, too. ( )に入るのは？",
                 "options": [
                     "Later",
@@ -2293,6 +2520,7 @@
                 "answer": "Later"
             },
             {
+                "id": "228",
                 "question": "<Read> Manga are very popular ( ) France. ( )に入るのは？",
                 "options": [
                     "in",
@@ -2303,6 +2531,7 @@
                 "answer": "in"
             },
             {
+                "id": "229",
                 "question": "<Read> Every year, there is a big event ( ) Japan, Japan Expo, in Paris. ( )に入るのは？",
                 "options": [
                     "about",
@@ -2313,6 +2542,7 @@
                 "answer": "about"
             },
             {
+                "id": "230",
                 "question": "<Read> The event introduces not only manga, ( ) also other aspects of Japanese culture such as games, music, fashion ( ) traditional arts. ( )に入るのは？（カンマで区切って2語）",
                 "options": [
                     "but, and",
@@ -2323,6 +2553,7 @@
                 "answer": "but, and"
             },
             {
+                "id": "231",
                 "question": "<Read> I ( ) visit the event with my friends this year. ( )に入るのは？",
                 "options": [
                     "will",
@@ -2333,6 +2564,7 @@
                 "answer": "will"
             },
             {
+                "id": "232",
                 "question": "<Read> I am ( ) a Japanese class this year. ( )に入るのは？",
                 "options": [
                     "taking",
@@ -2343,6 +2575,7 @@
                 "answer": "taking"
             },
             {
+                "id": "233",
                 "question": "<Read> Like me, many French people are ( ) in Japan now. ( )に入るのは？",
                 "options": [
                     "interested",
@@ -2353,6 +2586,7 @@
                 "answer": "interested"
             },
             {
+                "id": "234",
                 "question": "<Read> Japanese is very difficult for me, ( ) I study hard. ( )に入るのは？",
                 "options": [
                     "so",
@@ -2363,6 +2597,7 @@
                 "answer": "so"
             },
             {
+                "id": "235",
                 "question": "<Read> They are English, Chinese, Malay ( ) Tamil. ( )に入るのは？",
                 "options": [
                     "and",
@@ -2373,6 +2608,7 @@
                 "answer": "and"
             },
             {
+                "id": "236",
                 "question": "<Read> My native language is Chinese, so I study ( ) English ( ) Chinese. ( )に入るのは？（カンマで区切って2語）",
                 "options": [
                     "both, and",
@@ -2383,6 +2619,7 @@
                 "answer": "both, and"
             },
             {
+                "id": "237",
                 "question": "<Read> We use computers in many classes, ( ) math, science, and foreign languages. ( )に入るのは？",
                 "options": [
                     "such as",
@@ -2393,6 +2630,7 @@
                 "answer": "such as"
             },
             {
+                "id": "238",
                 "question": "<Read> The teacher said, \"( ) excellent presentation it was!\" ( )に入るのは？",
                 "options": [
                     "What an",
@@ -2408,6 +2646,7 @@
         "genre": "過去形",
         "list": [
             {
+                "id": "239",
                 "question": "beの過去形は？",
                 "options": [
                     "was",
@@ -2418,6 +2657,7 @@
                 "answer": "was"
             },
             {
+                "id": "240",
                 "question": "becomeの過去形は？",
                 "options": [
                     "became",
@@ -2428,6 +2668,7 @@
                 "answer": "became"
             },
             {
+                "id": "241",
                 "question": "beginの過去形は？",
                 "options": [
                     "began",
@@ -2438,6 +2679,7 @@
                 "answer": "began"
             },
             {
+                "id": "242",
                 "question": "breakの過去形は？",
                 "options": [
                     "broke",
@@ -2448,6 +2690,7 @@
                 "answer": "broke"
             },
             {
+                "id": "243",
                 "question": "catchの過去形は？",
                 "options": [
                     "caught",
@@ -2458,6 +2701,7 @@
                 "answer": "caught"
             },
             {
+                "id": "244",
                 "question": "chooseの過去形は？",
                 "options": [
                     "chose",
@@ -2468,6 +2712,7 @@
                 "answer": "chose"
             },
             {
+                "id": "245",
                 "question": "comeの過去形は？",
                 "options": [
                     "came",
@@ -2478,6 +2723,7 @@
                 "answer": "came"
             },
             {
+                "id": "246",
                 "question": "doの過去形は？",
                 "options": [
                     "did",
@@ -2488,6 +2734,7 @@
                 "answer": "did"
             },
             {
+                "id": "247",
                 "question": "drinkの過去形は？",
                 "options": [
                     "drank",
@@ -2498,6 +2745,7 @@
                 "answer": "drank"
             },
             {
+                "id": "248",
                 "question": "driveの過去形は？",
                 "options": [
                     "drove",
@@ -2508,6 +2756,7 @@
                 "answer": "drove"
             },
             {
+                "id": "249",
                 "question": "eatの過去形は？",
                 "options": [
                     "ate",
@@ -2518,6 +2767,7 @@
                 "answer": "ate"
             },
             {
+                "id": "250",
                 "question": "findの過去形は？",
                 "options": [
                     "found",
@@ -2528,6 +2778,7 @@
                 "answer": "found"
             },
             {
+                "id": "251",
                 "question": "flyの過去形は？",
                 "options": [
                     "flew",
@@ -2538,6 +2789,7 @@
                 "answer": "flew"
             },
             {
+                "id": "252",
                 "question": "getの過去形は？",
                 "options": [
                     "got",
@@ -2548,6 +2800,7 @@
                 "answer": "got"
             },
             {
+                "id": "253",
                 "question": "giveの過去形は？",
                 "options": [
                     "gave",
@@ -2558,6 +2811,7 @@
                 "answer": "gave"
             },
             {
+                "id": "254",
                 "question": "goの過去形は？",
                 "options": [
                     "went",
@@ -2568,6 +2822,7 @@
                 "answer": "went"
             },
             {
+                "id": "255",
                 "question": "haveの過去形は？",
                 "options": [
                     "had",
@@ -2578,6 +2833,7 @@
                 "answer": "had"
             },
             {
+                "id": "256",
                 "question": "knowの過去形は？",
                 "options": [
                     "knew",
@@ -2588,6 +2844,7 @@
                 "answer": "knew"
             },
             {
+                "id": "257",
                 "question": "loseの過去形は？",
                 "options": [
                     "lost",
@@ -2598,6 +2855,7 @@
                 "answer": "lost"
             },
             {
+                "id": "258",
                 "question": "makeの過去形は？",
                 "options": [
                     "made",
@@ -2608,6 +2866,7 @@
                 "answer": "made"
             },
             {
+                "id": "259",
                 "question": "meetの過去形は？",
                 "options": [
                     "met",
@@ -2618,6 +2877,7 @@
                 "answer": "met"
             },
             {
+                "id": "260",
                 "question": "readの過去形は？",
                 "options": [
                     "read",
@@ -2628,6 +2888,7 @@
                 "answer": "read"
             },
             {
+                "id": "261",
                 "question": "runの過去形は？",
                 "options": [
                     "ran",
@@ -2638,6 +2899,7 @@
                 "answer": "ran"
             },
             {
+                "id": "262",
                 "question": "sayの過去形は？",
                 "options": [
                     "said",
@@ -2648,6 +2910,7 @@
                 "answer": "said"
             },
             {
+                "id": "263",
                 "question": "seeの過去形は？",
                 "options": [
                     "saw",
@@ -2658,6 +2921,7 @@
                 "answer": "saw"
             },
             {
+                "id": "264",
                 "question": "singの過去形は？",
                 "options": [
                     "sang",
@@ -2668,6 +2932,7 @@
                 "answer": "sang"
             },
             {
+                "id": "265",
                 "question": "speakの過去形は？",
                 "options": [
                     "spoke",
@@ -2678,6 +2943,7 @@
                 "answer": "spoke"
             },
             {
+                "id": "266",
                 "question": "takeの過去形は？",
                 "options": [
                     "took",
@@ -2688,6 +2954,7 @@
                 "answer": "took"
             },
             {
+                "id": "267",
                 "question": "tellの過去形は？",
                 "options": [
                     "told",
@@ -2698,6 +2965,7 @@
                 "answer": "told"
             },
             {
+                "id": "268",
                 "question": "thinkの過去形は？",
                 "options": [
                     "thought",
@@ -2708,6 +2976,7 @@
                 "answer": "thought"
             },
             {
+                "id": "269",
                 "question": "writeの過去形は？",
                 "options": [
                     "wrote",
@@ -2723,6 +2992,7 @@
         "genre": "未来形",
         "list": [
             {
+                "id": "270",
                 "question": "willは何詞？",
                 "options": [
                     "副詞",
@@ -2733,6 +3003,7 @@
                 "answer": "副詞"
             },
             {
+                "id": "271",
                 "question": "willの否定形は？",
                 "options": [
                     "wiln't",
@@ -2740,9 +3011,10 @@
                     "won't",
                     "willnot"
                 ],
-                "answer": "won't"
+                "answer": "wiln't"
             },
             {
+                "id": "272",
                 "question": "be going toの意味は？",
                 "options": [
                     "〜する予定",
