@@ -279,40 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </li>
             `;
             question.appendChild(subMenu);
-        } else if (page === 'ポチ問！') {
-            subMenu.innerHTML = `
-                <li>
-                    <a href="/two-grade-website/quiz/english/">
-                        英語
-                    </a>
-                </li>
-                <li>
-                    <a href="/two-grade-website/quiz/math/">
-                        数学
-                    </a>
-                </li>
-                <li>
-                    <a href="/two-grade-website/quiz/japanese/">
-                        国語
-                    </a>
-                </li>
-                <li>
-                    <a href="/two-grade-website/quiz/science/">
-                        理科
-                    </a>
-                </li>
-                <li>
-                    <a href="/two-grade-website/quiz/social_study/">
-                        社会
-                    </a>
-                </li>
-                <li>
-                    <a href="/two-grade-website/quiz/etc/">
-                        その他
-                    </a>
-                </li>
-            `;
-            quiz.appendChild(subMenu);
         }
     }
 
