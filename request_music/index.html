@@ -129,7 +129,7 @@
                 return;
             }
 
-            if (!url.includes('watch?v=') || !url.includes('youtu.be/')) {
+            if (!(url.includes('watch?v=') || url.includes('youtu.be/'))) {
                 alert("正しく入力してください");
                 return;
             }
