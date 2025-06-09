@@ -51,7 +51,24 @@
     <main>
         <h1>リクエスト曲一覧</h1>
         <section>
-            <h2>ページ概要</h2>
+            <h2>曲応募</h2>
+            <form id="sendRequest">
+                <label for="music-name">曲名: </label><input type="text" name="music-name" id="musicName"><br>
+                <label for="url">曲のURL: </label><input type="url" name="url" id="musicUrl"><br>
+                <label for="description">おすすめポイントなど(空欄でもOK): </label><input type="text" name="description"
+                    id="description"><br>
+                <input type="submit" value="送信">
+            </form>
+        </section>
+        <section>
+            <h2>今日流す予定の曲</h2>
+            <div id="container">
+                <p id="openMusic">▼ ネタバレ防止(クリックで開きます)</p>
+                <div id="todayMusic"></div>
+            </div>
+        </section>
+        <section>
+            <h2>曲一覧</h2>
             <p>これまでに<b>1B</b>で放送したリクエスト曲一覧です。</p>
             <ul>
                 <li><a href="detail/?date=2024-12-18">2024-12-18</a></li>
@@ -93,6 +110,116 @@
     <link rel="manifest" href="../manifest.json">
     <script src="../script/verification.js"></script>
     <script data-goatcounter="https://talus.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script type="module">
+        import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+        const supabaseUrl = "https://mgsbwkidyxmicbacqeeh.supabase.co";
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nc2J3a2lkeXhtaWNiYWNxZWVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk5NDA0MjIsImV4cCI6MjA1NTUxNjQyMn0.fNkFQykD9ezBirtJM_fOB7XEIlGU1ZFoejCgrYObElg";
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        document.getElementById("sendRequest").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const musicName = document.getElementById("musicName").value.trim();
+            const url = document.getElementById("musicUrl").value.trim();
+            const desc = document.getElementById("description").value.trim();
+
+            if (!musicName || !url) {
+                alert("正しく入力してください");
+                return;
+            }
+
+            if (link.includes('watch?v=') || link.includes('youtu.be/')) {
+                alert("正しく入力してください");
+                return;
+            }
+
+            // created_at は Supabase 側に任せる
+            const { error } = await supabase.from('request-music').insert([
+                {
+                    musicName,
+                    url,
+                    desc
+                }
+            ]);
+
+            if (error) {
+                alert("送信に失敗しました：" + error.message);
+                console.error(error);
+            } else {
+                alert("送信しました！");
+                getTodayMusic();
+            }
+        });
+
+
+        let todayMusicList = document.createElement("div");
+
+        async function getTodayMusic() {
+            const { data, error } = await supabase.from('request-music').select('*');
+
+            if (error) {
+                alert("データの取得に失敗しました。");
+                console.error(error);
+                return;
+            }
+
+            const today = new Date();
+            const todayStr = today.toISOString().slice(0, 10); // 例: "2025-06-07"
+
+            const filtered = data.filter(d => {
+                const createdDate = d.created_at?.slice(0, 10); // 例: "2025-06-07"
+                return createdDate === todayStr;
+            });
+
+            filtered.forEach(({ musicName, url, desc }) => {
+                const div = document.createElement("div");
+
+                const title = document.createElement("h3");
+                title.textContent = musicName;
+
+                const video = document.createElement("iframe");
+                video.src = convertEnbedLink(url);
+
+                const description = document.createElement("p");
+                description.textContent = desc;
+
+                div.appendChild(title);
+                div.appendChild(video);
+                div.appendChild(description);
+                todayMusicList.appendChild(div);
+            })
+        }
+
+        function convertEnbedLink(link) {
+            let videoId = '';
+
+            if (link.includes('watch?v=')) {
+                const url = new URL(link);
+                videoId = url.searchParams.get('v');
+            } else if (link.includes('youtu.be/')) {
+                videoId = input.split('youtu.be/')[1].split('?')[0];
+            }
+            if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+        }
+
+        document.getElementById("openMusic").addEventListener("click", (e) => {
+            const todayMusic = document.getElementById("todayMusic");
+
+            if (todayMusic.classList.contains("open")) {
+                // 子要素 todayMusicList が存在する場合のみ削除
+                if (todayMusic.contains(todayMusicList)) {
+                    todayMusic.removeChild(todayMusicList);
+                }
+                todayMusic.classList.remove("open");
+            } else {
+                todayMusic.appendChild(todayMusicList);
+                todayMusic.classList.add("open");
+            }
+        })
+
+        getTodayMusic();
+    </script>
 </body>
 
 </html>
