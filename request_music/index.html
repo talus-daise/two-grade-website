@@ -156,7 +156,7 @@
         const todayMusicList = document.createElement("div");
 
         async function getTodayMusic() {
-            const { data, error } = await supabase.from('request-music').select('*');
+            const { data, error } = await supabase.from('request-music').select('*').eq('isplayed', false);
 
             if (error) {
                 alert("データの取得に失敗しました。");
@@ -168,8 +168,7 @@
             const todayStr = today.toISOString().slice(0, 10); // 例: "2025-06-07"
 
             const filtered = data.filter(d => {
-                const createdDate = d.created_at?.slice(0, 10); // 例: "2025-06-07"
-                return createdDate === todayStr;
+                return d;
             });
 
             filtered.forEach(({ musicName, url, desc }) => {
@@ -184,9 +183,12 @@
                 const description = document.createElement("p");
                 description.textContent = desc;
 
+                const hr = document.createElement("hr");
+
                 div.appendChild(title);
                 div.appendChild(video);
                 div.appendChild(description);
+                div.appendChild(hr);
                 todayMusicList.appendChild(div);
             })
         }
