@@ -63,6 +63,7 @@
         <section>
             <h2>今日流す予定の曲</h2>
             <div id="container">
+                <button id="randomMusic">ランダム選曲</button>
                 <p id="openMusic">▼ ネタバレ防止(クリックで開きます)</p>
                 <div id="todayMusic"></div>
             </div>
@@ -154,6 +155,7 @@
 
 
         const todayMusicList = document.createElement("div");
+        let musicData;
 
         async function getTodayMusic() {
             const { data, error } = await supabase.from('request-music').select('*').eq('isplayed', false);
@@ -170,6 +172,8 @@
             const filtered = data.filter(d => {
                 return d;
             });
+
+            musicData = filtered;
 
             filtered.forEach(({ musicName, url, desc }) => {
                 const div = document.createElement("div");
@@ -218,6 +222,36 @@
                 todayMusic.appendChild(todayMusicList);
                 todayMusic.classList.add("open");
             }
+        })
+
+        document.getElementById("randomMusic").addEventListener("click", (e) => {
+            const random = Math.floor(Math.random() * musicData.length);
+            const randomMusic = musicData[random];
+
+            todayMusicList.innerHTML = '';
+
+            let { musicName, url, desc } = randomMusic;
+
+            const div = document.createElement("div");
+
+            const title = document.createElement("h3");
+            title.textContent = musicName;
+
+            const video = document.createElement("iframe");
+            video.src = convertEnbedLink(url);
+
+            const description = document.createElement("p");
+            description.textContent = desc;
+
+            const hr = document.createElement("hr");
+
+            div.appendChild(title);
+            div.appendChild(video);
+            div.appendChild(description);
+            div.appendChild(hr);
+            todayMusicList.appendChild(div);
+
+            document.getElementById("openMusic").click();
         })
 
         getTodayMusic();
