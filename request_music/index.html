@@ -153,7 +153,7 @@
         });
 
 
-        let todayMusicList = document.createElement("div");
+        const todayMusicList = document.createElement("div");
 
         async function getTodayMusic() {
             const { data, error } = await supabase.from('request-music').select('*');
@@ -198,7 +198,7 @@
                 const url = new URL(link);
                 videoId = url.searchParams.get('v');
             } else if (link.includes('youtu.be/')) {
-                videoId = input.split('youtu.be/')[1].split('?')[0];
+                videoId = link.split('youtu.be/')[1].split('?')[0];
             }
             if (videoId) return `https://www.youtube.com/embed/${videoId}`;
         }
