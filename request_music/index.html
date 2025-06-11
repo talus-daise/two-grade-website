@@ -150,6 +150,9 @@
             } else {
                 alert("送信しました！");
                 getTodayMusic();
+                document.getElementById("musicName").value = '';
+                document.getElementById("musicUrl").value = '';
+                document.getElementById("description").value = '';
             }
         });
 
