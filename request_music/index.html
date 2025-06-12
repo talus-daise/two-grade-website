@@ -186,6 +186,7 @@
 
                 const video = document.createElement("iframe");
                 video.src = convertEnbedLink(url);
+                video.setAttribute('allowfullscreen', '');
 
                 const description = document.createElement("p");
                 description.textContent = desc;
