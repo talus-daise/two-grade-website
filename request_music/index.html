@@ -186,7 +186,9 @@
 
                 const video = document.createElement("iframe");
                 video.src = convertEnbedLink(url);
-                video.setAttribute('allowfullscreen', '');
+                video.setAttribute("frameborder", "0"); // 任意（見た目調整）
+                video.setAttribute("allowfullscreen", ""); // ✅ 必須！
+                video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"); // ✅ 必須！
 
                 const description = document.createElement("p");
                 description.textContent = desc;
@@ -243,6 +245,9 @@
 
             const video = document.createElement("iframe");
             video.src = convertEnbedLink(url);
+            video.setAttribute("frameborder", "0"); // 任意（見た目調整）
+            video.setAttribute("allowfullscreen", ""); // ✅ 必須！
+            video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"); // ✅ 必須！
 
             const description = document.createElement("p");
             description.textContent = desc;

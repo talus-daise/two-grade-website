@@ -184,7 +184,7 @@ function nextQuestion(userAnswer) {
         <p>${currentIndex + 1}問目　<span style="color: ${currentAnswer === userAnswer ? 'green' : 'red'}">${currentAnswer === userAnswer ? '○正解' : '×不正解'}</span></p>
         <h3>${currentQuestion}</h3>
         <p>正解: ${currentAnswer}</p>
-        <p>あなたの答え: ${userAnswer}</p>
+        <p>答え: ${userAnswer}</p>
         <hr>
     `;
 
