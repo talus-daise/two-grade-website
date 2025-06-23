@@ -260,7 +260,8 @@
             div.appendChild(hr);
             todayMusicList.appendChild(div);
 
-            document.getElementById("openMusic").click();
+            todayMusic.appendChild(todayMusicList);
+            todayMusic.classList.add("open");
         })
 
         getTodayMusic();
