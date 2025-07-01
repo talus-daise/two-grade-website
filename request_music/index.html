@@ -53,6 +53,7 @@
         <section>
             <h2>曲応募</h2>
             <form id="sendRequest">
+                <label for="student-ID">学籍番号: </label><input type="text" name="student-ID" id="studentId">
                 <label for="music-name">曲名: </label><input type="text" name="music-name" id="musicName"><br>
                 <label for="url">曲のURL: </label><input type="url" name="url" id="musicUrl"><br>
                 <label for="description">おすすめポイントなど(空欄でもOK): </label><input type="text" name="description"
@@ -121,11 +122,12 @@
         document.getElementById("sendRequest").addEventListener("submit", async (e) => {
             e.preventDefault();
 
+            const studentId = document.getElementById("studentId").value.trim();
             const musicName = document.getElementById("musicName").value.trim();
             const url = document.getElementById("musicUrl").value.trim();
             const desc = document.getElementById("description").value.trim();
 
-            if (!musicName || !url) {
+            if (!studentId || !musicName || !url) {
                 alert("正しく入力してください");
                 return;
             }
@@ -138,6 +140,7 @@
             // created_at は Supabase 側に任せる
             const { error } = await supabase.from('request-music').insert([
                 {
+                    studentId,
                     musicName,
                     url,
                     desc
