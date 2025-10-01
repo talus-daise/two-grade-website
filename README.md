@@ -2,7 +2,7 @@
 
 ## 配色
 ### ベースカラー
-<span style="background: #5787ff;">　　　</span> #5787ff
+<span style="background: #3498db;">　　　</span> #3498db
 
 <span style="background: #abc3ff;">　　　</span> #abc3ff
 

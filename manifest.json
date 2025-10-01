@@ -3,8 +3,8 @@
   "short_name": "4期生HP",
   "description": "水戸一高附属中4期生に向けた総合ウェブサイトです。",
   "start_url": "/two-grade-website/",
-  "theme_color": "#5787ff",
-  "background_color": "#5787ff",
+  "theme_color": "#3498db",
+  "background_color": "#3498db",
   "display": "standalone",
   "icons": [
     {
