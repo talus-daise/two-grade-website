@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <link rel="stylesheet" href="../notice/notice.css">
+    <style>
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
     <!--web情報-->
     <meta name="keywords" content="水戸一, 水戸一附属, 水戸一附属中, 一学年,">
     <meta name="description" content="水戸一附属中四期生向けの総合ウェブサイトです。附属中向けのテストの情報などを配信しています。">
@@ -164,7 +173,7 @@
         let musicData;
 
         async function getTodayMusic() {
-            const { data, error } = await supabase.from('request-music').select('*').eq('isplayed', false);
+            const { data, error } = await supabase.from('request-music').select('*').order('musicName', { ascending: true }).eq('isplayed', false);
 
             if (error) {
                 alert("データの取得に失敗しました。");
@@ -193,13 +202,28 @@
                 video.setAttribute("allowfullscreen", ""); // ✅ 必須！
                 video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"); // ✅ 必須！
 
+                const videoContainer = document.createElement("div");
+                videoContainer.insertAdjacentHTML("afterbegin", "<p>▼クリックで開く</p>");
+                videoContainer.addEventListener("click", () => {
+                    if (videoContainer.classList.contains("show")) {
+                        videoContainer.innerHTML = "";
+                        videoContainer.classList.remove("show");
+                        videoContainer.insertAdjacentHTML("afterbegin", "<p>▼クリックで開く</p>");
+                    } else {
+                        videoContainer.innerHTML = "";
+                        videoContainer.appendChild(video);
+                        videoContainer.classList.add("show");
+                        videoContainer.insertAdjacentHTML("afterbegin", "<p>▼クリックで閉じる</p>");
+                    }
+                });
+
                 const description = document.createElement("p");
                 description.textContent = desc;
 
                 const hr = document.createElement("hr");
 
                 div.appendChild(title);
-                div.appendChild(video);
+                div.appendChild(videoContainer);
                 div.appendChild(description);
                 div.appendChild(hr);
                 todayMusicList.appendChild(div);
