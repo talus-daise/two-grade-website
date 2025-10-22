@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                 </li>
                 <li id="quiz">
-                    <a href="/two-grade-website/quiz/">
+                    <a href="/two-grade-website/quiz/game/">
                         <i class="fa-solid fa-q"></i>ポチ問！
                     </a>
                 </li>

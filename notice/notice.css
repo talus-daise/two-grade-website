@@ -1,17 +1,23 @@
 /* サイドメニューのスタイル */
 #asideMenu {
     position: fixed;
-    right: calc(-100% - 4rem);
     top: 0;
-    width: 100dvw;
+    right: 0;
+    width: 40dvw;
     height: 100dvh;
-    background-color: #e6f0ff; /* 明るい水色背景 */
-    color: #0a2540; /* 濃い青みのテキスト */
-    transition: right 1s ease;
+    background-color: #e3f2fd;
+    /* 明るい水色背景 */
+    color: #0a2540;
+    /* 濃い青みのテキスト */
+    transition: opacity 1s ease;
     padding: 1rem 3rem 1rem 2rem;
     z-index: 1001;
     filter: drop-shadow(0px 0px 16px rgba(0, 0, 0, 0.6));
     overflow: scroll;
+    pointer-events: none;
+    /* ボタン拡大中は操作できない */
+    opacity: 0;
+    visibility: hidden;
 }
 
 /* サイドメニュー内のコンテンツ */
@@ -28,7 +34,7 @@
 #menuButton {
     position: fixed;
     top: 20px;
-    right: -2rem;
+    right: 1rem;
     cursor: pointer;
     font-size: 2rem;
     color: #3498db;
@@ -36,10 +42,12 @@
     border: none;
     box-shadow: none;
     z-index: 1000;
-    transition: right 2s ease, background 1s ease;
+    transition: all 0.8s ease;
     filter: drop-shadow(0px 0px 16px rgba(0, 0, 0, 0.6));
-    padding-right: 2rem;
     border-radius: 5px;
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
 }
 
 /* メニューを閉じるボタン */
@@ -60,11 +68,33 @@
 
 /* サイドメニューが表示されている時の位置 */
 #asideMenu.open {
-    right: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0.8s;
+    /* ボタンが拡大してから表示 */
+}
+
+#asideMenu.closing {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0s;
+    /* ボタン縮小と同時に消える */
 }
 
 #menuButton.open {
-    background: rgba(255, 255, 255, 0);
+    width: 40dvw;
+    /* サイドメニューと同じ幅 */
+    height: 100dvh;
+    /* サイドメニューと同じ高さ */
+    right: 0;
+    top: 0;
+    border-radius: 0;
+    background: #e3f2fd;
+    color: #0a2540;
+    font-size: 0;
+    /* アイコンを消す */
+    transition: all 0.8s ease;
 }
 
 #closeButton.open {
@@ -110,7 +140,7 @@ nav li ul li a::before {
 /* 各リンクのスタイル */
 nav a {
     display: block;
-    min-width: 40%;
+    min-width: 15rem;
     padding: 0.5rem;
     text-align: left;
     background-color: #3498db;
@@ -134,6 +164,152 @@ nav a:hover i {
     color: #ffffff;
 }
 
+/* サブメニュー非表示 */
+.menu-item .submenu {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    pointer-events: none;
+    /* hover 判定されないように */
+}
+
+.menu-item:hover .submenu {
+    opacity: 1;
+    max-height: 500px;
+    /* サブメニューの高さに合わせて調整 */
+    pointer-events: auto;
+    /* クリック可能にする */
+}
+
+/* 表示状態 */
+.submenu.show {
+    opacity: 1;
+    max-height: 200px;
+    /* サブメニューの高さに応じて調整 */
+}
+
+.avatar {
+    background-color: #ffffff;
+    color: #0a2540;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+}
+
+.avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+/* Googleでログイン */
+.gsi-material-button {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-appearance: none;
+    background-color: WHITE;
+    background-image: none;
+    border: 1px solid #747775;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #1f1f1f;
+    cursor: pointer;
+    font-family: 'Roboto', arial, sans-serif;
+    font-size: 14px;
+    height: 40px;
+    letter-spacing: 0.25px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 12px;
+    position: relative;
+    text-align: center;
+    -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+    transition: background-color .218s, border-color .218s, box-shadow .218s;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    max-width: 400px;
+    min-width: min-content;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+    height: 20px;
+    margin-right: 12px;
+    min-width: 20px;
+    width: 20px;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+    -webkit-align-items: center;
+    align-items: center;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    height: 100%;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    font-family: 'Roboto', arial, sans-serif;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+    -webkit-transition: opacity .218s;
+    transition: opacity .218s;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.gsi-material-button:disabled {
+    cursor: default;
+    background-color: #ffffff61;
+    border-color: #1f1f1f1f;
+}
+
+.gsi-material-button:disabled .gsi-material-button-contents {
+    opacity: 38%;
+}
+
+.gsi-material-button:disabled .gsi-material-button-icon {
+    opacity: 38%;
+}
+
+.gsi-material-button:not(:disabled):active .gsi-material-button-state,
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+    background-color: #303030;
+    opacity: 12%;
+}
+
+.gsi-material-button:not(:disabled):hover {
+    -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+    background-color: #303030;
+    opacity: 8%;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 960px) {
     nav a {
@@ -151,13 +327,18 @@ nav a:hover i {
         padding: 1rem;
     }
 
-    #asideMenu {
-        transition: right 0.3s ease;
+    #asideMenu.open {
+        width: 100dvw;
     }
 
     #menuButton {
-        top: 4rem;
-        right: -2rem;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    #menuButton.open {
+        width: 100dvw;
+        height: 100dvh;
     }
 
     #closeButton {
@@ -166,5 +347,11 @@ nav a:hover i {
 
     #closeButton.open {
         right: 0;
+    }
+
+    .menu-item.open .submenu {
+        opacity: 1;
+        max-height: 500px;
+        pointer-events: auto;
     }
 }
