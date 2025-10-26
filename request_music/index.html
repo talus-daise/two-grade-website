@@ -43,7 +43,7 @@
     <link rel="icon" type="image/png" href="../img/mitoichi-fuzoku-192x192.png" sizes="192x192">
     <!--CDN-->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.35.4"></script>
-    <script src="../script/customAlert.js"></script>
+    <script src="../script/customAlert.js" type="module"></script>
     <!--マニフェスト-->
     <link rel="manifest" href="../manifest.json">
 </head>
@@ -74,6 +74,8 @@
             <h2>今日流す予定の曲</h2>
             <div id="container">
                 <button id="randomMusic">ランダム選曲</button>
+                <div id="selectedMusic"></div>
+
                 <p id="openMusic">▼ ネタバレ防止(クリックで開きます)</p>
                 <div id="todayMusic"></div>
             </div>
@@ -116,7 +118,7 @@
     </footer>
 
     <script type="module" src="../notice/notice.js"></script>
-    <script src="../script/customAlert.js"></script>
+    <script src="../script/customAlert.js" type="module"></script>
     <!--マニフェスト-->
     <link rel="manifest" href="../manifest.json">
     <script src="../script/verification.js"></script>
@@ -124,11 +126,22 @@
     <script type="module">
         import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
+        // ===== Supabase 初期化 =====
         const supabaseUrl = "https://mgsbwkidyxmicbacqeeh.supabase.co";
         const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nc2J3a2lkeXhtaWNiYWNxZWVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk5NDA0MjIsImV4cCI6MjA1NTUxNjQyMn0.fNkFQykD9ezBirtJM_fOB7XEIlGU1ZFoejCgrYObElg";
         const supabase = createClient(supabaseUrl, supabaseKey);
 
-        document.getElementById("sendRequest").addEventListener("submit", async (e) => {
+        // ===== 要素参照 =====
+        const sendForm = document.getElementById("sendRequest");
+        const openMusicBtn = document.getElementById("openMusic");
+        const randomMusicBtn = document.getElementById("randomMusic");
+        const todayMusic = document.getElementById("todayMusic");
+        const todayMusicList = document.createElement("div");
+
+        let musicData = [];
+
+        // ===== 楽曲送信 =====
+        sendForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const studentId = document.getElementById("studentId").value.trim();
@@ -141,19 +154,14 @@
                 return;
             }
 
-            if (!(url.includes('watch?v=') || url.includes('youtu.be/'))) {
+            if (!(url.includes("watch?v=") || url.includes("youtu.be/"))) {
                 alert("正しく入力してください");
                 return;
             }
 
-            // created_at は Supabase 側に任せる
-            const { error } = await supabase.from('request-music').insert([
-                {
-                    studentId,
-                    musicName,
-                    url,
-                    desc
-                }
+            // Supabase に送信
+            const { error } = await supabase.from("request-music").insert([
+                { studentId, musicName, url, desc }
             ]);
 
             if (error) {
@@ -161,19 +169,18 @@
                 console.error(error);
             } else {
                 alert("送信しました！");
+                sendForm.reset();
                 getTodayMusic();
-                document.getElementById("musicName").value = '';
-                document.getElementById("musicUrl").value = '';
-                document.getElementById("description").value = '';
             }
         });
 
-
-        const todayMusicList = document.createElement("div");
-        let musicData;
-
+        // ===== 今日の楽曲を取得 =====
         async function getTodayMusic() {
-            const { data, error } = await supabase.from('request-music').select('*').order('musicName', { ascending: true }).eq('isplayed', false);
+            const { data, error } = await supabase
+                .from("request-music")
+                .select("*")
+                .order("musicName", { ascending: true })
+                .eq("isplayed", false);
 
             if (error) {
                 alert("データの取得に失敗しました。");
@@ -181,116 +188,126 @@
                 return;
             }
 
-            const today = new Date();
-            const todayStr = today.toISOString().slice(0, 10); // 例: "2025-06-07"
+            musicData = data;
+            todayMusicList.innerHTML = "";
 
-            const filtered = data.filter(d => {
-                return d;
+            data.forEach(({ musicName, url, desc }) => {
+                todayMusicList.appendChild(createMusicItem(musicName, url, desc));
             });
-
-            musicData = filtered;
-
-            filtered.forEach(({ musicName, url, desc }) => {
-                const div = document.createElement("div");
-
-                const title = document.createElement("h3");
-                title.textContent = musicName;
-
-                const video = document.createElement("iframe");
-                video.src = convertEnbedLink(url);
-                video.setAttribute("frameborder", "0"); // 任意（見た目調整）
-                video.setAttribute("allowfullscreen", ""); // ✅ 必須！
-                video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"); // ✅ 必須！
-
-                const videoContainer = document.createElement("div");
-                videoContainer.insertAdjacentHTML("afterbegin", "<p>▼クリックで開く</p>");
-                videoContainer.addEventListener("click", () => {
-                    if (videoContainer.classList.contains("show")) {
-                        videoContainer.innerHTML = "";
-                        videoContainer.classList.remove("show");
-                        videoContainer.insertAdjacentHTML("afterbegin", "<p>▼クリックで開く</p>");
-                    } else {
-                        videoContainer.innerHTML = "";
-                        videoContainer.appendChild(video);
-                        videoContainer.classList.add("show");
-                        videoContainer.insertAdjacentHTML("afterbegin", "<p>▼クリックで閉じる</p>");
-                    }
-                });
-
-                const description = document.createElement("p");
-                description.textContent = desc;
-
-                const hr = document.createElement("hr");
-
-                div.appendChild(title);
-                div.appendChild(videoContainer);
-                div.appendChild(description);
-                div.appendChild(hr);
-                todayMusicList.appendChild(div);
-            })
         }
 
-        function convertEnbedLink(link) {
-            let videoId = '';
-
-            if (link.includes('watch?v=')) {
+        // ===== YouTubeリンク → 埋め込みリンク変換 =====
+        function convertEmbedLink(link) {
+            let videoId = "";
+            if (link.includes("watch?v=")) {
                 const url = new URL(link);
-                videoId = url.searchParams.get('v');
-            } else if (link.includes('youtu.be/')) {
-                videoId = link.split('youtu.be/')[1].split('?')[0];
+                videoId = url.searchParams.get("v");
+            } else if (link.includes("youtu.be/")) {
+                videoId = link.split("youtu.be/")[1].split("?")[0];
             }
-            if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+            return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
         }
 
-        document.getElementById("openMusic").addEventListener("click", (e) => {
-            const todayMusic = document.getElementById("todayMusic");
-
-            if (todayMusic.classList.contains("open")) {
-                // 子要素 todayMusicList が存在する場合のみ削除
-                if (todayMusic.contains(todayMusicList)) {
-                    todayMusic.removeChild(todayMusicList);
-                }
-                todayMusic.classList.remove("open");
-            } else {
-                todayMusic.appendChild(todayMusicList);
-                todayMusic.classList.add("open");
-            }
-        })
-
-        document.getElementById("randomMusic").addEventListener("click", (e) => {
-            const random = Math.floor(Math.random() * musicData.length);
-            const randomMusic = musicData[random];
-
-            todayMusicList.innerHTML = '';
-
-            let { musicName, url, desc } = randomMusic;
-
+        // ===== 楽曲アイテム生成 =====
+        function createMusicItem(musicName, url, desc, isOpened = false) {
             const div = document.createElement("div");
 
+            // タイトル
             const title = document.createElement("h3");
             title.textContent = musicName;
 
-            const video = document.createElement("iframe");
-            video.src = convertEnbedLink(url);
-            video.setAttribute("frameborder", "0"); // 任意（見た目調整）
-            video.setAttribute("allowfullscreen", ""); // ✅ 必須！
-            video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"); // ✅ 必須！
-
+            // 説明文
             const description = document.createElement("p");
             description.textContent = desc;
 
+            // 動画表示ブロック
+            const videoContainer = document.createElement("div");
+            const toggleText = document.createElement("p");
+            toggleText.textContent = "▼クリックで開く";
+            videoContainer.appendChild(toggleText);
+
+            const iframe = document.createElement("iframe");
+            iframe.src = convertEmbedLink(url);
+            iframe.setAttribute("frameborder", "0");
+            iframe.setAttribute("allowfullscreen", "");
+            iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen");
+
+            videoContainer.addEventListener("click", () => {
+                const opened = videoContainer.classList.toggle("show");
+                videoContainer.innerHTML = "";
+                const newText = document.createElement("p");
+                newText.textContent = opened ? "▼クリックで閉じる" : "▼クリックで開く";
+                videoContainer.appendChild(newText);
+                if (opened) videoContainer.appendChild(iframe);
+            });
+
+            // チェックボックス
+            const label = document.createElement("label");
+            label.textContent = "再生済み: ";
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = false;
+            label.appendChild(checkbox);
+
+            checkbox.addEventListener("change", async () => {
+                const { error } = await supabase
+                    .from("request-music")
+                    .update({ isplayed: checkbox.checked })
+                    .eq("musicName", musicName)
+                    .eq("url", url);
+
+                if (error) {
+                    alert("更新に失敗しました：" + error.message);
+                    console.error(error);
+                } else {
+                    alert("更新しました！");
+                }
+            });
+
+            // 区切り線
             const hr = document.createElement("hr");
 
+            // 要素まとめ
             div.appendChild(title);
-            div.appendChild(video);
+            div.appendChild(videoContainer);
             div.appendChild(description);
+            div.appendChild(label);
             div.appendChild(hr);
-            todayMusicList.appendChild(div);
 
-            todayMusic.appendChild(todayMusicList);
-            todayMusic.classList.add("open");
-        })
+            if (isOpened) {
+                videoContainer.click();
+            }
 
+            return div;
+        }
+
+        // ===== 「今日の曲」開閉 =====
+        openMusicBtn.addEventListener("click", () => {
+            const isOpen = todayMusic.classList.toggle("open");
+            if (isOpen) {
+                todayMusic.appendChild(todayMusicList);
+            } else {
+                if (todayMusic.contains(todayMusicList)) todayMusic.removeChild(todayMusicList);
+            }
+        });
+
+        // ===== ランダム再生 =====
+        randomMusicBtn.addEventListener("click", () => {
+            const selectedMusic = document.getElementById("selectedMusic");
+            if (musicData.length === 0) {
+                alert("データがありません。");
+                return;
+            }
+
+            const random = Math.floor(Math.random() * musicData.length);
+            const { musicName, url, desc } = musicData[random];
+
+            selectedMusic.innerHTML = "";
+            selectedMusic.appendChild(createMusicItem(musicName, url, desc, true));
+            selectedMusic.classList.add("open");
+        });
+
+        // 初回読み込み
         getTodayMusic();
     </script>
 </body>
