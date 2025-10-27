@@ -144,6 +144,22 @@
         sendForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
+            if (localStorage.getItem("lastRequestMusicDate")) {
+                const lastDate = new Date(localStorage.getItem("lastRequestMusicDate"));
+                const now = new Date();
+                const lastMonday = new Date(now);
+                lastMonday.setDate(now.getDate() - now.getDay() + 1); // 月曜始まりの週の月曜日を取得
+
+                if (lastDate < lastMonday) {
+                    localStorage.setItem("weekofRequestMusicNumber", "0");
+                }
+            }
+
+            if (localStorage.getItem("weekofRequestMusicNumber") >= "5") {
+                alert("今週のリクエスト曲の上限に達しました。");
+                return;
+            }
+
             const studentId = document.getElementById("studentId").value.trim();
             const musicName = document.getElementById("musicName").value.trim();
             const url = document.getElementById("musicUrl").value.trim();
@@ -158,7 +174,22 @@
                 alert("正しく入力してください");
                 return;
             }
+            // 存在確認
+            const { data: existingData, error: existingError } = await supabase
+                .from("request-music")
+                .select("*")
+                .or(`musicName.eq.${musicName},url.eq.${url}`);
 
+            if (existingError) {
+                alert("確認中にエラーが発生しました：" + existingError.message);
+                console.error(existingError);
+                return;
+            }
+
+            if (existingData && existingData.length > 0) {
+                alert("この曲はすでにリクエストされています。");
+                return;
+            }
             // Supabase に送信
             const { error } = await supabase.from("request-music").insert([
                 { studentId, musicName, url, desc }
@@ -171,6 +202,8 @@
                 alert("送信しました！");
                 sendForm.reset();
                 getTodayMusic();
+                localStorage.setItem("weekofRequestMusicNumber", String(Number(localStorage.getItem("weekofRequestMusicNumber") || "0") + 1));
+                localStorage.setItem("lastRequestMusicDate", new Date().toISOString());
             }
         });
 
@@ -209,7 +242,7 @@
         }
 
         // ===== 楽曲アイテム生成 =====
-        function createMusicItem(musicName, url, desc, isOpened = false) {
+        function createMusicItem(musicName, url, desc, isOpened = false, isToggleable = false) {
             const div = document.createElement("div");
 
             // タイトル
@@ -247,6 +280,9 @@
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.checked = false;
+            if (!isToggleable) {
+                checkbox.disabled = true;
+            }
             label.appendChild(checkbox);
 
             checkbox.addEventListener("change", async () => {
@@ -303,7 +339,7 @@
             const { musicName, url, desc } = musicData[random];
 
             selectedMusic.innerHTML = "";
-            selectedMusic.appendChild(createMusicItem(musicName, url, desc, true));
+            selectedMusic.appendChild(createMusicItem(musicName, url, desc, true, true));
             selectedMusic.classList.add("open");
         });
 
